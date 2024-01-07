@@ -1,19 +1,19 @@
-add_library(scratch STATIC "")
+add_library(monoid STATIC "")
 
 target_sources(
-  scratch
+  monoid
   PRIVATE
-  scratch.cpp)
+  monoid.cpp)
 
 include(GNUInstallDirs)
 
-target_include_directories(scratch PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../>
+target_include_directories(monoid PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_LOWER_PROJECT_NAME}>  # <prefix>/include/scratch
   )
 
 install(
-  TARGETS scratch
+  TARGETS monoid
   EXPORT ${TARGETS_EXPORT_NAME}
   DESTINATION ${CMAKE_INSTALL_LIBDIR}
   )
@@ -26,18 +26,19 @@ install(
   FILES_MATCHING PATTERN "*.h"
   )
 
+target_link_libraries(monoid)
 
 ## Tests
-add_executable(scratch_test "")
+add_executable(monoid_test "")
 
 target_sources(
-  scratch_test
+  monoid_test
   PRIVATE
-  scratch.t.cpp)
+  monoid.t.cpp)
 
-target_link_libraries(scratch_test scratch)
-target_link_libraries(scratch_test gtest)
-target_link_libraries(scratch_test gtest_main)
+target_link_libraries(monoid_test monoid)
+target_link_libraries(monoid_test gtest)
+target_link_libraries(monoid_test gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(scratch_test)
+gtest_discover_tests(monoid_test)
