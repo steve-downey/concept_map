@@ -1,7 +1,7 @@
 include_guard(GLOBAL)
 
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_C_COMPILER gcc-14)
+set(CMAKE_CXX_COMPILER g++-14)
 
 set(CMAKE_CXX_STANDARD 20)
 
