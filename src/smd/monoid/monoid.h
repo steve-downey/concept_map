@@ -72,7 +72,7 @@ class StringMonoid {
   public:
     using value_type = std::string;
 
-    auto op(this auto && self, auto s1, auto s2) {
+    auto op(this auto &&,  auto s1, auto s2) {
         std::puts("StringMonoid::op()");
         return s1 + s2;
     }
