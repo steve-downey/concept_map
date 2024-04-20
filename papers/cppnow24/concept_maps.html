@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="description" content="
+"/>
+<meta name="keywords" content=" "/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./my_theme.css" id="theme"/>
+
+<link rel="stylesheet" href="./vivendi-tinted.css"/>
+
+<link rel="stylesheet" href="./footer.css"/>
+
+<link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./async_title.png">
+
+</section>
+<section>
+<section id="slide-org4e80b4c">
+<h2 id="org4e80b4c">Concept Maps using C++23 Library Tech</h2>
+<p>
+Steve Downey
+</p>
+
+<p>
+© 2023 Bloomberg Finance L.P. All rights reserved.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org4dbd7d6">
+<h2 id="org4dbd7d6">Abstract</h2>
+<p>
+C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
+</p>
+
+<p class="fragment (appear)">
+This allowed open extension of a concept.
+</p>
+
+<p class="fragment (appear)">
+A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
+</p>
+
+<ul>
+<li class="fragment appear">This is similar to how Haskell's <code>typeclass</code> works.</li>
+
+</ul>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org9523080">
+<h3 id="org9523080">Lost with <code>Concepts-Lite</code></h3>
+<aside class="notes">
+<p>
+The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
+</p>
+
+<p>
+This loss of a level of indirection means that the APIs for a concept must be implemented by those names for a type, even when those names are not particularly good choices in the natural domain of a type rather than in the domain as a concept.
+</p>
+
+<p>
+The proliferation of <code>transform</code> functions for functorial <code>map</code> is such a problem.
+</p>
+
+<p>
+It is also a problem when adapting types that are closed for extension or do not permit member functions.
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org61e2f3f">
+<h2 id="org61e2f3f">Why?</h2>
+<ul>
+<li class="fragment appear"><p>
+Don't know if you should
+</p></li>
+<li class="fragment appear">Need to know if you could first</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orga61fd89">
+<h3 id="orga61fd89">Alternatives</h3>
+<ul>
+<li class="fragment appear"><p>
+Virtual Interface
+</p></li>
+<li class="fragment appear"><p>
+Adapters
+</p></li>
+<li class="fragment appear">Collection of CPOs</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5fb52eb">
+<h3 id="org5fb52eb">Hard to Support</h3>
+</section>
+</section>
+<section>
+<section id="slide-org9ce97ce">
+<h2 id="org9ce97ce">Example from C++0x Concepts</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgda51660">
+<h2 id="orgda51660">Requirements</h2>
+<ul>
+<li class="fragment appear"><p>
+Tied to the typesystem
+</p></li>
+<li class="fragment appear"><p>
+Automatable
+</p></li>
+<li class="fragment appear">"zero" overhead
+<ul>
+<li class="fragment appear"><p>
+no virtual calls
+</p></li>
+<li class="fragment appear">no type erasure</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org24059a8">
+<h2 id="org24059a8">Thank You</h2>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1600,
+height: 900,
+
+transition: 'fade',
+transitionSpeed: 'default',
+showNotes: window.location.search.match( /print-pdf/gi ) ? 'separate-page' : false,
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
