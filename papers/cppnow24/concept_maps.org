@@ -91,6 +91,10 @@ It is also a problem when adapting types that are closed for extension or do not
     #+ATTR_REVEAL: :frag (appear)
 - Need to know if you could first
 
+#+begin_notes
+
+#+end_notes
+
 ** Alternatives
     #+ATTR_REVEAL: :frag (appear)
 -  Virtual Interface
@@ -98,11 +102,145 @@ It is also a problem when adapting types that are closed for extension or do not
 -  Adapters
     #+ATTR_REVEAL: :frag (appear)
 -  Collection of CPOs
+#+begin_notes
+
+#+end_notes
 ** Hard to Support
 
-* Example from C++0x Concepts
+#+begin_notes
 
-* Requirements
+#+end_notes
+* Example from C++0x Concepts
+** Student Record
+#+begin_src C++
+class student record {
+public:
+  string id;
+  string name;
+  string address;
+  bool   id_equal(const student record&);
+  bool   name_equal(const student record&);
+  bool   address_equal(const student record&);
+};
+#+end_src
+#+begin_notes
+
+#+end_notes
+** Equality Comparable
+#+begin_src c++
+concept_map EqualityComparable<student record>{
+    bool operator==(const student record& a,
+                    const student record& b){
+        return a.id_equal(b);
+}
+};
+#+end_src
+
+#+begin_notes
+
+#+end_notes
+** Allow associated types
+Very useful for pointers
+
+#+begin_src c++
+concept_map BinaryFunction<int (*)(int, int), int, int>
+{
+    typedef int result_type;
+};
+#+end_src
+
+
+#+begin_notes
+
+#+end_notes
+** Why Didn't We Get Them
+
+Lets not go there right now.
+
+#+begin_notes
+
+#+end_notes
+* State of the Art
+** Rust Traits
+#+begin_src rust
+trait PartialEq {
+    fn eq(&self, rhs: &Self) -> bool;
+
+    fn ne(&self, rhs: &Self) -> bool {
+        !self.eq(rhs)
+    }
+}
+#+end_src
+
+#+begin_notes
+
+#+end_notes
+** C++ CPOs
+*** Some Concepts and Types
+#+begin_src C++
+namespace N::hidden {
+template <typename T>
+concept has_eq = requires(T const& v) {
+  { eq(v, v) } -> std::same_as<bool>;
+};
+
+struct eq_fn {
+  template <has_eq T>
+  constexpr bool operator()(T const& x,
+                            T const& y) const {
+    return eq(x, y);
+  }
+};
+
+template <has_eq T>
+constexpr bool ne(T const& x, T const& y) {
+  return not eq(x, y);
+}
+
+template <typename T>
+concept has_ne = requires(T const& v) {
+  { ne(v, v) } -> std::same_as<bool>;
+};
+
+struct ne_fn {
+  template <has_ne T>
+  constexpr bool operator()(T const& x,
+                            T const& y) const {
+    return ne(x, y);
+  }
+};
+} // namespace N::hidden
+#+end_src
+
+See _Why tag_invoke is not the solution I want_ by Barry Revzin
+https://brevzin.github.io/c++/2020/12/01/tag-invoke/
+#+begin_notes
+
+#+end_notes
+*** C++ partial_equality
+#+begin_src C++
+namespace N {
+inline namespace function_objects {
+inline constexpr hidden::eq_fn eq{};
+inline constexpr hidden::ne_fn ne{};
+} // namespace function_objects
+
+template <typename T>
+concept partial_equality
+  requires(std::remove_reference_t<T> const& t)
+{
+  eq(t, t);
+  ne(t, t);
+};
+} // namespace N
+#+end_src
+See _Why tag_invoke is not the solution I want_ by Barry Revzin
+https://brevzin.github.io/c++/2020/12/01/tag-invoke/
+
+#+begin_notes
+
+#+end_notes
+* Requirements for Solution
     #+ATTR_REVEAL: :frag (appear)
 - Tied to the typesystem
     #+ATTR_REVEAL: :frag (appear)
@@ -114,29 +252,90 @@ It is also a problem when adapting types that are closed for extension or do not
     #+ATTR_REVEAL: :frag (appear)
   - no type erasure
 
+#+begin_notes
+
+#+end_notes
 * What does typeclass do?
 Adds a record to the function that defines the operations for the type.
 
 Can we do that?
 
+#+begin_notes
+
+#+end_notes
 * Type based lookup
 Templates!
 
+#+begin_notes
+
+#+end_notes
 * Additional Requirement
 Avoid ADL
     #+ATTR_REVEAL: :frag (appear)
 Object Lookup rather than Overload Lookup
 
+#+begin_notes
+
+#+end_notes
 * Template Variables
 Template variables have become more powerful
 
     #+ATTR_REVEAL: :frag (appear)
 We can have entirely distinct specializations
 
-** Example
-#+begin_src C++
+#+begin_notes
 
+#+end_notes
+** A Step Towards Implementation
+#+begin_src C++
+template <class T>
+concept partial_equality = requires(
+    std::remove_reference_t<T> const& t) {
+  {
+    partial_eq<T>.eq(t, t)
+  } -> std::same_as<bool>;
+  {
+    partial_eq<T>.ne(t, t)
+  } -> std::same_as<bool>;
+};
 #+end_src
+
+#+begin_notes
+
+#+end_notes
+** ~partial_eq<T>~
+#+begin_src c++
+template<class T>
+constexpr inline auto partial_eq = hidden::partial_eq_default;
+#+end_src
+
+#+ATTR_REVEAL: :frag (appear)
+
+#+begin_src C++
+constexpr inline struct {
+  constexpr auto
+  eq(has_eq auto const& rhs,
+     has_eq auto const& lhs) const {
+    return eq(rhs, lhs);
+  }
+  constexpr auto
+  ne(has_eq auto const& rhs,
+     has_eq auto const& lhs) const {
+    return not eq(lhs, rhs);
+  }
+} partial_eq_default;
+#+end_src
+
+#+begin_notes
+
+#+end_notes
+** Will do better
+In a bit
+
+
+#+begin_notes
+
+#+end_notes
 * Thank You
 
 #+begin_notes
