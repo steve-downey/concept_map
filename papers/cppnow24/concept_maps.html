@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<title>  </title>
+<meta name="author" content="  "/>
 <meta name="description" content="
+
+
+
+
 "/>
-<meta name="keywords" content=" "/>
+<meta name="keywords" content="     "/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -15,18 +21,24 @@
 <link rel="stylesheet" href="./vivendi-tinted.css"/>
 
 <link rel="stylesheet" href="./footer.css"/>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
+
+<link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
+
+<link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
+
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide" data-background="./async_title.png">
+<section id="sec-title-slide" data-background="./concept_maps_title.png">
 
 </section>
 <section>
-<section id="slide-org4e80b4c">
-<h2 id="org4e80b4c">Concept Maps using C++23 Library Tech</h2>
+<section id="slide-org5b9d2ab">
+<h2 id="org5b9d2ab">Concept Maps using C++23 Library Tech</h2>
 <p>
 Steve Downey
 </p>
@@ -37,8 +49,8 @@ Steve Downey
 </section>
 </section>
 <section>
-<section id="slide-org4dbd7d6">
-<h2 id="org4dbd7d6">Abstract</h2>
+<section id="slide-orgfc33a13">
+<h2 id="orgfc33a13">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
@@ -66,8 +78,8 @@ A definition could be provided that allows an algorithm to operate in terms of t
 </section>
 </section>
 <section>
-<section id="slide-org9523080">
-<h3 id="org9523080">Lost with <code>Concepts-Lite</code></h3>
+<section id="slide-orge5bab9c">
+<h3 id="orge5bab9c">Lost with <code>Concepts-Lite</code></h3>
 <aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
@@ -89,8 +101,8 @@ It is also a problem when adapting types that are closed for extension or do not
 </section>
 </section>
 <section>
-<section id="slide-org61e2f3f">
-<h2 id="org61e2f3f">Why?</h2>
+<section id="slide-org37bc38f">
+<h2 id="org37bc38f">Why?</h2>
 <ul>
 <li class="fragment appear"><p>
 Don't know if you should
@@ -98,11 +110,18 @@ Don't know if you should
 <li class="fragment appear">Need to know if you could first</li>
 
 </ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-orga61fd89">
-<h3 id="orga61fd89">Alternatives</h3>
+<section id="slide-org919e37e">
+<h3 id="org919e37e">Alternatives</h3>
 <ul>
 <li class="fragment appear"><p>
 Virtual Interface
@@ -113,22 +132,240 @@ Adapters
 <li class="fragment appear">Collection of CPOs</li>
 
 </ul>
-</section>
-</section>
-<section>
-<section id="slide-org5fb52eb">
-<h3 id="org5fb52eb">Hard to Support</h3>
-</section>
-</section>
-<section>
-<section id="slide-org9ce97ce">
-<h2 id="org9ce97ce">Example from C++0x Concepts</h2>
+<aside class="notes">
+<p>
 
+</p>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-orgda51660">
-<h2 id="orgda51660">Requirements</h2>
+<section id="slide-org134762e">
+<h3 id="org134762e">Hard to Support</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org0d47973">
+<h2 id="org0d47973">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org0d47973">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8639fa6">
+<h3 id="org8639fa6">Student Record</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">string</span> <span class="org-variable-name">id</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">name</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">address</span>;
+  <span class="org-type">bool</span>   <span class="org-function-name">id_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">name_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">address_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+};
+</pre>
+</div>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org38d15c6">
+<h3 id="org38d15c6">Equality Comparable</h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
+    <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-variable-name">==</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">a</span>,
+                    <span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">b</span>){
+        <span class="org-keyword">return</span> a.id_equal(b);
+}
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org6709573">
+<h3 id="org6709573">Allow associated types</h3>
+<p>
+Very useful for pointers
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">BinaryFunction</span><span class="org-variable-name">&lt;int (*)(int, int), int, int&gt;</span>
+{
+    <span class="org-keyword">typedef</span> <span class="org-type">int</span> <span class="org-type">result_type</span>;
+};
+</pre>
+</div>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgee12ec0">
+<h3 id="orgee12ec0">Why Didn't We Get Them</h3>
+<p>
+Lets not go there right now.
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org36d051d">
+<h2 id="org36d051d">State of the Art</h2>
+<div class="outline-text-2" id="text-org36d051d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5849271">
+<h3 id="org5849271">Rust Traits</h3>
+<div class="org-src-container">
+
+<pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
+    <span class="org-keyword">fn</span> <span class="org-function-name">eq</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span>;
+
+    <span class="org-keyword">fn</span> <span class="org-function-name">ne</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span> {
+        !<span class="org-keyword">self</span>.eq(rhs)
+    }
+}
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org07af0b2">
+<h3 id="org07af0b2">C++ CPOs</h3>
+<div class="outline-text-3" id="text-org07af0b2">
+</div>
+</section>
+<section id="slide-org55ab795">
+<h4 id="org55ab795">Some Concepts and Types</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { eq(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">eq_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(x, y);
+  }
+};
+
+<span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-function-name">ne</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>, <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(x, y);
+}
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_ne</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { ne(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">ne_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_ne</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> ne(x, y);
+  }
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N::hidden</span>
+</pre>
+</div>
+
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+<section id="slide-org66032b8">
+<h4 id="org66032b8">C++ partial_equality</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">namespace</span> <span class="org-constant">function_objects</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">eq_fn</span> <span class="org-variable-name">eq</span>{};
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">ne_fn</span> <span class="org-variable-name">ne</span>{};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace function_objects</span>
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> partial_equality
+  <span class="org-keyword">requires</span>(<span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>)
+{
+  eq(t, t);
+  ne(t, t);
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N</span>
+</pre>
+</div>
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgf2b2264">
+<h2 id="orgf2b2264">Requirements for Solution</h2>
 <ul>
 <li class="fragment appear"><p>
 Tied to the typesystem
@@ -146,11 +383,1276 @@ no virtual calls
 </ul></li>
 
 </ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
 </section>
 </section>
 <section>
-<section id="slide-org24059a8">
-<h2 id="org24059a8">Thank You</h2>
+<section id="slide-orgbf33fb6">
+<h2 id="orgbf33fb6">What does typeclass do?</h2>
+<p>
+Adds a record to the function that defines the operations for the type.
+</p>
+
+<p>
+Can we do that?
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org6578238">
+<h2 id="org6578238">Type based lookup</h2>
+<p>
+Templates!
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org5ae9bfb">
+<h2 id="org5ae9bfb">Additional Requirement</h2>
+<p>
+Avoid ADL
+</p>
+<p class="fragment (appear)">
+Object Lookup rather than Overload Lookup
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org5dc926b">
+<h2 id="org5dc926b">Template Variables</h2>
+<p>
+Template variables have become more powerful
+</p>
+
+<p class="fragment (appear)">
+We can have entirely distinct specializations
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org36c4fa2">
+<h3 id="org36c4fa2">A Step Towards Implementation</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">partial_equality</span> = <span class="org-keyword">requires</span>(
+    <span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>) {
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.eq(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.ne(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org505db53">
+<h3 id="org505db53"><code>partial_eq&lt;T&gt;</code></h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-name">partial_eq</span> = <span class="org-constant">hidden</span>::partial_eq_default;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> {
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">eq</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(rhs, lhs);
+  }
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">ne</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(lhs, rhs);
+  }
+} <span class="org-variable-name">partial_eq_default</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org43e1b97">
+<h3 id="org43e1b97">Will do better</h3>
+<p>
+In a bit
+</p>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgc416cb8">
+<h2 id="orgc416cb8">Monoid</h2>
+<p class="fragment (appear)">
+A little more than you think.
+</p>
+
+<ul>
+<li class="fragment appear">A type</li>
+<li class="fragment appear">With an associative binary operation</li>
+<li class="fragment appear">Which is closed</li>
+<li class="fragment appear">And has an identity element</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org4ce6be5">
+<h3 id="org4ce6be5">Maybe not a lot more</h3>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd16c2e">
+<h3 id="orgdd16c2e">Math</h3>
+<ul>
+<li>\(\otimes: M \times M \rightarrow M\)</li>
+<li>$ x &otimes; (y &otimes; z) = (x &otimes; y) &otimes; z$</li>
+<li>\(1_M \in M\)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org020e292">
+<h2 id="org020e292">Concept Maps using C++23 Library Tech</h2>
+<p>
+Steve Downey
+</p>
+
+<p>
+© 2023 Bloomberg Finance L.P. All rights reserved.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org914c1cb">
+<h2 id="org914c1cb">Abstract</h2>
+<p>
+C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
+</p>
+
+<p class="fragment (appear)">
+This allowed open extension of a concept.
+</p>
+
+<p class="fragment (appear)">
+A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
+</p>
+
+<ul>
+<li class="fragment appear">This is similar to how Haskell's <code>typeclass</code> works.</li>
+
+</ul>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org018bcd7">
+<h3 id="org018bcd7">Lost with <code>Concepts-Lite</code></h3>
+<aside class="notes">
+<p>
+The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
+</p>
+
+<p>
+This loss of a level of indirection means that the APIs for a concept must be implemented by those names for a type, even when those names are not particularly good choices in the natural domain of a type rather than in the domain as a concept.
+</p>
+
+<p>
+The proliferation of <code>transform</code> functions for functorial <code>map</code> is such a problem.
+</p>
+
+<p>
+It is also a problem when adapting types that are closed for extension or do not permit member functions.
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org3762799">
+<h2 id="org3762799">Why?</h2>
+<ul>
+<li class="fragment appear"><p>
+Don't know if you should
+</p></li>
+<li class="fragment appear">Need to know if you could first</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org692eb03">
+<h3 id="org692eb03">Alternatives</h3>
+<ul>
+<li class="fragment appear"><p>
+Virtual Interface
+</p></li>
+<li class="fragment appear"><p>
+Adapters
+</p></li>
+<li class="fragment appear">Collection of CPOs</li>
+
+</ul>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org79dbfd9">
+<h3 id="org79dbfd9">Hard to Support</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orge0b6525">
+<h2 id="orge0b6525">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-orge0b6525">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgcbef694">
+<h3 id="orgcbef694">Student Record</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">string</span> <span class="org-variable-name">id</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">name</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">address</span>;
+  <span class="org-type">bool</span>   <span class="org-function-name">id_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">name_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">address_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+};
+</pre>
+</div>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgf95fada">
+<h3 id="orgf95fada">Equality Comparable</h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
+    <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-variable-name">==</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">a</span>,
+                    <span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">b</span>){
+        <span class="org-keyword">return</span> a.id_equal(b);
+}
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org11f0629">
+<h3 id="org11f0629">Allow associated types</h3>
+<p>
+Very useful for pointers
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">BinaryFunction</span><span class="org-variable-name">&lt;int (*)(int, int), int, int&gt;</span>
+{
+    <span class="org-keyword">typedef</span> <span class="org-type">int</span> <span class="org-type">result_type</span>;
+};
+</pre>
+</div>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org57f24df">
+<h3 id="org57f24df">Why Didn't We Get Them</h3>
+<p>
+Lets not go there right now.
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgb81e696">
+<h2 id="orgb81e696">State of the Art</h2>
+<div class="outline-text-2" id="text-orgb81e696">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb3bad09">
+<h3 id="orgb3bad09">Rust Traits</h3>
+<div class="org-src-container">
+
+<pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
+    <span class="org-keyword">fn</span> <span class="org-function-name">eq</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span>;
+
+    <span class="org-keyword">fn</span> <span class="org-function-name">ne</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span> {
+        !<span class="org-keyword">self</span>.eq(rhs)
+    }
+}
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org0abafd6">
+<h3 id="org0abafd6">C++ CPOs</h3>
+<div class="outline-text-3" id="text-org0abafd6">
+</div>
+</section>
+<section id="slide-org87fd7a0">
+<h4 id="org87fd7a0">Some Concepts and Types</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { eq(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">eq_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(x, y);
+  }
+};
+
+<span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-function-name">ne</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>, <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(x, y);
+}
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_ne</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { ne(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">ne_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_ne</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> ne(x, y);
+  }
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N::hidden</span>
+</pre>
+</div>
+
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+<section id="slide-org653e978">
+<h4 id="org653e978">C++ partial_equality</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">namespace</span> <span class="org-constant">function_objects</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">eq_fn</span> <span class="org-variable-name">eq</span>{};
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">ne_fn</span> <span class="org-variable-name">ne</span>{};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace function_objects</span>
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> partial_equality
+  <span class="org-keyword">requires</span>(<span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>)
+{
+  eq(t, t);
+  ne(t, t);
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N</span>
+</pre>
+</div>
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgf3c72e8">
+<h2 id="orgf3c72e8">Requirements for Solution</h2>
+<ul>
+<li class="fragment appear"><p>
+Tied to the typesystem
+</p></li>
+<li class="fragment appear"><p>
+Automatable
+</p></li>
+<li class="fragment appear">"zero" overhead
+<ul>
+<li class="fragment appear"><p>
+no virtual calls
+</p></li>
+<li class="fragment appear">no type erasure</li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org25009bb">
+<h2 id="org25009bb">What does typeclass do?</h2>
+<p>
+Adds a record to the function that defines the operations for the type.
+</p>
+
+<p>
+Can we do that?
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org5a93df2">
+<h2 id="org5a93df2">Type based lookup</h2>
+<p>
+Templates!
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgd267c88">
+<h2 id="orgd267c88">Additional Requirement</h2>
+<p>
+Avoid ADL
+</p>
+<p class="fragment (appear)">
+Object Lookup rather than Overload Lookup
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org273bfe9">
+<h2 id="org273bfe9">Template Variables</h2>
+<p>
+Template variables have become more powerful
+</p>
+
+<p class="fragment (appear)">
+We can have entirely distinct specializations
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orge064316">
+<h3 id="orge064316">A Step Towards Implementation</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">partial_equality</span> = <span class="org-keyword">requires</span>(
+    <span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>) {
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.eq(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.ne(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org7a8b562">
+<h3 id="org7a8b562"><code>partial_eq&lt;T&gt;</code></h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-name">partial_eq</span> = <span class="org-constant">hidden</span>::partial_eq_default;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> {
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">eq</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(rhs, lhs);
+  }
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">ne</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(lhs, rhs);
+  }
+} <span class="org-variable-name">partial_eq_default</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org4a1da71">
+<h3 id="org4a1da71">Will do better</h3>
+<p>
+In a bit
+</p>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgeeed261">
+<h2 id="orgeeed261">Monoid</h2>
+<p class="fragment (appear)">
+A little more than you think.
+</p>
+
+<ul>
+<li class="fragment appear">A type</li>
+<li class="fragment appear">With an associative binary operation</li>
+<li class="fragment appear">Which is closed</li>
+<li class="fragment appear">And has an identity element</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org6754c67">
+<h3 id="org6754c67">Maybe not a lot more</h3>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org39bc2e2">
+<h3 id="org39bc2e2">Math</h3>
+<ul>
+<li>\(\otimes: M \times M \rightarrow M\)</li>
+<li>$ x &otimes; (y &otimes; z) = (x &otimes; y) &otimes; z$</li>
+<li>\(1_M \in M\)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org7a42fb6">
+<h2 id="org7a42fb6">Concept Maps using C++23 Library Tech</h2>
+<p>
+Steve Downey
+</p>
+
+<p>
+© 2023 Bloomberg Finance L.P. All rights reserved.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org1b89e22">
+<h2 id="org1b89e22">Abstract</h2>
+<p>
+C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
+</p>
+
+<p class="fragment (appear)">
+This allowed open extension of a concept.
+</p>
+
+<p class="fragment (appear)">
+A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
+</p>
+
+<ul>
+<li class="fragment appear">This is similar to how Haskell's <code>typeclass</code> works.</li>
+
+</ul>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org9f0b160">
+<h3 id="org9f0b160">Lost with <code>Concepts-Lite</code></h3>
+<aside class="notes">
+<p>
+The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
+</p>
+
+<p>
+This loss of a level of indirection means that the APIs for a concept must be implemented by those names for a type, even when those names are not particularly good choices in the natural domain of a type rather than in the domain as a concept.
+</p>
+
+<p>
+The proliferation of <code>transform</code> functions for functorial <code>map</code> is such a problem.
+</p>
+
+<p>
+It is also a problem when adapting types that are closed for extension or do not permit member functions.
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orga92162c">
+<h2 id="orga92162c">Why?</h2>
+<ul>
+<li class="fragment appear"><p>
+Don't know if you should
+</p></li>
+<li class="fragment appear">Need to know if you could first</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org79b3e22">
+<h3 id="org79b3e22">Alternatives</h3>
+<ul>
+<li class="fragment appear"><p>
+Virtual Interface
+</p></li>
+<li class="fragment appear"><p>
+Adapters
+</p></li>
+<li class="fragment appear">Collection of CPOs</li>
+
+</ul>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org338857a">
+<h3 id="org338857a">Hard to Support</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org57c3e05">
+<h2 id="org57c3e05">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org57c3e05">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org8b60aa7">
+<h3 id="org8b60aa7">Student Record</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
+<span class="org-keyword">public</span>:
+  <span class="org-type">string</span> <span class="org-variable-name">id</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">name</span>;
+  <span class="org-type">string</span> <span class="org-variable-name">address</span>;
+  <span class="org-type">bool</span>   <span class="org-function-name">id_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">name_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+  <span class="org-type">bool</span>   <span class="org-function-name">address_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp;);
+};
+</pre>
+</div>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org9b1b866">
+<h3 id="org9b1b866">Equality Comparable</h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
+    <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-variable-name">==</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">a</span>,
+                    <span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-type">record</span>&amp; <span class="org-variable-name">b</span>){
+        <span class="org-keyword">return</span> a.id_equal(b);
+}
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org0c5e14b">
+<h3 id="org0c5e14b">Allow associated types</h3>
+<p>
+Very useful for pointers
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">BinaryFunction</span><span class="org-variable-name">&lt;int (*)(int, int), int, int&gt;</span>
+{
+    <span class="org-keyword">typedef</span> <span class="org-type">int</span> <span class="org-type">result_type</span>;
+};
+</pre>
+</div>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org0cd78a7">
+<h3 id="org0cd78a7">Why Didn't We Get Them</h3>
+<p>
+Lets not go there right now.
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org5477426">
+<h2 id="org5477426">State of the Art</h2>
+<div class="outline-text-2" id="text-org5477426">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4ec0fd3">
+<h3 id="org4ec0fd3">Rust Traits</h3>
+<div class="org-src-container">
+
+<pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
+    <span class="org-keyword">fn</span> <span class="org-function-name">eq</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span>;
+
+    <span class="org-keyword">fn</span> <span class="org-function-name">ne</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span> {
+        !<span class="org-keyword">self</span>.eq(rhs)
+    }
+}
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgba69eed">
+<h3 id="orgba69eed">C++ CPOs</h3>
+<div class="outline-text-3" id="text-orgba69eed">
+</div>
+</section>
+<section id="slide-org535e50f">
+<h4 id="org535e50f">Some Concepts and Types</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { eq(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">eq_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(x, y);
+  }
+};
+
+<span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-function-name">ne</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>, <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) {
+  <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(x, y);
+}
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">has_ne</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
+  { ne(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+
+<span class="org-keyword">struct</span> <span class="org-type">ne_fn</span> {
+  <span class="org-keyword">template</span> &lt;<span class="org-type">has_ne</span> <span class="org-type">T</span>&gt;
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> ne(x, y);
+  }
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N::hidden</span>
+</pre>
+</div>
+
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+<section id="slide-orgee3baa3">
+<h4 id="orgee3baa3">C++ partial_equality</h4>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">namespace</span> <span class="org-constant">function_objects</span> {
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">eq_fn</span> <span class="org-variable-name">eq</span>{};
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">ne_fn</span> <span class="org-variable-name">ne</span>{};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace function_objects</span>
+
+<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> partial_equality
+  <span class="org-keyword">requires</span>(<span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>)
+{
+  eq(t, t);
+  ne(t, t);
+};
+} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N</span>
+</pre>
+</div>
+<p>
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
+<a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgbf4a795">
+<h2 id="orgbf4a795">Requirements for Solution</h2>
+<ul>
+<li class="fragment appear"><p>
+Tied to the typesystem
+</p></li>
+<li class="fragment appear"><p>
+Automatable
+</p></li>
+<li class="fragment appear">"zero" overhead
+<ul>
+<li class="fragment appear"><p>
+no virtual calls
+</p></li>
+<li class="fragment appear">no type erasure</li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org21fb56c">
+<h2 id="org21fb56c">What does typeclass do?</h2>
+<p>
+Adds a record to the function that defines the operations for the type.
+</p>
+
+<p>
+Can we do that?
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org16bcc27">
+<h2 id="org16bcc27">Type based lookup</h2>
+<p>
+Templates!
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgdc5919b">
+<h2 id="orgdc5919b">Additional Requirement</h2>
+<p>
+Avoid ADL
+</p>
+<p class="fragment (appear)">
+Object Lookup rather than Overload Lookup
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgb845ea5">
+<h2 id="orgb845ea5">Template Variables</h2>
+<p>
+Template variables have become more powerful
+</p>
+
+<p class="fragment (appear)">
+We can have entirely distinct specializations
+</p>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgb1f52e5">
+<h3 id="orgb1f52e5">A Step Towards Implementation</h3>
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">concept</span> <span class="org-type">partial_equality</span> = <span class="org-keyword">requires</span>(
+    <span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>) {
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.eq(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+  {
+    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.ne(t, t)
+  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
+};
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org849f6d5">
+<h3 id="org849f6d5"><code>partial_eq&lt;T&gt;</code></h3>
+<div class="org-src-container">
+
+<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-name">partial_eq</span> = <span class="org-constant">hidden</span>::partial_eq_default;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> {
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">eq</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> eq(rhs, lhs);
+  }
+  <span class="org-keyword">constexpr</span> <span class="org-keyword">auto</span>
+  <span class="org-function-name">ne</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
+    <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(lhs, rhs);
+  }
+} <span class="org-variable-name">partial_eq_default</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org7a2d75a">
+<h3 id="org7a2d75a">Will do better</h3>
+<p>
+In a bit
+</p>
+
+
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgede78f8">
+<h2 id="orgede78f8">Monoid</h2>
+<p class="fragment (appear)">
+A little more than you think.
+</p>
+
+<ul>
+<li class="fragment appear">A type</li>
+<li class="fragment appear">With an associative binary operation</li>
+<li class="fragment appear">Which is closed</li>
+<li class="fragment appear">And has an identity element</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgd78a0f4">
+<h3 id="orgd78a0f4">Maybe not a lot more</h3>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3a0a1f9">
+<h3 id="org3a0a1f9">Math</h3>
+<ul>
+<li>\(\oplus: M \times M \rightarrow M\)</li>
+<li>\(x \oplus (y \oplus z) = (x \oplus y) \oplus z\)</li>
+<li>\(1_M \in M\) such that \(\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)\)</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5027a12">
+<h2 id="org5027a12">Thank You</h2>
 <aside class="notes">
 <p>
 
@@ -161,6 +1663,46 @@ no virtual calls
 </section>
 </div>
 </div>
+<style type="text/css">
+    /* 1. Style header/footer <div> so they are positioned as desired. */
+    #header-left {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+    #header-right {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+    }
+    #footer-left {
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        font-size: 0.5em;
+    }
+</style>
+
+<!-- 2. Create hidden header/footer <div> -->
+<div id="hidden" style="display:none;">
+<div id="header">
+<div id="footer-left">© 2023 Bloomberg Finance L.P. All rights reserved</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+// 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+var header = $('#header').html();
+if ( window.location.search.match( /print-pdf/gi ) ) {
+Reveal.addEventListener( 'ready', function( event ) {
+                                  $('.slide-background').append(header);
+                                  });
+}
+else {
+$('div.reveal').append(header);
+}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
