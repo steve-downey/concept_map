@@ -33,92 +33,10 @@
 #+INFOJS_OPT:
 #+OPTIONS: reveal_width:1600 reveal_height:900
 #+REVEAL_TRANS: fade
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./operandi-tinted.css" />
 
 #+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_EXTRA_CSS: ./vivendi-tinted.css
-#+REVEAL_THEME: ./my_theme.css
-#+REVEAL_EXTRA_CSS: ./footer.css
-#+REVEAL_TITLE_SLIDE_BACKGROUND: ./#+OPTIONS: ':nil *:t -:t ::t <:t H:nil \n:nil ^:nil arch:headline author:nil
-#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:nil e:t
-#+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t tags:t
-#+OPTIONS: tasks:t tex:t timestamp:nil title:t toc:nil todo:t |:t
-#+TITLE:
-#+AUTHOR:
-#+EMAIL:
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS:
-#+LATEX_HEADER:
-#+LATEX_HEADER_EXTRA:
-#+DESCRIPTION:
-#+KEYWORDS:
-#+SUBTITLE:
-#+LATEX_COMPILER: pdflatex
-#+DATE:
-#+STARTUP: showall
-#+OPTIONS: html-link-use-abs-url:nil html-postamble:nil html-preamble:tbla
-#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:t
-#+HTML_DOCTYPE: xhtml-strict
-#+HTML_CONTAINER: div
-#+DESCRIPTION:
-#+KEYWORDS:
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
-#+HTML_HEAD:
-#+HTML_HEAD_EXTRA:
-#+SUBTITLE:
-#+INFOJS_OPT:
-#+OPTIONS: reveal_width:1600 reveal_height:900
-#+REVEAL_TRANS: fade
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
-
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_EXTRA_CSS: ./vivendi-tinted.css
-#+REVEAL_THEME: ./my_theme.css
-#+REVEAL_EXTRA_CSS: ./footer.css
-#+REVEAL_TITLE_SLIDE_BACKGROUND: ./#+OPTIONS: ':nil *:t -:t ::t <:t H:nil \n:nil ^:nil arch:headline author:nil
-#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:nil e:t
-#+OPTIONS: email:nil f:t inline:t num:nil p:nil pri:nil prop:nil stat:t tags:t
-#+OPTIONS: tasks:t tex:t timestamp:nil title:t toc:nil todo:t |:t
-#+TITLE:
-#+AUTHOR:
-#+EMAIL:
-#+LANGUAGE: en
-#+SELECT_TAGS: export
-#+EXCLUDE_TAGS: noexport
-#+LATEX_CLASS: article
-#+LATEX_CLASS_OPTIONS:
-#+LATEX_HEADER:
-#+LATEX_HEADER_EXTRA:
-#+DESCRIPTION:
-#+KEYWORDS:
-#+SUBTITLE:
-#+LATEX_COMPILER: pdflatex
-#+DATE:
-#+STARTUP: showall
-#+OPTIONS: html-link-use-abs-url:nil html-postamble:nil html-preamble:tbla
-#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:t
-#+HTML_DOCTYPE: xhtml-strict
-#+HTML_CONTAINER: div
-#+DESCRIPTION:
-#+KEYWORDS:
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
-#+HTML_HEAD:
-#+HTML_HEAD_EXTRA:
-#+SUBTITLE:
-#+INFOJS_OPT:
-#+OPTIONS: reveal_width:1600 reveal_height:900
-#+REVEAL_TRANS: fade
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./vivendi-tinted.css" />
-
-#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-#+REVEAL_EXTRA_CSS: ./vivendi-tinted.css
+#+REVEAL_EXTRA_CSS: ./operandi-tinted.css
 #+REVEAL_THEME: ./my_theme.css
 #+REVEAL_EXTRA_CSS: ./footer.css
 #+REVEAL_TITLE_SLIDE_BACKGROUND: ./concept_maps_title.png
@@ -386,24 +304,28 @@ concept partial_equality = requires(
 
 #+end_notes
 ** ~partial_eq<T>~
+*** An inline variable object
 #+begin_src c++
 template<class T>
 constexpr inline auto partial_eq = hidden::partial_eq_default;
 #+end_src
 
-#+ATTR_REVEAL: :frag (appear)
+#+begin_notes
+
+#+end_notes
+*** A default implementation
 
 #+begin_src C++
-constexpr inline struct {
-  constexpr auto
+constexpr inline struct partial_eq_default_t {
+  constexpr bool
   eq(has_eq auto const& rhs,
      has_eq auto const& lhs) const {
-    return eq(rhs, lhs);
+    return (rhs == lhs);
   }
-  constexpr auto
+  constexpr bool
   ne(has_eq auto const& rhs,
      has_eq auto const& lhs) const {
-    return not eq(lhs, rhs);
+    return (lhs != rhs);
   }
 } partial_eq_default;
 #+end_src
@@ -411,317 +333,14 @@ constexpr inline struct {
 #+begin_notes
 
 #+end_notes
-** Will do better
-In a bit
-
-
-#+begin_notes
-
-#+end_notes
-
-* Monoid
-#+ATTR_REVEAL: :frag (appear)
-A little more than you think.
-
-#+ATTR_REVEAL: :frag (appear)
-- A type
-- With an associative binary operation
-- Which is closed
-- And has an identity element
-** Maybe not a lot more
-
-
-** Math
-- $\otimes: M \times M \rightarrow M$
-- $ x \otimes (y \otimes z) = (x \otimes y) \otimes z$
-- $1_M \in M$
-
-
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+REVEAL_VERSION: 4
-
-#+REVEAL_HLEVEL: 2
-#+REVEAL_EXPORT_NOTES_TO_PDF: separate-page
-
-* Concept Maps using C++23 Library Tech
-
-Steve Downey
-
-© 2023 Bloomberg Finance L.P. All rights reserved.
-
-
-
-* Abstract
-
-C++0x Concepts had a feature ~Concept Maps~ that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
-
-#+ATTR_REVEAL: :frag (appear)
-This allowed open extension of a concept.
-
-#+ATTR_REVEAL: :frag (appear)
-A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
-
-    #+ATTR_REVEAL: :frag (appear)
-    - This is similar to how Haskell's ~typeclass~ works.
-
-
-#+begin_notes
-
-#+end_notes
-** Lost with ~Concepts-Lite~
-
-#+begin_notes
-The feature was very general, and lost as part of the ~Concepts-Lite~ proposal that was eventually adopted.
-
-This loss of a level of indirection means that the APIs for a concept must be implemented by those names for a type, even when those names are not particularly good choices in the natural domain of a type rather than in the domain as a concept.
-
-The proliferation of ~transform~ functions for functorial ~map~ is such a problem.
-
-It is also a problem when adapting types that are closed for extension or do not permit member functions.
-
-#+end_notes
-
-* Why?
-    #+ATTR_REVEAL: :frag (appear)
-- Don't know if you should
-    #+ATTR_REVEAL: :frag (appear)
-- Need to know if you could first
-
-#+begin_notes
-
-#+end_notes
-
-** Alternatives
-    #+ATTR_REVEAL: :frag (appear)
--  Virtual Interface
-    #+ATTR_REVEAL: :frag (appear)
--  Adapters
-    #+ATTR_REVEAL: :frag (appear)
--  Collection of CPOs
-#+begin_notes
-
-#+end_notes
-** Hard to Support
-
-#+begin_notes
-
-#+end_notes
-* Example from C++0x Concepts
-** Student Record
-#+begin_src C++
-class student record {
-public:
-  string id;
-  string name;
-  string address;
-  bool   id_equal(const student record&);
-  bool   name_equal(const student record&);
-  bool   address_equal(const student record&);
-};
-#+end_src
-#+begin_notes
-
-#+end_notes
-** Equality Comparable
-#+begin_src c++
-concept_map EqualityComparable<student record>{
-    bool operator==(const student record& a,
-                    const student record& b){
-        return a.id_equal(b);
-}
-};
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** Allow associated types
-Very useful for pointers
+*** New ~has_eq~
 
 #+begin_src c++
-concept_map BinaryFunction<int (*)(int, int), int, int>
-{
-    typedef int result_type;
-};
-#+end_src
-
-
-#+begin_notes
-
-#+end_notes
-** Why Didn't We Get Them
-
-Lets not go there right now.
-
-#+begin_notes
-
-#+end_notes
-* State of the Art
-** Rust Traits
-#+begin_src rust
-trait PartialEq {
-    fn eq(&self, rhs: &Self) -> bool;
-
-    fn ne(&self, rhs: &Self) -> bool {
-        !self.eq(rhs)
-    }
-}
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** C++ CPOs
-*** Some Concepts and Types
-#+begin_src C++
-namespace N::hidden {
 template <typename T>
 concept has_eq = requires(T const& v) {
-  { eq(v, v) } -> std::same_as<bool>;
-};
-
-struct eq_fn {
-  template <has_eq T>
-  constexpr bool operator()(T const& x,
-                            T const& y) const {
-    return eq(x, y);
-  }
-};
-
-template <has_eq T>
-constexpr bool ne(T const& x, T const& y) {
-  return not eq(x, y);
-}
-
-template <typename T>
-concept has_ne = requires(T const& v) {
-  { ne(v, v) } -> std::same_as<bool>;
-};
-
-struct ne_fn {
-  template <has_ne T>
-  constexpr bool operator()(T const& x,
-                            T const& y) const {
-    return ne(x, y);
-  }
-};
-} // namespace N::hidden
-#+end_src
-
-See _Why tag_invoke is not the solution I want_ by Barry Revzin
-https://brevzin.github.io/c++/2020/12/01/tag-invoke/
-#+begin_notes
-
-#+end_notes
-*** C++ partial_equality
-#+begin_src C++
-namespace N {
-inline namespace function_objects {
-inline constexpr hidden::eq_fn eq{};
-inline constexpr hidden::ne_fn ne{};
-} // namespace function_objects
-
-template <typename T>
-concept partial_equality
-  requires(std::remove_reference_t<T> const& t)
-{
-  eq(t, t);
-  ne(t, t);
-};
-} // namespace N
-#+end_src
-See _Why tag_invoke is not the solution I want_ by Barry Revzin
-https://brevzin.github.io/c++/2020/12/01/tag-invoke/
-
-#+begin_notes
-
-#+end_notes
-* Requirements for Solution
-    #+ATTR_REVEAL: :frag (appear)
-- Tied to the typesystem
-    #+ATTR_REVEAL: :frag (appear)
-- Automatable
-    #+ATTR_REVEAL: :frag (appear)
-- "zero" overhead
-    #+ATTR_REVEAL: :frag (appear)
-  - no virtual calls
-    #+ATTR_REVEAL: :frag (appear)
-  - no type erasure
-
-#+begin_notes
-
-#+end_notes
-* What does typeclass do?
-Adds a record to the function that defines the operations for the type.
-
-Can we do that?
-
-#+begin_notes
-
-#+end_notes
-* Type based lookup
-Templates!
-
-#+begin_notes
-
-#+end_notes
-* Additional Requirement
-Avoid ADL
-    #+ATTR_REVEAL: :frag (appear)
-Object Lookup rather than Overload Lookup
-
-#+begin_notes
-
-#+end_notes
-* Template Variables
-Template variables have become more powerful
-
-    #+ATTR_REVEAL: :frag (appear)
-We can have entirely distinct specializations
-
-#+begin_notes
-
-#+end_notes
-** A Step Towards Implementation
-#+begin_src C++
-template <class T>
-concept partial_equality = requires(
-    std::remove_reference_t<T> const& t) {
-  {
-    partial_eq<T>.eq(t, t)
-  } -> std::same_as<bool>;
-  {
-    partial_eq<T>.ne(t, t)
-  } -> std::same_as<bool>;
+  { operator==(v, v) } -> std::same_as<bool>;
 };
 #+end_src
-
-#+begin_notes
-
-#+end_notes
-** ~partial_eq<T>~
-#+begin_src c++
-template<class T>
-constexpr inline auto partial_eq = hidden::partial_eq_default;
-#+end_src
-
-#+ATTR_REVEAL: :frag (appear)
-
-#+begin_src C++
-constexpr inline struct {
-  constexpr auto
-  eq(has_eq auto const& rhs,
-     has_eq auto const& lhs) const {
-    return eq(rhs, lhs);
-  }
-  constexpr auto
-  ne(has_eq auto const& rhs,
-     has_eq auto const& lhs) const {
-    return not eq(lhs, rhs);
-  }
-} partial_eq_default;
-#+end_src
-
 #+begin_notes
 
 #+end_notes
@@ -745,325 +364,17 @@ A little more than you think.
 ** Maybe not a lot more
 
 
-** Math
-- $\otimes: M \times M \rightarrow M$
-- $ x \otimes (y \otimes z) = (x \otimes y) \otimes z$
-- $1_M \in M$
-
-
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+REVEAL_VERSION: 4
-
-#+REVEAL_HLEVEL: 2
-#+REVEAL_EXPORT_NOTES_TO_PDF: separate-page
-
-* Concept Maps using C++23 Library Tech
-
-Steve Downey
-
-© 2023 Bloomberg Finance L.P. All rights reserved.
-
-
-
-* Abstract
-
-C++0x Concepts had a feature ~Concept Maps~ that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
-
-#+ATTR_REVEAL: :frag (appear)
-This allowed open extension of a concept.
-
-#+ATTR_REVEAL: :frag (appear)
-A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
-
-    #+ATTR_REVEAL: :frag (appear)
-    - This is similar to how Haskell's ~typeclass~ works.
-
-
 #+begin_notes
 
 #+end_notes
-** Lost with ~Concepts-Lite~
-
-#+begin_notes
-The feature was very general, and lost as part of the ~Concepts-Lite~ proposal that was eventually adopted.
-
-This loss of a level of indirection means that the APIs for a concept must be implemented by those names for a type, even when those names are not particularly good choices in the natural domain of a type rather than in the domain as a concept.
-
-The proliferation of ~transform~ functions for functorial ~map~ is such a problem.
-
-It is also a problem when adapting types that are closed for extension or do not permit member functions.
-
-#+end_notes
-
-* Why?
-    #+ATTR_REVEAL: :frag (appear)
-- Don't know if you should
-    #+ATTR_REVEAL: :frag (appear)
-- Need to know if you could first
-
-#+begin_notes
-
-#+end_notes
-
-** Alternatives
-    #+ATTR_REVEAL: :frag (appear)
--  Virtual Interface
-    #+ATTR_REVEAL: :frag (appear)
--  Adapters
-    #+ATTR_REVEAL: :frag (appear)
--  Collection of CPOs
-#+begin_notes
-
-#+end_notes
-** Hard to Support
-
-#+begin_notes
-
-#+end_notes
-* Example from C++0x Concepts
-** Student Record
-#+begin_src C++
-class student record {
-public:
-  string id;
-  string name;
-  string address;
-  bool   id_equal(const student record&);
-  bool   name_equal(const student record&);
-  bool   address_equal(const student record&);
-};
-#+end_src
-#+begin_notes
-
-#+end_notes
-** Equality Comparable
-#+begin_src c++
-concept_map EqualityComparable<student record>{
-    bool operator==(const student record& a,
-                    const student record& b){
-        return a.id_equal(b);
-}
-};
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** Allow associated types
-Very useful for pointers
-
-#+begin_src c++
-concept_map BinaryFunction<int (*)(int, int), int, int>
-{
-    typedef int result_type;
-};
-#+end_src
-
-
-#+begin_notes
-
-#+end_notes
-** Why Didn't We Get Them
-
-Lets not go there right now.
-
-#+begin_notes
-
-#+end_notes
-* State of the Art
-** Rust Traits
-#+begin_src rust
-trait PartialEq {
-    fn eq(&self, rhs: &Self) -> bool;
-
-    fn ne(&self, rhs: &Self) -> bool {
-        !self.eq(rhs)
-    }
-}
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** C++ CPOs
-** Some Concepts and Types
-#+begin_src C++
-namespace N::hidden {
-template <typename T>
-concept has_eq = requires(T const& v) {
-  { eq(v, v) } -> std::same_as<bool>;
-};
-
-struct eq_fn {
-  template <has_eq T>
-  constexpr bool operator()(T const& x,
-                            T const& y) const {
-    return eq(x, y);
-  }
-};
-
-template <has_eq T>
-constexpr bool ne(T const& x, T const& y) {
-  return not eq(x, y);
-}
-
-template <typename T>
-concept has_ne = requires(T const& v) {
-  { ne(v, v) } -> std::same_as<bool>;
-};
-
-struct ne_fn {
-  template <has_ne T>
-  constexpr bool operator()(T const& x,
-                            T const& y) const {
-    return ne(x, y);
-  }
-};
-} // namespace N::hidden
-#+end_src
-
-See _Why tag_invoke is not the solution I want_ by Barry Revzin
-https://brevzin.github.io/c++/2020/12/01/tag-invoke/
-#+begin_notes
-
-#+end_notes
-** C++ partial_equality
-#+begin_src C++
-namespace N {
-inline namespace function_objects {
-inline constexpr hidden::eq_fn eq{};
-inline constexpr hidden::ne_fn ne{};
-} // namespace function_objects
-
-template <typename T>
-concept partial_equality
-  requires(std::remove_reference_t<T> const& t)
-{
-  eq(t, t);
-  ne(t, t);
-};
-} // namespace N
-#+end_src
-See _Why tag_invoke is not the solution I want_ by Barry Revzin
-https://brevzin.github.io/c++/2020/12/01/tag-invoke/
-
-#+begin_notes
-
-#+end_notes
-* Requirements for Solution
-    #+ATTR_REVEAL: :frag (appear)
-- Tied to the typesystem
-    #+ATTR_REVEAL: :frag (appear)
-- Automatable
-    #+ATTR_REVEAL: :frag (appear)
-- "zero" overhead
-    #+ATTR_REVEAL: :frag (appear)
-  - no virtual calls
-    #+ATTR_REVEAL: :frag (appear)
-  - no type erasure
-
-#+begin_notes
-
-#+end_notes
-* What does typeclass do?
-Adds a record to the function that defines the operations for the type.
-
-Can we do that?
-
-#+begin_notes
-
-#+end_notes
-* Type based lookup
-Templates!
-
-#+begin_notes
-
-#+end_notes
-* Additional Requirement
-Avoid ADL
-    #+ATTR_REVEAL: :frag (appear)
-Object Lookup rather than Overload Lookup
-
-#+begin_notes
-
-#+end_notes
-* Template Variables
-Template variables have become more powerful
-
-    #+ATTR_REVEAL: :frag (appear)
-We can have entirely distinct specializations
-
-#+begin_notes
-
-#+end_notes
-** A Step Towards Implementation
-#+begin_src C++
-template <class T>
-concept partial_equality = requires(
-    std::remove_reference_t<T> const& t) {
-  {
-    partial_eq<T>.eq(t, t)
-  } -> std::same_as<bool>;
-  {
-    partial_eq<T>.ne(t, t)
-  } -> std::same_as<bool>;
-};
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** ~partial_eq<T>~
-#+begin_src c++
-template<class T>
-constexpr inline auto partial_eq = hidden::partial_eq_default;
-#+end_src
-
-#+ATTR_REVEAL: :frag (appear)
-
-#+begin_src C++
-constexpr inline struct {
-  constexpr auto
-  eq(has_eq auto const& rhs,
-     has_eq auto const& lhs) const {
-    return eq(rhs, lhs);
-  }
-  constexpr auto
-  ne(has_eq auto const& rhs,
-     has_eq auto const& lhs) const {
-    return not eq(lhs, rhs);
-  }
-} partial_eq_default;
-#+end_src
-
-#+begin_notes
-
-#+end_notes
-** Will do better
-In a bit
-
-
-#+begin_notes
-
-#+end_notes
-
-* Monoid
-#+ATTR_REVEAL: :frag (appear)
-A little more than you think.
-
-#+ATTR_REVEAL: :frag (appear)
-- A type
-- With an associative binary operation
-- Which is closed
-- And has an identity element
-** Maybe not a lot more
-
-
 ** Math
 - $\oplus: M \times M \rightarrow M$
 - $x \oplus (y \oplus z) = (x \oplus y) \oplus z$
 - $1_M \in M$ such that $\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)$
 
+#+begin_notes
+
+#+end_notes
 ** Function form
 - $f : M \times M \rightarrow M$
 - $f(x, f(y, z)) = f(f(x, y), z)$
@@ -1071,6 +382,9 @@ A little more than you think.
 
 The similarity to left and right fold is *NOT* an accident
 
+#+begin_notes
+
+#+end_notes
 ** Core Functions
 - $empty : m$ :: $empty = concat \, []$
 - $concat : [m] \rightarrow m$ :: $fold \, append \, empty$
@@ -1081,6 +395,9 @@ The similarity to left and right fold is *NOT* an accident
 
   This is common
 
+#+begin_notes
+
+#+end_notes
 *** From Haskell Prelude
 #+begin_src haskell
 class Semigroup a => Monoid a where
@@ -1094,8 +411,171 @@ class Semigroup a => Monoid a where
   mconcat = foldr mappend mempty
 #+end_src
 
+#+begin_notes
+
+#+end_notes
 ** Minimum Set
 $empty \, | \, concat$
+
+#+begin_notes
+
+#+end_notes
+** In C++
+#+begin_src C++
+template <typename T, typename M>
+concept MonoidRequirements =
+    requires(T i) {
+      { i.identity() } -> std::same_as<M>;
+    }
+    ||
+    requires(T i, std::ranges::empty_view<M> r1) {
+      { i.concat(r1) } -> std::same_as<M>;
+    };
+#+end_src
+#+begin_notes
+I am ignoring all sorts of const volatile reference issues here.
+
+* Implementing the other side
+#+end_notes
+** The Map for a Monoid
+#+begin_src c++
+template <class Impl>
+  requires MonoidRequirements<
+      Impl,
+      typename Impl::value_type>
+struct Monoid : protected Impl {
+  auto identity(this auto&& self);
+
+  template <typename Range>
+  auto concat(this auto&& self, Range r);
+
+  auto op(this auto&& self, auto a1, auto a2);
+};
+#+end_src
+#+begin_notes
+empty is a terrible name, concat only a little better.
+empty becomes identity
+
+#+end_notes
+*** ~identity~
+#+begin_src c++
+    auto identity(this auto && self) {
+        std::puts("Monoid::identity()");
+        return self.concat(std::ranges::empty_view<typename Impl::value_type>{});
+    }
+
+#+end_src
+*** ~concat~
+#+begin_src c++
+   template<typename Range>
+   auto concat(this auto&& self, Range r) {
+        std::puts("Monoid::concat()");
+        return std::ranges::fold_right(r,
+                    self.identity(),
+                    [&](auto m1, auto m2){return self.op(m1, m2);});
+    }
+
+#+end_src
+*** ~op~
+#+begin_src c++
+   auto op(this auto&& self, auto a1, auto a2) {
+        std::puts("Monoid::op");
+        return self.op(a1, a2);
+    }
+#+end_src
+
+** Deducing ~this~ *and* CRTP
+We'll see in a moment, but it's because we want to constraint the required implementation.
+
+We want to use the derived version which has all of the operations.
+
+** ~Plus~
+#+begin_src C++
+template <typename M>
+class Plus {
+public:
+  using value_type = M;
+  auto identity(this auto&& self) -> M {
+    std::puts("Plus::identity()");
+    return M{0};
+  }
+
+  auto op(this auto&& self, auto s1, auto s2) -> M {
+    std::puts("Plus::op()");
+    return s1 + s2;
+  }
+};
+#+end_src
+
+** ~PlusMonoidMap~
+#+begin_src c++
+template<typename M>
+struct PlusMonoidMap : public Monoid<Plus<M>> {
+    using Plus<M>::identity;
+    using Plus<M>::op;
+};
+#+end_src
+#+begin_notes
+Need to pull the operations from the Monoid instance into the Map, so we get the right ones being used by concat.
+
+This might be simpler if we didn't allow choice of the basis operations, but that's also overly restrictive.
+#+end_notes
+
+** The map instances
+#+begin_src c++
+template<class T> auto monoid_concept_map = std::false_type{};
+
+template<>
+constexpr inline auto monoid_concept_map<int> = PlusMonoidMap<int>{};
+
+template<>
+constexpr inline auto monoid_concept_map<long> = PlusMonoidMap<long>{};
+
+template<>
+constexpr inline auto monoid_concept_map<char> = PlusMonoidMap<char>{};
+#+end_src
+
+** Can we ~concat~ instead?
+#+begin_src c++
+class StringMonoid {
+public:
+  using value_type = std::string;
+
+  auto op(this auto&&, auto s1, auto s2) {
+    std::puts("StringMonoid::op()");
+    return s1 + s2;
+  }
+
+  template <typename Range>
+  auto concat(this auto&& self, Range r) {
+    std::puts("StringMonoid::concat()");
+    return std::ranges::fold_right(
+        r, std::string{}, [&](auto m1, auto m2) {
+          return self.op(m1, m2);
+        });
+  }
+};
+#+end_src
+#+begin_notes
+No, I'm not properly constraining Range here.
+No, I'm not actually recommending this as an implementation.
+#+end_notes
+** The Map and instance
+#+begin_src c++
+struct StringMonoidMap : public Monoid<StringMonoid> {
+    using StringMonoid::op;
+    using StringMonoid::concat;
+};
+
+template<>
+constexpr inline auto monoid_concept_map<std::string> = StringMonoidMap{};
+
+#+end_src
+
+* Some simple use
+
+* Monoid in Trees
+
 * Thank You
 
 #+begin_notes
