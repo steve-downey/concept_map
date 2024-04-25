@@ -126,7 +126,7 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+REVEAL_VERSION: 4
 
-#+REVEAL_HLEVEL: 2
+#+REVEAL_HLEVEL: 3
 #+REVEAL_EXPORT_NOTES_TO_PDF: separate-page
 
 * Concept Maps using C++23 Library Tech
@@ -886,7 +886,7 @@ trait PartialEq {
 
 #+end_notes
 ** C++ CPOs
-*** Some Concepts and Types
+** Some Concepts and Types
 #+begin_src C++
 namespace N::hidden {
 template <typename T>
@@ -927,7 +927,7 @@ https://brevzin.github.io/c++/2020/12/01/tag-invoke/
 #+begin_notes
 
 #+end_notes
-*** C++ partial_equality
+** C++ partial_equality
 #+begin_src C++
 namespace N {
 inline namespace function_objects {
@@ -1064,7 +1064,38 @@ A little more than you think.
 - $x \oplus (y \oplus z) = (x \oplus y) \oplus z$
 - $1_M \in M$ such that $\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)$
 
+** Function form
+- $f : M \times M \rightarrow M$
+- $f(x, f(y, z)) = f(f(x, y), z)$
+- $1_M \in M$ such that $\forall m \in M : f(1_M, m) = m = f(m, 1_M)$
 
+The similarity to left and right fold is *NOT* an accident
+
+** Core Functions
+- $empty : m$ :: $empty = concat \, []$
+- $concat : [m] \rightarrow m$ :: $fold \, append \, empty$
+- $append : m \rightarrow m \rightarrow m$ :: $op$
+
+
+  Note that it's self-referential
+
+  This is common
+
+*** From Haskell Prelude
+#+begin_src haskell
+class Semigroup a => Monoid a where
+  mempty :: a
+  mempty = mconcat []
+
+  mappend :: a -> a -> a
+  mappend = (<>)
+
+  mconcat :: [a] -> a
+  mconcat = foldr mappend mempty
+#+end_src
+
+** Minimum Set
+$empty \, | \, concat$
 * Thank You
 
 #+begin_notes
@@ -1074,97 +1105,22 @@ A little more than you think.
 * Tangle before export                                             :noexport:
 To retangle the document, run `C-c C-v t` or eval the last src block
 
-#+NAME: run-build
-#+BEGIN_SRC sh :exports both :results output
-cd ../../
-#make realclean TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-#make TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-#make test TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-#make install TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-#+END_SRC
+# #+NAME: run-build
+# #+BEGIN_SRC sh :exports both :results output
+# cd ../../
+# #make realclean TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+# #make TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+# #make test TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+# #make install TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+# #+END_SRC
 
-#+RESULTS: run-build
-#+begin_example
-make -f targets.mk realclean CONFIG=Asan TOOLCHAIN=gcc-14
-make[1]: Entering directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-rm -rf ../cmake.bld/concept_map/build-gcc-14
-make[1]: Leaving directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-make -f targets.mk test CONFIG=Asan TOOLCHAIN=gcc-14
-make[1]: Entering directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-mkdir -p ../cmake.bld/concept_map/build-gcc-14
-cd ../cmake.bld/concept_map/build-gcc-14 && 	cmake -G "Ninja Multi-Config" -DCMAKE_CONFIGURATION_TYPES="RelWithDebInfo;Debug;Tsan;Asan" -DCMAKE_INSTALL_PREFIX=/home/sdowney/install -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_TOOLCHAIN_FILE=/home/sdowney/src/sdowney/concept_map/concept_map/etc/gcc-14-toolchain.cmake /home/sdowney/src/sdowney/concept_map/concept_map
--- The CXX compiler identification is GNU 14.0.1
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /home/sdowney/.local/bin/g++-14 - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- The C compiler identification is GNU 14.0.1
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /home/sdowney/.local/bin/gcc-14 - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Found Python: /home/sdowney/.pyenv/shims/python3.11 (found version "3.11.7") found components: Interpreter
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE
--- Configuring done (2.8s)
--- Generating done (0.0s)
--- Build files have been written to: /home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14
-rm compile_commands.json
-ln -s ../cmake.bld/concept_map/build-gcc-14/compile_commands.json
-cmake --build ../cmake.bld/concept_map/build-gcc-14  --config Asan --target all -v -- -k 0
-Change Dir: '/home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14'
-
-Run Build Command(s): /usr/bin/ninja -v -f build-Asan.ninja -k 0 all
-[1/10] /home/sdowney/.local/bin/g++-14 -DCMAKE_INTDIR=\"Asan\" -I/home/sdowney/src/sdowney/concept_map/concept_map/src/smd/monoid/../.. -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak -std=gnu++23 -MD -MT src/smd/monoid/CMakeFiles/monoid.dir/Asan/monoid.cpp.o -MF src/smd/monoid/CMakeFiles/monoid.dir/Asan/monoid.cpp.o.d -o src/smd/monoid/CMakeFiles/monoid.dir/Asan/monoid.cpp.o -c /home/sdowney/src/sdowney/concept_map/concept_map/src/smd/monoid/monoid.cpp
-[2/10] : && /usr/bin/cmake -E rm -f src/smd/monoid/Asan/libmonoid.a && /usr/bin/ar qc src/smd/monoid/Asan/libmonoid.a  src/smd/monoid/CMakeFiles/monoid.dir/Asan/monoid.cpp.o && /usr/bin/ranlib src/smd/monoid/Asan/libmonoid.a && :
-[3/10] /home/sdowney/.local/bin/g++-14 -DCMAKE_INTDIR=\"Asan\" -I/home/sdowney/src/sdowney/concept_map/concept_map/src/smd/monoid/../.. -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak -std=gnu++23 -MD -MT src/examples/CMakeFiles/main.dir/Asan/main.cpp.o -MF src/examples/CMakeFiles/main.dir/Asan/main.cpp.o.d -o src/examples/CMakeFiles/main.dir/Asan/main.cpp.o -c /home/sdowney/src/sdowney/concept_map/concept_map/src/examples/main.cpp
-[4/10] : && /home/sdowney/.local/bin/g++-14 -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak  src/examples/CMakeFiles/main.dir/Asan/main.cpp.o -o src/examples/Asan/main  src/smd/monoid/Asan/libmonoid.a && :
-[5/10] /home/sdowney/.local/bin/g++-14 -DCMAKE_INTDIR=\"Asan\" -isystem /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest/include -isystem /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak -std=c++23 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT extern/googletest/googletest/CMakeFiles/gtest_main.dir/Asan/src/gtest_main.cc.o -MF extern/googletest/googletest/CMakeFiles/gtest_main.dir/Asan/src/gtest_main.cc.o.d -o extern/googletest/googletest/CMakeFiles/gtest_main.dir/Asan/src/gtest_main.cc.o -c /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest/src/gtest_main.cc
-[6/10] /home/sdowney/.local/bin/g++-14 -DCMAKE_INTDIR=\"Asan\" -I/home/sdowney/src/sdowney/concept_map/concept_map/src/smd/monoid/../.. -isystem /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest/include -isystem /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak -std=gnu++23 -MD -MT src/smd/monoid/CMakeFiles/monoid_test.dir/Asan/monoid.t.cpp.o -MF src/smd/monoid/CMakeFiles/monoid_test.dir/Asan/monoid.t.cpp.o.d -o src/smd/monoid/CMakeFiles/monoid_test.dir/Asan/monoid.t.cpp.o -c /home/sdowney/src/sdowney/concept_map/concept_map/src/smd/monoid/monoid.t.cpp
-[7/10] /home/sdowney/.local/bin/g++-14 -DCMAKE_INTDIR=\"Asan\" -I/home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest/include -I/home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak -std=c++23 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT extern/googletest/googletest/CMakeFiles/gtest.dir/Asan/src/gtest-all.cc.o -MF extern/googletest/googletest/CMakeFiles/gtest.dir/Asan/src/gtest-all.cc.o.d -o extern/googletest/googletest/CMakeFiles/gtest.dir/Asan/src/gtest-all.cc.o -c /home/sdowney/src/sdowney/concept_map/concept_map/extern/googletest/googletest/src/gtest-all.cc
-[8/10] : && /usr/bin/cmake -E rm -f lib/Asan/libgtest.a && /usr/bin/ar qc lib/Asan/libgtest.a  extern/googletest/googletest/CMakeFiles/gtest.dir/Asan/src/gtest-all.cc.o && /usr/bin/ranlib lib/Asan/libgtest.a && :
-[9/10] : && /usr/bin/cmake -E rm -f lib/Asan/libgtest_main.a && /usr/bin/ar qc lib/Asan/libgtest_main.a  extern/googletest/googletest/CMakeFiles/gtest_main.dir/Asan/src/gtest_main.cc.o && /usr/bin/ranlib lib/Asan/libgtest_main.a && :
-[10/10] : && /home/sdowney/.local/bin/g++-14 -Wall -Wextra  -O3 -g -DNDEBUG -fsanitize=address,undefined,leak  src/smd/monoid/CMakeFiles/monoid_test.dir/Asan/monoid.t.cpp.o -o src/smd/monoid/Asan/monoid_test  src/smd/monoid/Asan/libmonoid.a  lib/Asan/libgtest.a  lib/Asan/libgtest_main.a  lib/Asan/libgtest.a && cd /home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14/src/smd/monoid && /usr/bin/cmake -D TEST_TARGET=monoid_test -D TEST_EXECUTABLE=/home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14/src/smd/monoid/Asan/monoid_test -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14/src/smd/monoid -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=monoid_test_TESTS -D CTEST_FILE=/home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14/src/smd/monoid/monoid_test[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/share/cmake-3.29/Modules/GoogleTestAddTests.cmake
-
-cd ../cmake.bld/concept_map/build-gcc-14 && ctest
-Test project /home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14
-    Start 1: MonoidTest.TestGTest
-1/2 Test #1: MonoidTest.TestGTest .............   Passed    0.01 sec
-    Start 2: MonoidTest.Breathing
-2/2 Test #2: MonoidTest.Breathing .............   Passed    0.01 sec
-
-100% tests passed, 0 tests failed out of 2
-
-Total Test time (real) =   0.02 sec
-make[1]: Leaving directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-make -f targets.mk test CONFIG=Asan TOOLCHAIN=gcc-14
-make[1]: Entering directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-cmake --build ../cmake.bld/concept_map/build-gcc-14  --config Asan --target all -v -- -k 0
-Change Dir: '/home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14'
-
-Run Build Command(s): /usr/bin/ninja -v -f build-Asan.ninja -k 0 all
-ninja: no work to do.
-
-cd ../cmake.bld/concept_map/build-gcc-14 && ctest
-Test project /home/sdowney/src/sdowney/concept_map/cmake.bld/concept_map/build-gcc-14
-    Start 1: MonoidTest.TestGTest
-1/2 Test #1: MonoidTest.TestGTest .............   Passed    0.01 sec
-    Start 2: MonoidTest.Breathing
-2/2 Test #2: MonoidTest.Breathing .............   Passed    0.01 sec
-
-100% tests passed, 0 tests failed out of 2
-
-Total Test time (real) =   0.02 sec
-make[1]: Leaving directory '/home/sdowney/src/sdowney/concept_map/concept_map'
-make: Nothing to be done for 'install'.
-#+end_example
+# #+RESULTS: run-build
+# #+begin_example
+# #+end_example
 
 
-#+NAME: tangle-buffer
-#+HEADERS: :exports none :results none
-#+BEGIN_SRC emacs-lisp
-(org-babel-tangle)
-#+END_SRC
+# #+NAME: tangle-buffer
+# #+HEADERS: :exports none :results none
+# #+BEGIN_SRC emacs-lisp
+# (org-babel-tangle)
+# #+END_SRC

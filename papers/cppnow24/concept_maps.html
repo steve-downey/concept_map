@@ -37,8 +37,8 @@
 
 </section>
 <section>
-<section id="slide-org5b9d2ab">
-<h2 id="org5b9d2ab">Concept Maps using C++23 Library Tech</h2>
+<section id="slide-orga34b7ca">
+<h2 id="orga34b7ca">Concept Maps using C++23 Library Tech</h2>
 <p>
 Steve Downey
 </p>
@@ -49,8 +49,8 @@ Steve Downey
 </section>
 </section>
 <section>
-<section id="slide-orgfc33a13">
-<h2 id="orgfc33a13">Abstract</h2>
+<section id="slide-orgf2a4f41">
+<h2 id="orgf2a4f41">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
@@ -78,8 +78,8 @@ A definition could be provided that allows an algorithm to operate in terms of t
 </section>
 </section>
 <section>
-<section id="slide-orge5bab9c">
-<h3 id="orge5bab9c">Lost with <code>Concepts-Lite</code></h3>
+<section id="slide-orgc4a36fd">
+<h3 id="orgc4a36fd">Lost with <code>Concepts-Lite</code></h3>
 <aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
@@ -101,8 +101,8 @@ It is also a problem when adapting types that are closed for extension or do not
 </section>
 </section>
 <section>
-<section id="slide-org37bc38f">
-<h2 id="org37bc38f">Why?</h2>
+<section id="slide-orgb21ab3f">
+<h2 id="orgb21ab3f">Why?</h2>
 <ul>
 <li class="fragment appear"><p>
 Don't know if you should
@@ -120,8 +120,8 @@ Don't know if you should
 </section>
 </section>
 <section>
-<section id="slide-org919e37e">
-<h3 id="org919e37e">Alternatives</h3>
+<section id="slide-orgf35512a">
+<h3 id="orgf35512a">Alternatives</h3>
 <ul>
 <li class="fragment appear"><p>
 Virtual Interface
@@ -141,8 +141,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org134762e">
-<h3 id="org134762e">Hard to Support</h3>
+<section id="slide-org933cc23">
+<h3 id="org933cc23">Hard to Support</h3>
 <aside class="notes">
 <p>
 
@@ -152,15 +152,15 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org0d47973">
-<h2 id="org0d47973">Example from C++0x Concepts</h2>
-<div class="outline-text-2" id="text-org0d47973">
+<section id="slide-org8b0f0a0">
+<h2 id="org8b0f0a0">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org8b0f0a0">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8639fa6">
-<h3 id="org8639fa6">Student Record</h3>
+<section id="slide-org1395d0d">
+<h3 id="org1395d0d">Student Record</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
@@ -183,8 +183,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org38d15c6">
-<h3 id="org38d15c6">Equality Comparable</h3>
+<section id="slide-orgb2b2e1a">
+<h3 id="orgb2b2e1a">Equality Comparable</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
@@ -205,8 +205,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org6709573">
-<h3 id="org6709573">Allow associated types</h3>
+<section id="slide-orgded23df">
+<h3 id="orgded23df">Allow associated types</h3>
 <p>
 Very useful for pointers
 </p>
@@ -230,8 +230,8 @@ Very useful for pointers
 </section>
 </section>
 <section>
-<section id="slide-orgee12ec0">
-<h3 id="orgee12ec0">Why Didn't We Get Them</h3>
+<section id="slide-org1932301">
+<h3 id="org1932301">Why Didn't We Get Them</h3>
 <p>
 Lets not go there right now.
 </p>
@@ -245,15 +245,15 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org36d051d">
-<h2 id="org36d051d">State of the Art</h2>
-<div class="outline-text-2" id="text-org36d051d">
+<section id="slide-org05258d1">
+<h2 id="org05258d1">State of the Art</h2>
+<div class="outline-text-2" id="text-org05258d1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org5849271">
-<h3 id="org5849271">Rust Traits</h3>
+<section id="slide-orgd2ae226">
+<h3 id="orgd2ae226">Rust Traits</h3>
 <div class="org-src-container">
 
 <pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
@@ -275,13 +275,13 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org07af0b2">
-<h3 id="org07af0b2">C++ CPOs</h3>
-<div class="outline-text-3" id="text-org07af0b2">
+<section id="slide-orge2c9b93">
+<h3 id="orge2c9b93">C++ CPOs</h3>
+<div class="outline-text-3" id="text-orge2c9b93">
 </div>
 </section>
-<section id="slide-org55ab795">
-<h4 id="org55ab795">Some Concepts and Types</h4>
+<section id="slide-org2b0b3b1">
+<h4 id="org2b0b3b1">Some Concepts and Types</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
@@ -330,8 +330,8 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 
 </aside>
 </section>
-<section id="slide-org66032b8">
-<h4 id="org66032b8">C++ partial_equality</h4>
+<section id="slide-org25613df">
+<h4 id="org25613df">C++ partial_equality</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
@@ -364,8 +364,8 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 </section>
 </section>
 <section>
-<section id="slide-orgf2b2264">
-<h2 id="orgf2b2264">Requirements for Solution</h2>
+<section id="slide-orgd1a77ab">
+<h2 id="orgd1a77ab">Requirements for Solution</h2>
 <ul>
 <li class="fragment appear"><p>
 Tied to the typesystem
@@ -393,8 +393,8 @@ no virtual calls
 </section>
 </section>
 <section>
-<section id="slide-orgbf33fb6">
-<h2 id="orgbf33fb6">What does typeclass do?</h2>
+<section id="slide-org337db0e">
+<h2 id="org337db0e">What does typeclass do?</h2>
 <p>
 Adds a record to the function that defines the operations for the type.
 </p>
@@ -412,8 +412,8 @@ Can we do that?
 </section>
 </section>
 <section>
-<section id="slide-org6578238">
-<h2 id="org6578238">Type based lookup</h2>
+<section id="slide-org3278c4a">
+<h2 id="org3278c4a">Type based lookup</h2>
 <p>
 Templates!
 </p>
@@ -427,8 +427,8 @@ Templates!
 </section>
 </section>
 <section>
-<section id="slide-org5ae9bfb">
-<h2 id="org5ae9bfb">Additional Requirement</h2>
+<section id="slide-org8e1c2ab">
+<h2 id="org8e1c2ab">Additional Requirement</h2>
 <p>
 Avoid ADL
 </p>
@@ -445,8 +445,8 @@ Object Lookup rather than Overload Lookup
 </section>
 </section>
 <section>
-<section id="slide-org5dc926b">
-<h2 id="org5dc926b">Template Variables</h2>
+<section id="slide-org895d782">
+<h2 id="org895d782">Template Variables</h2>
 <p>
 Template variables have become more powerful
 </p>
@@ -464,8 +464,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org36c4fa2">
-<h3 id="org36c4fa2">A Step Towards Implementation</h3>
+<section id="slide-org7efeaf7">
+<h3 id="org7efeaf7">A Step Towards Implementation</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -490,8 +490,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org505db53">
-<h3 id="org505db53"><code>partial_eq&lt;T&gt;</code></h3>
+<section id="slide-org75c4cc0">
+<h3 id="org75c4cc0"><code>partial_eq&lt;T&gt;</code></h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -525,8 +525,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org43e1b97">
-<h3 id="org43e1b97">Will do better</h3>
+<section id="slide-org2739fb4">
+<h3 id="org2739fb4">Will do better</h3>
 <p>
 In a bit
 </p>
@@ -541,8 +541,8 @@ In a bit
 </section>
 </section>
 <section>
-<section id="slide-orgc416cb8">
-<h2 id="orgc416cb8">Monoid</h2>
+<section id="slide-org35d3ba7">
+<h2 id="org35d3ba7">Monoid</h2>
 <p class="fragment (appear)">
 A little more than you think.
 </p>
@@ -557,15 +557,15 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org4ce6be5">
-<h3 id="org4ce6be5">Maybe not a lot more</h3>
+<section id="slide-orga65f8d0">
+<h3 id="orga65f8d0">Maybe not a lot more</h3>
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgdd16c2e">
-<h3 id="orgdd16c2e">Math</h3>
+<section id="slide-org684fd8e">
+<h3 id="org684fd8e">Math</h3>
 <ul>
 <li>\(\otimes: M \times M \rightarrow M\)</li>
 <li>$ x &otimes; (y &otimes; z) = (x &otimes; y) &otimes; z$</li>
@@ -575,8 +575,8 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org020e292">
-<h2 id="org020e292">Concept Maps using C++23 Library Tech</h2>
+<section id="slide-org722ec58">
+<h2 id="org722ec58">Concept Maps using C++23 Library Tech</h2>
 <p>
 Steve Downey
 </p>
@@ -587,8 +587,8 @@ Steve Downey
 </section>
 </section>
 <section>
-<section id="slide-org914c1cb">
-<h2 id="org914c1cb">Abstract</h2>
+<section id="slide-org8dda35e">
+<h2 id="org8dda35e">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
@@ -616,8 +616,8 @@ A definition could be provided that allows an algorithm to operate in terms of t
 </section>
 </section>
 <section>
-<section id="slide-org018bcd7">
-<h3 id="org018bcd7">Lost with <code>Concepts-Lite</code></h3>
+<section id="slide-orga489ef4">
+<h3 id="orga489ef4">Lost with <code>Concepts-Lite</code></h3>
 <aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
@@ -639,8 +639,8 @@ It is also a problem when adapting types that are closed for extension or do not
 </section>
 </section>
 <section>
-<section id="slide-org3762799">
-<h2 id="org3762799">Why?</h2>
+<section id="slide-orgf70c80d">
+<h2 id="orgf70c80d">Why?</h2>
 <ul>
 <li class="fragment appear"><p>
 Don't know if you should
@@ -658,8 +658,8 @@ Don't know if you should
 </section>
 </section>
 <section>
-<section id="slide-org692eb03">
-<h3 id="org692eb03">Alternatives</h3>
+<section id="slide-orgf397d4b">
+<h3 id="orgf397d4b">Alternatives</h3>
 <ul>
 <li class="fragment appear"><p>
 Virtual Interface
@@ -679,8 +679,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org79dbfd9">
-<h3 id="org79dbfd9">Hard to Support</h3>
+<section id="slide-org0a58efd">
+<h3 id="org0a58efd">Hard to Support</h3>
 <aside class="notes">
 <p>
 
@@ -690,15 +690,15 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-orge0b6525">
-<h2 id="orge0b6525">Example from C++0x Concepts</h2>
-<div class="outline-text-2" id="text-orge0b6525">
+<section id="slide-orgad1b739">
+<h2 id="orgad1b739">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-orgad1b739">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgcbef694">
-<h3 id="orgcbef694">Student Record</h3>
+<section id="slide-org8583ffa">
+<h3 id="org8583ffa">Student Record</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
@@ -721,8 +721,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-orgf95fada">
-<h3 id="orgf95fada">Equality Comparable</h3>
+<section id="slide-org0d24d9a">
+<h3 id="org0d24d9a">Equality Comparable</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
@@ -743,8 +743,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org11f0629">
-<h3 id="org11f0629">Allow associated types</h3>
+<section id="slide-org103b390">
+<h3 id="org103b390">Allow associated types</h3>
 <p>
 Very useful for pointers
 </p>
@@ -768,8 +768,8 @@ Very useful for pointers
 </section>
 </section>
 <section>
-<section id="slide-org57f24df">
-<h3 id="org57f24df">Why Didn't We Get Them</h3>
+<section id="slide-org267be77">
+<h3 id="org267be77">Why Didn't We Get Them</h3>
 <p>
 Lets not go there right now.
 </p>
@@ -783,15 +783,15 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-orgb81e696">
-<h2 id="orgb81e696">State of the Art</h2>
-<div class="outline-text-2" id="text-orgb81e696">
+<section id="slide-org71062c6">
+<h2 id="org71062c6">State of the Art</h2>
+<div class="outline-text-2" id="text-org71062c6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb3bad09">
-<h3 id="orgb3bad09">Rust Traits</h3>
+<section id="slide-org799d0a5">
+<h3 id="org799d0a5">Rust Traits</h3>
 <div class="org-src-container">
 
 <pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
@@ -813,13 +813,13 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org0abafd6">
-<h3 id="org0abafd6">C++ CPOs</h3>
-<div class="outline-text-3" id="text-org0abafd6">
+<section id="slide-org763916f">
+<h3 id="org763916f">C++ CPOs</h3>
+<div class="outline-text-3" id="text-org763916f">
 </div>
 </section>
-<section id="slide-org87fd7a0">
-<h4 id="org87fd7a0">Some Concepts and Types</h4>
+<section id="slide-org48de0d3">
+<h4 id="org48de0d3">Some Concepts and Types</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
@@ -868,8 +868,8 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 
 </aside>
 </section>
-<section id="slide-org653e978">
-<h4 id="org653e978">C++ partial_equality</h4>
+<section id="slide-org31f09a5">
+<h4 id="org31f09a5">C++ partial_equality</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
@@ -902,8 +902,8 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 </section>
 </section>
 <section>
-<section id="slide-orgf3c72e8">
-<h2 id="orgf3c72e8">Requirements for Solution</h2>
+<section id="slide-org88b6dc3">
+<h2 id="org88b6dc3">Requirements for Solution</h2>
 <ul>
 <li class="fragment appear"><p>
 Tied to the typesystem
@@ -931,8 +931,8 @@ no virtual calls
 </section>
 </section>
 <section>
-<section id="slide-org25009bb">
-<h2 id="org25009bb">What does typeclass do?</h2>
+<section id="slide-org9a4d08a">
+<h2 id="org9a4d08a">What does typeclass do?</h2>
 <p>
 Adds a record to the function that defines the operations for the type.
 </p>
@@ -950,8 +950,8 @@ Can we do that?
 </section>
 </section>
 <section>
-<section id="slide-org5a93df2">
-<h2 id="org5a93df2">Type based lookup</h2>
+<section id="slide-org42ddc73">
+<h2 id="org42ddc73">Type based lookup</h2>
 <p>
 Templates!
 </p>
@@ -965,8 +965,8 @@ Templates!
 </section>
 </section>
 <section>
-<section id="slide-orgd267c88">
-<h2 id="orgd267c88">Additional Requirement</h2>
+<section id="slide-org2ae0d99">
+<h2 id="org2ae0d99">Additional Requirement</h2>
 <p>
 Avoid ADL
 </p>
@@ -983,8 +983,8 @@ Object Lookup rather than Overload Lookup
 </section>
 </section>
 <section>
-<section id="slide-org273bfe9">
-<h2 id="org273bfe9">Template Variables</h2>
+<section id="slide-org406e730">
+<h2 id="org406e730">Template Variables</h2>
 <p>
 Template variables have become more powerful
 </p>
@@ -1002,8 +1002,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-orge064316">
-<h3 id="orge064316">A Step Towards Implementation</h3>
+<section id="slide-org930a2ee">
+<h3 id="org930a2ee">A Step Towards Implementation</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -1028,8 +1028,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org7a8b562">
-<h3 id="org7a8b562"><code>partial_eq&lt;T&gt;</code></h3>
+<section id="slide-org71ec1a1">
+<h3 id="org71ec1a1"><code>partial_eq&lt;T&gt;</code></h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -1063,8 +1063,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org4a1da71">
-<h3 id="org4a1da71">Will do better</h3>
+<section id="slide-orgc63643b">
+<h3 id="orgc63643b">Will do better</h3>
 <p>
 In a bit
 </p>
@@ -1079,8 +1079,8 @@ In a bit
 </section>
 </section>
 <section>
-<section id="slide-orgeeed261">
-<h2 id="orgeeed261">Monoid</h2>
+<section id="slide-org0583e49">
+<h2 id="org0583e49">Monoid</h2>
 <p class="fragment (appear)">
 A little more than you think.
 </p>
@@ -1095,15 +1095,15 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org6754c67">
-<h3 id="org6754c67">Maybe not a lot more</h3>
+<section id="slide-org4f28805">
+<h3 id="org4f28805">Maybe not a lot more</h3>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org39bc2e2">
-<h3 id="org39bc2e2">Math</h3>
+<section id="slide-orgd6a405d">
+<h3 id="orgd6a405d">Math</h3>
 <ul>
 <li>\(\otimes: M \times M \rightarrow M\)</li>
 <li>$ x &otimes; (y &otimes; z) = (x &otimes; y) &otimes; z$</li>
@@ -1113,8 +1113,8 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org7a42fb6">
-<h2 id="org7a42fb6">Concept Maps using C++23 Library Tech</h2>
+<section id="slide-orgf8fb517">
+<h2 id="orgf8fb517">Concept Maps using C++23 Library Tech</h2>
 <p>
 Steve Downey
 </p>
@@ -1125,8 +1125,8 @@ Steve Downey
 </section>
 </section>
 <section>
-<section id="slide-org1b89e22">
-<h2 id="org1b89e22">Abstract</h2>
+<section id="slide-org2d231c3">
+<h2 id="org2d231c3">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
@@ -1154,8 +1154,8 @@ A definition could be provided that allows an algorithm to operate in terms of t
 </section>
 </section>
 <section>
-<section id="slide-org9f0b160">
-<h3 id="org9f0b160">Lost with <code>Concepts-Lite</code></h3>
+<section id="slide-org883cb6e">
+<h3 id="org883cb6e">Lost with <code>Concepts-Lite</code></h3>
 <aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
@@ -1177,8 +1177,8 @@ It is also a problem when adapting types that are closed for extension or do not
 </section>
 </section>
 <section>
-<section id="slide-orga92162c">
-<h2 id="orga92162c">Why?</h2>
+<section id="slide-orgbffa3b1">
+<h2 id="orgbffa3b1">Why?</h2>
 <ul>
 <li class="fragment appear"><p>
 Don't know if you should
@@ -1196,8 +1196,8 @@ Don't know if you should
 </section>
 </section>
 <section>
-<section id="slide-org79b3e22">
-<h3 id="org79b3e22">Alternatives</h3>
+<section id="slide-org52f00a3">
+<h3 id="org52f00a3">Alternatives</h3>
 <ul>
 <li class="fragment appear"><p>
 Virtual Interface
@@ -1217,8 +1217,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org338857a">
-<h3 id="org338857a">Hard to Support</h3>
+<section id="slide-org5afdadf">
+<h3 id="org5afdadf">Hard to Support</h3>
 <aside class="notes">
 <p>
 
@@ -1228,15 +1228,15 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org57c3e05">
-<h2 id="org57c3e05">Example from C++0x Concepts</h2>
-<div class="outline-text-2" id="text-org57c3e05">
+<section id="slide-org3c02b84">
+<h2 id="org3c02b84">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org3c02b84">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8b60aa7">
-<h3 id="org8b60aa7">Student Record</h3>
+<section id="slide-orgaa8155c">
+<h3 id="orgaa8155c">Student Record</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
@@ -1259,8 +1259,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org9b1b866">
-<h3 id="org9b1b866">Equality Comparable</h3>
+<section id="slide-orgff4a830">
+<h3 id="orgff4a830">Equality Comparable</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
@@ -1281,8 +1281,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org0c5e14b">
-<h3 id="org0c5e14b">Allow associated types</h3>
+<section id="slide-org839b309">
+<h3 id="org839b309">Allow associated types</h3>
 <p>
 Very useful for pointers
 </p>
@@ -1306,8 +1306,8 @@ Very useful for pointers
 </section>
 </section>
 <section>
-<section id="slide-org0cd78a7">
-<h3 id="org0cd78a7">Why Didn't We Get Them</h3>
+<section id="slide-orgf8cd120">
+<h3 id="orgf8cd120">Why Didn't We Get Them</h3>
 <p>
 Lets not go there right now.
 </p>
@@ -1321,15 +1321,15 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org5477426">
-<h2 id="org5477426">State of the Art</h2>
-<div class="outline-text-2" id="text-org5477426">
+<section id="slide-org38e4c25">
+<h2 id="org38e4c25">State of the Art</h2>
+<div class="outline-text-2" id="text-org38e4c25">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4ec0fd3">
-<h3 id="org4ec0fd3">Rust Traits</h3>
+<section id="slide-org29cd945">
+<h3 id="org29cd945">Rust Traits</h3>
 <div class="org-src-container">
 
 <pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
@@ -1351,13 +1351,13 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-orgba69eed">
-<h3 id="orgba69eed">C++ CPOs</h3>
-<div class="outline-text-3" id="text-orgba69eed">
-</div>
+<section id="slide-org6d38723">
+<h3 id="org6d38723">C++ CPOs</h3>
 </section>
-<section id="slide-org535e50f">
-<h4 id="org535e50f">Some Concepts and Types</h4>
+</section>
+<section>
+<section id="slide-org6ecc5ec">
+<h3 id="org6ecc5ec">Some Concepts and Types</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
@@ -1406,8 +1406,10 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 
 </aside>
 </section>
-<section id="slide-orgee3baa3">
-<h4 id="orgee3baa3">C++ partial_equality</h4>
+</section>
+<section>
+<section id="slide-org550ec03">
+<h3 id="org550ec03">C++ partial_equality</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
@@ -1440,8 +1442,8 @@ See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 </section>
 </section>
 <section>
-<section id="slide-orgbf4a795">
-<h2 id="orgbf4a795">Requirements for Solution</h2>
+<section id="slide-orgfcf40d7">
+<h2 id="orgfcf40d7">Requirements for Solution</h2>
 <ul>
 <li class="fragment appear"><p>
 Tied to the typesystem
@@ -1469,8 +1471,8 @@ no virtual calls
 </section>
 </section>
 <section>
-<section id="slide-org21fb56c">
-<h2 id="org21fb56c">What does typeclass do?</h2>
+<section id="slide-org0e76f7f">
+<h2 id="org0e76f7f">What does typeclass do?</h2>
 <p>
 Adds a record to the function that defines the operations for the type.
 </p>
@@ -1488,8 +1490,8 @@ Can we do that?
 </section>
 </section>
 <section>
-<section id="slide-org16bcc27">
-<h2 id="org16bcc27">Type based lookup</h2>
+<section id="slide-org4b88175">
+<h2 id="org4b88175">Type based lookup</h2>
 <p>
 Templates!
 </p>
@@ -1503,8 +1505,8 @@ Templates!
 </section>
 </section>
 <section>
-<section id="slide-orgdc5919b">
-<h2 id="orgdc5919b">Additional Requirement</h2>
+<section id="slide-orgab333ab">
+<h2 id="orgab333ab">Additional Requirement</h2>
 <p>
 Avoid ADL
 </p>
@@ -1521,8 +1523,8 @@ Object Lookup rather than Overload Lookup
 </section>
 </section>
 <section>
-<section id="slide-orgb845ea5">
-<h2 id="orgb845ea5">Template Variables</h2>
+<section id="slide-org73ad302">
+<h2 id="org73ad302">Template Variables</h2>
 <p>
 Template variables have become more powerful
 </p>
@@ -1540,8 +1542,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-orgb1f52e5">
-<h3 id="orgb1f52e5">A Step Towards Implementation</h3>
+<section id="slide-org8da7897">
+<h3 id="org8da7897">A Step Towards Implementation</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -1566,8 +1568,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org849f6d5">
-<h3 id="org849f6d5"><code>partial_eq&lt;T&gt;</code></h3>
+<section id="slide-orgfc87099">
+<h3 id="orgfc87099"><code>partial_eq&lt;T&gt;</code></h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -1601,8 +1603,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org7a2d75a">
-<h3 id="org7a2d75a">Will do better</h3>
+<section id="slide-org8f45a89">
+<h3 id="org8f45a89">Will do better</h3>
 <p>
 In a bit
 </p>
@@ -1617,8 +1619,8 @@ In a bit
 </section>
 </section>
 <section>
-<section id="slide-orgede78f8">
-<h2 id="orgede78f8">Monoid</h2>
+<section id="slide-org4e3faf8">
+<h2 id="org4e3faf8">Monoid</h2>
 <p class="fragment (appear)">
 A little more than you think.
 </p>
@@ -1633,15 +1635,15 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-orgd78a0f4">
-<h3 id="orgd78a0f4">Maybe not a lot more</h3>
+<section id="slide-org4516945">
+<h3 id="org4516945">Maybe not a lot more</h3>
 
 
 </section>
 </section>
 <section>
-<section id="slide-org3a0a1f9">
-<h3 id="org3a0a1f9">Math</h3>
+<section id="slide-orgb18c040">
+<h3 id="orgb18c040">Math</h3>
 <ul>
 <li>\(\oplus: M \times M \rightarrow M\)</li>
 <li>\(x \oplus (y \oplus z) = (x \oplus y) \oplus z\)</li>
@@ -1651,8 +1653,67 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org5027a12">
-<h2 id="org5027a12">Thank You</h2>
+<section id="slide-orgcf83a65">
+<h3 id="orgcf83a65">Function form</h3>
+<ul>
+<li>\(f : M \times M \rightarrow M\)</li>
+<li>\(f(x, f(y, z)) = f(f(x, y), z)\)</li>
+<li>\(1_M \in M\) such that \(\forall m \in M : f(1_M, m) = m = f(m, 1_M)\)</li>
+
+</ul>
+
+<p class="fragment (appear)">
+The similarity to left and right fold is <b>NOT</b> an accident
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org5bf4e4b">
+<h3 id="org5bf4e4b">Core Functions</h3>
+<dl>
+<dt>\(empty : m\)</dt><dd>\(empty = concat \, []\)</dd>
+<dt>\(concat : [m] \rightarrow m\)</dt><dd>\(fold \, append \, empty\)</dd>
+<dt>\(append : m \rightarrow m \rightarrow m\)</dt><dd>\(op\)</dd>
+
+</dl>
+
+
+<p>
+Note that it's self-referential
+</p>
+
+<p>
+This is common
+</p>
+</section>
+<section id="slide-org44222dd">
+<h4 id="org44222dd">From Haskell Prelude</h4>
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span class="org-haskell-keyword">class</span> <span class="org-haskell-type">Semigroup</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-haskell-type">Monoid</span> a <span class="org-haskell-keyword">where</span>
+  mempty <span class="org-haskell-operator">::</span> a
+  mempty <span class="org-haskell-operator">=</span> mconcat <span class="org-haskell-constructor">[]</span>
+
+  mappend <span class="org-haskell-operator">::</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
+  mappend <span class="org-haskell-operator">=</span> (<span class="org-haskell-operator">&lt;&gt;</span>)
+
+  mconcat <span class="org-haskell-operator">::</span> [a] <span class="org-haskell-operator">-&gt;</span> a
+  mconcat <span class="org-haskell-operator">=</span> foldr mappend mempty
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org766172d">
+<h3 id="org766172d">Minimum Set</h3>
+<p>
+\(empty \, | \, concat\)
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgfab41a1">
+<h2 id="orgfab41a1">Thank You</h2>
 <aside class="notes">
 <p>
 
@@ -1663,46 +1724,6 @@ A little more than you think.
 </section>
 </div>
 </div>
-<style type="text/css">
-    /* 1. Style header/footer <div> so they are positioned as desired. */
-    #header-left {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-    }
-    #header-right {
-        position: absolute;
-        top: 0%;
-        right: 0%;
-    }
-    #footer-left {
-        position: absolute;
-        bottom: 0%;
-        left: 0%;
-        font-size: 0.5em;
-    }
-</style>
-
-<!-- 2. Create hidden header/footer <div> -->
-<div id="hidden" style="display:none;">
-<div id="header">
-<div id="footer-left">© 2023 Bloomberg Finance L.P. All rights reserved</div>
-</div>
-</div>
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-// 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
-var header = $('#header').html();
-if ( window.location.search.match( /print-pdf/gi ) ) {
-Reveal.addEventListener( 'ready', function( event ) {
-                                  $('.slide-background').append(header);
-                                  });
-}
-else {
-$('div.reveal').append(header);
-}
-</script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
