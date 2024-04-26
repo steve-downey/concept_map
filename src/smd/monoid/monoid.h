@@ -51,12 +51,12 @@ template<typename M>
 class Plus {
   public:
     using value_type = M;
-    auto identity(this auto && self) -> M{
+    auto identity(this auto && /*self*/) -> M{
         std::puts("Plus::identity()");
         return M{0};
     }
 
-    auto op(this auto && self, auto s1, auto s2) -> M {
+    auto op(this auto && /*self*/, auto s1, auto s2) -> M {
         std::puts("Plus::op()");
         return s1 + s2;
     }
