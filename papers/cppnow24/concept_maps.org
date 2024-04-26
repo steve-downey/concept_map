@@ -573,8 +573,141 @@ constexpr inline auto monoid_concept_map<std::string> = StringMonoidMap{};
 #+end_src
 
 * Some simple use
+** Exercise the functions
+#+begin_src C++
+template<typename P>
+void testP()
+{
+    auto d1 = monoid_concept_map<P>;
+
+    auto x = d1.identity();
+    assert(P{} == x);
+
+    auto sum = d1.op(x, P{1});
+    assert(P{1} == sum);
+
+    std::vector<P> v = {1,2,3,4};
+    auto k = d1.concat(v);
+    assert(k == 10);
+}
+#+end_src
+
+** Some simple cases
+#+begin_src c++
+    std::cout << "\ntest int\n";
+    testP<int>();
+
+    std::cout << "\ntest long\n";
+    testP<long>();
+
+   std::cout << "\ntest char\n";
+    testP<char>();
+
+#+end_src
+** On the StringMonoid
+#+begin_src C++
+    auto d2 = monoid_concept_map<std::string>;
+
+    std::cout << "\ntest string\n";
+    auto x2 = d2.identity();
+    assert(std::string{} == x2);
+
+    auto sum2 = d2.op(x2, "1");
+    assert(std::string{"1"} == sum2);
+
+    std::vector<std::string> vs = {"1","2","3","4"};
+    auto k2 = d2.concat(vs);
+    assert(k2 == std::string{"1234"});
+#+end_src
+
+** Results
+*** test int
+#+begin_example
+Plus::identity()
+Plus::op()
+Monoid::concat()
+Plus::identity()
+Plus::op()
+Plus::op()
+Plus::op()
+Plus::op()
+#+end_example
+
+*** test long
+#+begin_example
+Plus::identity()
+Plus::op()
+Monoid::concat()
+Plus::identity()
+Plus::op()
+Plus::op()
+Plus::op()
+Plus::op()
+#+end_example
+
+*** test char
+#+begin_example
+Plus::identity()
+Plus::op()
+Monoid::concat()
+Plus::identity()
+Plus::op()
+Plus::op()
+Plus::op()
+Plus::op()
+#+end_example
+
+*** test string
+#+begin_example
+Monoid::identity()
+StringMonoid::concat()
+StringMonoid::op()
+StringMonoid::concat()
+StringMonoid::op()
+StringMonoid::op()
+StringMonoid::op()
+StringMonoid::op()
+#+end_example
 
 * Monoid in Trees
+
+** Foldable generalizes
+Folding is very much tied to Range like things.
+
+It can, and has, been generalized to things that can be traversed.
+
+~monoids~ are still critical for Traversables.
+
+** Summarizing Data in a tree
+If the summary type is monoidal nodes can hold summaries of all the data below them.
+
+** ~fingertrees~
+Much of the flexibility of ~fingertrees~ comes from the monoidal tags.
+
+They are also fairly complicated.
+
+Technique can be applied to other, simpler, trees.
+
+** fringe-tree
+Simplified tree with data at the edges
+
+** Code
+Show the monoid-map branch of
+
+[[https://github.com/steve-downey/fringetree][steve-downey/fringetree.git]]
+
+* Summary for Concept Maps
+Tell you what I told you
+
+- Template variables for map lookup
+- Named operations on the map object
+- Open for extension
+- Concept checkable implementations
+- Decoupled map use and implementation
+
+
+* Questions
+Or comments
 
 * Thank You
 
@@ -585,22 +718,22 @@ constexpr inline auto monoid_concept_map<std::string> = StringMonoidMap{};
 * Tangle before export                                             :noexport:
 To retangle the document, run `C-c C-v t` or eval the last src block
 
-# #+NAME: run-build
-# #+BEGIN_SRC sh :exports both :results output
-# cd ../../
-# #make realclean TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-# #make TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-# #make test TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-# #make install TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
-# #+END_SRC
+#+NAME: run-build
+#+BEGIN_SRC sh :exports both :results output
+#cd ../../
+#make realclean TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+#make TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+#make test TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+#make install TOOLCHAIN=gcc-14 LD_RUN_PATH=/home/sdowney/install/gcc-trunk/lib/../lib64  CONFIG=Asan
+#+END_SRC
 
-# #+RESULTS: run-build
-# #+begin_example
-# #+end_example
+#+RESULTS: run-build
+#+begin_example
+#+end_example
 
 
-# #+NAME: tangle-buffer
-# #+HEADERS: :exports none :results none
-# #+BEGIN_SRC emacs-lisp
-# (org-babel-tangle)
+#+NAME: tangle-buffer
+#+HEADERS: :exports none :results none
+#+BEGIN_SRC emacs-lisp
+#(org-babel-tangle)
 # #+END_SRC

@@ -22,7 +22,7 @@
 <!-- 2. Create hidden header/footer <div> -->
 <div id=\"hidden\" style=\"display:none;\">
 <div id=\"header\">
-<div id=\"footer-left\">© 2023 Bloomberg Finance L.P. All rights reserved</div>
+<div id=\"footer-left\">© 2024 Bloomberg Finance L.P. All rights reserved</div>
 </div>
 </div>
 
