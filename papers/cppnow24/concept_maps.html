@@ -26,20 +26,20 @@
 
 </section>
 <section>
-<section id="slide-org1b30091">
-<h2 id="org1b30091">Concept Maps using C++23 Library Tech</h2>
+<section id="slide-org3d9d6c2">
+<h2 id="org3d9d6c2">Concept Maps using C++23 Library Tech</h2>
 <p>
 Steve Downey
 </p>
 
 <p>
-© 2023 Bloomberg Finance L.P. All rights reserved.
+© 2024 Bloomberg Finance L.P. All rights reserved.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgb113a4b">
-<h2 id="orgb113a4b">Abstract</h2>
+<section id="slide-orgacc87e5">
+<h2 id="orgacc87e5">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
@@ -67,8 +67,8 @@ A definition could be provided that allows an algorithm to operate in terms of t
 </section>
 </section>
 <section>
-<section id="slide-org878675e">
-<h3 id="org878675e">Lost with <code>Concepts-Lite</code></h3>
+<section id="slide-org6dd75ec">
+<h3 id="org6dd75ec">Lost with <code>Concepts-Lite</code></h3>
 <aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
@@ -90,8 +90,8 @@ It is also a problem when adapting types that are closed for extension or do not
 </section>
 </section>
 <section>
-<section id="slide-org7417c38">
-<h2 id="org7417c38">Why?</h2>
+<section id="slide-org0f0f3b9">
+<h2 id="org0f0f3b9">Why?</h2>
 <ul>
 <li class="fragment appear"><p>
 Don't know if you should
@@ -109,8 +109,8 @@ Don't know if you should
 </section>
 </section>
 <section>
-<section id="slide-org63d6135">
-<h3 id="org63d6135">Alternatives</h3>
+<section id="slide-org15be0c6">
+<h3 id="org15be0c6">Alternatives</h3>
 <ul>
 <li class="fragment appear"><p>
 Virtual Interface
@@ -130,8 +130,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org9609628">
-<h3 id="org9609628">Hard to Support</h3>
+<section id="slide-orgf9f5903">
+<h3 id="orgf9f5903">Hard to Support</h3>
 <aside class="notes">
 <p>
 
@@ -141,15 +141,15 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-orga5b897f">
-<h2 id="orga5b897f">Example from C++0x Concepts</h2>
-<div class="outline-text-2" id="text-orga5b897f">
+<section id="slide-org4892247">
+<h2 id="org4892247">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org4892247">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgfa73dcf">
-<h3 id="orgfa73dcf">Student Record</h3>
+<section id="slide-orga595ddd">
+<h3 id="orga595ddd">Student Record</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
@@ -172,8 +172,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-org360e8cc">
-<h3 id="org360e8cc">Equality Comparable</h3>
+<section id="slide-org6817521">
+<h3 id="org6817521">Equality Comparable</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
@@ -194,8 +194,8 @@ Adapters
 </section>
 </section>
 <section>
-<section id="slide-orgd2ea345">
-<h3 id="orgd2ea345">Allow associated types</h3>
+<section id="slide-org8a01066">
+<h3 id="org8a01066">Allow associated types</h3>
 <p>
 Very useful for pointers
 </p>
@@ -219,10 +219,10 @@ Very useful for pointers
 </section>
 </section>
 <section>
-<section id="slide-org65348c8">
-<h3 id="org65348c8">Why Didn't We Get Them</h3>
+<section id="slide-org3e2f09d">
+<h3 id="org3e2f09d">Why Didn't We Get Them?</h3>
 <p>
-Lets not go there right now.
+Let's not go there right now.
 </p>
 
 <aside class="notes">
@@ -234,15 +234,15 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org689c337">
-<h2 id="org689c337">State of the Art</h2>
-<div class="outline-text-2" id="text-org689c337">
+<section id="slide-orgf6d37e6">
+<h2 id="orgf6d37e6">State of the Art</h2>
+<div class="outline-text-2" id="text-orgf6d37e6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org97ab0dc">
-<h3 id="org97ab0dc">Rust Traits</h3>
+<section id="slide-org087ecd4">
+<h3 id="org087ecd4">Rust Traits</h3>
 <div class="org-src-container">
 
 <pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
@@ -264,15 +264,15 @@ Lets not go there right now.
 </section>
 </section>
 <section>
-<section id="slide-org9c9e280">
-<h3 id="org9c9e280">C++ CPOs</h3>
-<div class="outline-text-3" id="text-org9c9e280">
+<section id="slide-org09344a6">
+<h3 id="org09344a6">C++ CPOs</h3>
+<div class="outline-text-3" id="text-org09344a6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb2be569">
-<h4 id="orgb2be569">Some Concepts and Types</h4>
+<section id="slide-org385a01b">
+<h4 id="org385a01b">Some Concepts and Types</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
@@ -311,7 +311,7 @@ Lets not go there right now.
 </div>
 
 <p>
-See <span class="underline">Why tag_invoke is not the solution I want</span> by Barry Revzin
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 <a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
 </p>
 <aside class="notes">
@@ -323,8 +323,8 @@ See <span class="underline">Why tag_invoke is not the solution I want</span> by 
 </section>
 </section>
 <section>
-<section id="slide-org7c20bf0">
-<h4 id="org7c20bf0">C++ partial_equality</h4>
+<section id="slide-org3711bd6">
+<h4 id="org3711bd6">C++ partial_equality</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
@@ -344,7 +344,7 @@ See <span class="underline">Why tag_invoke is not the solution I want</span> by 
 </pre>
 </div>
 <p>
-See <span class="underline">Why tag_invoke is not the solution I want</span> by Barry Revzin
+See <u>Why tag_invoke is not the solution I want</u> by Barry Revzin
 <a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
 </p>
 
@@ -357,11 +357,11 @@ See <span class="underline">Why tag_invoke is not the solution I want</span> by 
 </section>
 </section>
 <section>
-<section id="slide-org51e45f7">
-<h2 id="org51e45f7">Requirements for Solution</h2>
+<section id="slide-org54b5fe4">
+<h2 id="org54b5fe4">Requirements for Solution</h2>
 <ul>
 <li class="fragment appear"><p>
-Tied to the typesystem
+Tied to the type system
 </p></li>
 <li class="fragment appear"><p>
 Automatable
@@ -386,8 +386,8 @@ no virtual calls
 </section>
 </section>
 <section>
-<section id="slide-orged69f60">
-<h2 id="orged69f60">What does typeclass do?</h2>
+<section id="slide-org67dba18">
+<h2 id="org67dba18">What does typeclass do?</h2>
 <p>
 Adds a record to the function that defines the operations for the type.
 </p>
@@ -405,8 +405,8 @@ Can we do that?
 </section>
 </section>
 <section>
-<section id="slide-org0803f74">
-<h2 id="org0803f74">Type based lookup</h2>
+<section id="slide-orgf8f9160">
+<h2 id="orgf8f9160">Type-based lookup</h2>
 <p>
 Templates!
 </p>
@@ -420,8 +420,8 @@ Templates!
 </section>
 </section>
 <section>
-<section id="slide-orgca9cf6c">
-<h2 id="orgca9cf6c">Additional Requirement</h2>
+<section id="slide-orgcf92408">
+<h2 id="orgcf92408">Additional Requirements</h2>
 <p>
 Avoid ADL
 </p>
@@ -438,8 +438,8 @@ Object Lookup rather than Overload Lookup
 </section>
 </section>
 <section>
-<section id="slide-org62bd849">
-<h2 id="org62bd849">Template Variables</h2>
+<section id="slide-org880750a">
+<h2 id="org880750a">Template Variables</h2>
 <p>
 Template variables have become more powerful
 </p>
@@ -457,8 +457,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-orgc21943d">
-<h3 id="orgc21943d">A Step Towards Implementation</h3>
+<section id="slide-org0ec2cda">
+<h3 id="org0ec2cda">A Step Towards Implementation</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -483,15 +483,15 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org49d89c5">
-<h3 id="org49d89c5"><code>partial_eq&lt;T&gt;</code></h3>
-<div class="outline-text-3" id="text-org49d89c5">
+<section id="slide-org9cc7a5c">
+<h3 id="org9cc7a5c"><code>partial_eq&lt;T&gt;</code></h3>
+<div class="outline-text-3" id="text-org9cc7a5c">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6474179">
-<h4 id="org6474179">An inline variable object</h4>
+<section id="slide-org9a951b9">
+<h4 id="org9a951b9">An inline variable object</h4>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
@@ -508,8 +508,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org3a8de39">
-<h4 id="org3a8de39">A default implementation</h4>
+<section id="slide-orgf101734">
+<h4 id="orgf101734">A default implementation</h4>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> <span class="org-type">partial_eq_default_t</span> {
@@ -536,8 +536,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-orgecdea40">
-<h4 id="orgecdea40">New <code>has_eq</code></h4>
+<section id="slide-orge9ff2c2">
+<h4 id="orge9ff2c2">New <code>has_eq</code></h4>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
@@ -555,8 +555,8 @@ We can have entirely distinct specializations
 </section>
 </section>
 <section>
-<section id="slide-org79052d9">
-<h3 id="org79052d9">Will do better</h3>
+<section id="slide-orgb491741">
+<h3 id="orgb491741">Will do better</h3>
 <p>
 In a bit
 </p>
@@ -571,8 +571,8 @@ In a bit
 </section>
 </section>
 <section>
-<section id="slide-orgfcb7334">
-<h2 id="orgfcb7334">Monoid</h2>
+<section id="slide-org64c2e3d">
+<h2 id="org64c2e3d">Monoid</h2>
 <p class="fragment (appear)">
 A little more than you think.
 </p>
@@ -587,8 +587,8 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org3fa7e7d">
-<h3 id="org3fa7e7d">Maybe not a lot more</h3>
+<section id="slide-org0dc15f6">
+<h3 id="org0dc15f6">Maybe not a lot more</h3>
 <aside class="notes">
 <p>
 
@@ -598,8 +598,8 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org0228983">
-<h3 id="org0228983">Math</h3>
+<section id="slide-org3996952">
+<h3 id="org3996952">Math</h3>
 <ul>
 <li>\(\oplus: M \times M \rightarrow M\)</li>
 <li>\(x \oplus (y \oplus z) = (x \oplus y) \oplus z\)</li>
@@ -616,8 +616,8 @@ A little more than you think.
 </section>
 </section>
 <section>
-<section id="slide-org16e264d">
-<h3 id="org16e264d">Function form</h3>
+<section id="slide-orgf7f446f">
+<h3 id="orgf7f446f">Function form</h3>
 <ul>
 <li>\(f : M \times M \rightarrow M\)</li>
 <li>\(f(x, f(y, z)) = f(f(x, y), z)\)</li>
@@ -638,8 +638,8 @@ The similarity to left and right fold is <b>NOT</b> an accident
 </section>
 </section>
 <section>
-<section id="slide-org448c7ce">
-<h3 id="org448c7ce">Core Functions</h3>
+<section id="slide-orga5f5972">
+<h3 id="orga5f5972">Core Functions</h3>
 <dl>
 <dt>\(empty : m\)</dt><dd>\(empty = concat \, []\)</dd>
 <dt>\(concat : [m] \rightarrow m\)</dt><dd>\(fold \, append \, empty\)</dd>
@@ -665,8 +665,8 @@ This is common
 </section>
 </section>
 <section>
-<section id="slide-org5c66170">
-<h4 id="org5c66170">From Haskell Prelude</h4>
+<section id="slide-orga428cb4">
+<h4 id="orga428cb4">From Haskell Prelude</h4>
 <div class="org-src-container">
 
 <pre class="src src-haskell"><span class="org-haskell-keyword">class</span> <span class="org-haskell-type">Semigroup</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-haskell-type">Monoid</span> a <span class="org-haskell-keyword">where</span>
@@ -690,8 +690,8 @@ This is common
 </section>
 </section>
 <section>
-<section id="slide-orgb2bfa71">
-<h3 id="orgb2bfa71">Minimum Set</h3>
+<section id="slide-org5ab723a">
+<h3 id="org5ab723a">Minimum Set</h3>
 <p>
 \(empty \, | \, concat\)
 </p>
@@ -705,8 +705,8 @@ This is common
 </section>
 </section>
 <section>
-<section id="slide-org7bd2b77">
-<h3 id="org7bd2b77">In C++</h3>
+<section id="slide-org1fc88bf">
+<h3 id="org1fc88bf">In C++</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>, <span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
@@ -727,16 +727,16 @@ I am ignoring all sorts of const volatile reference issues here.
 </section>
 </section>
 <section>
-<section id="slide-org6e3f90f">
-<h2 id="org6e3f90f">Implementing the other side</h2>
+<section id="slide-orgdfc1c0f">
+<h2 id="orgdfc1c0f">Implementing the other side</h2>
 <p>
 #+end_notes
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org7bba37d">
-<h3 id="org7bba37d">The Map for a Monoid</h3>
+<section id="slide-org85b31ce">
+<h3 id="org85b31ce">The Map for a Monoid</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">Impl</span>&gt;
@@ -763,8 +763,8 @@ empty becomes identity
 </section>
 </section>
 <section>
-<section id="slide-org080f816">
-<h4 id="org080f816"><code>identity</code></h4>
+<section id="slide-org7a2ef28">
+<h4 id="org7a2ef28"><code>identity</code></h4>
 <div class="org-src-container">
 
 <pre class="src src-c++">    <span class="org-keyword">auto</span> <span class="org-variable-name">identity</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span> &amp;&amp; self) {
@@ -777,8 +777,8 @@ empty becomes identity
 </section>
 </section>
 <section>
-<section id="slide-orgd6ffb02">
-<h4 id="orgd6ffb02"><code>concat</code></h4>
+<section id="slide-org44d629b">
+<h4 id="org44d629b"><code>concat</code></h4>
 <div class="org-src-container">
 
 <pre class="src src-c++">   <span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">Range</span>&gt;
@@ -794,8 +794,8 @@ empty becomes identity
 </section>
 </section>
 <section>
-<section id="slide-org1e6578f">
-<h4 id="org1e6578f"><code>op</code></h4>
+<section id="slide-org63bdd39">
+<h4 id="org63bdd39"><code>op</code></h4>
 <div class="org-src-container">
 
 <pre class="src src-c++">   <span class="org-keyword">auto</span> <span class="org-variable-name">op</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-keyword">auto</span> <span class="org-variable-name">a1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">a2</span>) {
@@ -807,8 +807,8 @@ empty becomes identity
 </section>
 </section>
 <section>
-<section id="slide-org223675b">
-<h3 id="org223675b">Deducing <code>this</code> <b>and</b> CRTP</h3>
+<section id="slide-org8e4263f">
+<h3 id="org8e4263f">Deducing <code>this</code> <b>and</b> CRTP</h3>
 <p>
 We'll see in a moment, but it's because we want to constraint the required implementation.
 </p>
@@ -819,8 +819,8 @@ We want to use the derived version which has all of the operations.
 </section>
 </section>
 <section>
-<section id="slide-org33e0898">
-<h3 id="org33e0898"><code>Plus</code></h3>
+<section id="slide-org5929403">
+<h3 id="org5929403"><code>Plus</code></h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
@@ -842,8 +842,8 @@ We want to use the derived version which has all of the operations.
 </section>
 </section>
 <section>
-<section id="slide-org72c6fd3">
-<h3 id="org72c6fd3"><code>PlusMonoidMap</code></h3>
+<section id="slide-org5afe605">
+<h3 id="org5afe605"><code>PlusMonoidMap</code></h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
@@ -866,8 +866,8 @@ This might be simpler if we didn't allow choice of the basis operations, but tha
 </section>
 </section>
 <section>
-<section id="slide-orga091728">
-<h3 id="orga091728">The map instances</h3>
+<section id="slide-orgcd7a504">
+<h3 id="orgcd7a504">The map instances</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt; <span class="org-keyword">auto</span> <span class="org-variable-name">monoid_concept_map</span> = <span class="org-constant">std</span>::false_type{};
@@ -885,8 +885,8 @@ This might be simpler if we didn't allow choice of the basis operations, but tha
 </section>
 </section>
 <section>
-<section id="slide-org304a85d">
-<h3 id="org304a85d">Can we <code>concat</code> instead?</h3>
+<section id="slide-orga85eba6">
+<h3 id="orga85eba6">Can we <code>concat</code> instead?</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">class</span> <span class="org-type">StringMonoid</span> {
@@ -919,8 +919,8 @@ No, I'm not actually recommending this as an implementation.
 </section>
 </section>
 <section>
-<section id="slide-orgf804d38">
-<h3 id="orgf804d38">The Map and instance</h3>
+<section id="slide-org59dac6e">
+<h3 id="org59dac6e">The Map and instance</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++"><span class="org-keyword">struct</span> <span class="org-type">StringMonoidMap</span> : <span class="org-keyword">public</span> <span class="org-type">Monoid</span>&lt;StringMonoid&gt; {
@@ -936,15 +936,15 @@ No, I'm not actually recommending this as an implementation.
 </section>
 </section>
 <section>
-<section id="slide-org1d621b6">
-<h2 id="org1d621b6">Some simple use</h2>
-<div class="outline-text-2" id="text-org1d621b6">
+<section id="slide-org412aac6">
+<h2 id="org412aac6">Some simple use</h2>
+<div class="outline-text-2" id="text-org412aac6">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org817e1f5">
-<h3 id="org817e1f5">Exercise the functions</h3>
+<section id="slide-orgf23e7fa">
+<h3 id="orgf23e7fa">Exercise the functions</h3>
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">P</span>&gt;
@@ -967,8 +967,8 @@ No, I'm not actually recommending this as an implementation.
 </section>
 </section>
 <section>
-<section id="slide-org4864cd4">
-<h3 id="org4864cd4">Some simple cases</h3>
+<section id="slide-orgf9d9862">
+<h3 id="orgf9d9862">Some simple cases</h3>
 <div class="org-src-container">
 
 <pre class="src src-c++">    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"\ntest int\n"</span>;
@@ -985,8 +985,12 @@ No, I'm not actually recommending this as an implementation.
 </section>
 </section>
 <section>
-<section id="slide-orgaca0a82">
-<h3 id="orgaca0a82">On the StringMonoid</h3>
+<section id="slide-orgb7792a2">
+<h3 id="orgb7792a2">On <code>std::string</code></h3>
+<p>
+This will use the StringMonoid we defined a few moments ago.
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-C++">    <span class="org-keyword">auto</span> <span class="org-variable-name">d2</span> = <span class="org-type">monoid_concept_map</span>&lt;<span class="org-constant">std</span>::string&gt;;
@@ -1003,19 +1007,23 @@ No, I'm not actually recommending this as an implementation.
     assert(k2 == <span class="org-constant">std</span>::string{<span class="org-string">"1234"</span>});
 </pre>
 </div>
+
+<p>
+Note that the map type is mostly invisible.
+</p>
 </section>
 </section>
 <section>
-<section id="slide-org7f47430">
-<h3 id="org7f47430">Results</h3>
-<div class="outline-text-3" id="text-org7f47430">
+<section id="slide-org21fba09">
+<h3 id="org21fba09">Results</h3>
+<div class="outline-text-3" id="text-org21fba09">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgad3261a">
-<h4 id="orgad3261a">test int</h4>
-<pre class="example" id="org755c099">
+<section id="slide-org7b53b79">
+<h4 id="org7b53b79">test int</h4>
+<pre class="example" id="orgd8b6f5b">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1028,9 +1036,9 @@ Plus::op()
 </section>
 </section>
 <section>
-<section id="slide-orgcae6688">
-<h4 id="orgcae6688">test long</h4>
-<pre class="example" id="org2391245">
+<section id="slide-orgee429a2">
+<h4 id="orgee429a2">test long</h4>
+<pre class="example" id="orgb363e71">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1043,9 +1051,9 @@ Plus::op()
 </section>
 </section>
 <section>
-<section id="slide-orgb79124b">
-<h4 id="orgb79124b">test char</h4>
-<pre class="example" id="orgbf0fbc9">
+<section id="slide-orgfe7c3b6">
+<h4 id="orgfe7c3b6">test char</h4>
+<pre class="example" id="org1d5662c">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1058,9 +1066,9 @@ Plus::op()
 </section>
 </section>
 <section>
-<section id="slide-orgcccbd38">
-<h4 id="orgcccbd38">test string</h4>
-<pre class="example" id="org872e991">
+<section id="slide-org0365238">
+<h4 id="org0365238">test string</h4>
+<pre class="example" id="org49df5bf">
 Monoid::identity()
 StringMonoid::concat()
 StringMonoid::op()
@@ -1073,15 +1081,15 @@ StringMonoid::op()
 </section>
 </section>
 <section>
-<section id="slide-orgd475401">
-<h2 id="orgd475401">Monoid in Trees</h2>
-<div class="outline-text-2" id="text-orgd475401">
+<section id="slide-org4e173d4">
+<h2 id="org4e173d4">Monoid in Trees</h2>
+<div class="outline-text-2" id="text-org4e173d4">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6451746">
-<h3 id="org6451746">Foldable generalizes</h3>
+<section id="slide-orga4045e0">
+<h3 id="orga4045e0">Foldable generalizes</h3>
 <p>
 Folding is very much tied to Range like things.
 </p>
@@ -1096,16 +1104,16 @@ It can, and has, been generalized to things that can be traversed.
 </section>
 </section>
 <section>
-<section id="slide-orgc0cddac">
-<h3 id="orgc0cddac">Summarizing Data in a tree</h3>
+<section id="slide-org0dcb1a9">
+<h3 id="org0dcb1a9">Summarizing Data in a tree</h3>
 <p>
-If the summary type is monoidal nodes can hold summaries of all the data below them.
+If the summary type is monoidal, nodes can hold summaries of all the data below them.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgc1323ea">
-<h3 id="orgc1323ea"><code>fingertrees</code></h3>
+<section id="slide-org24b1abc">
+<h3 id="org24b1abc"><code>fingertrees</code></h3>
 <p>
 Much of the flexibility of <code>fingertrees</code> comes from the monoidal tags.
 </p>
@@ -1115,21 +1123,21 @@ They are also fairly complicated.
 </p>
 
 <p>
-Technique can be applied to other, simpler, trees.
+Technique can be applied to other, simpler trees.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org2f1cf2e">
-<h3 id="org2f1cf2e">fringe-tree</h3>
+<section id="slide-org587453f">
+<h3 id="org587453f">fringe-tree</h3>
 <p>
 Simplified tree with data at the edges
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org588c37a">
-<h3 id="org588c37a">Code</h3>
+<section id="slide-orgc0b98a3">
+<h3 id="orgc0b98a3">Code</h3>
 <p>
 Show the monoid-map branch of
 </p>
@@ -1140,8 +1148,8 @@ Show the monoid-map branch of
 </section>
 </section>
 <section>
-<section id="slide-orga016740">
-<h2 id="orga016740">Summary for Concept Maps</h2>
+<section id="slide-org68e7121">
+<h2 id="org68e7121">Summary for Concept Maps</h2>
 <p>
 Tell you what I told you
 </p>
@@ -1157,16 +1165,16 @@ Tell you what I told you
 </section>
 </section>
 <section>
-<section id="slide-org23cb84c">
-<h2 id="org23cb84c">Questions</h2>
+<section id="slide-org19ce7bf">
+<h2 id="org19ce7bf">Questions?</h2>
 <p>
 Or comments
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgf2cd422">
-<h2 id="orgf2cd422">Thank You</h2>
+<section id="slide-orged0ff6d">
+<h2 id="orged0ff6d">Thank You</h2>
 <aside class="notes">
 <p>
 

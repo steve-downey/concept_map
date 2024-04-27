@@ -51,7 +51,7 @@
 
 Steve Downey
 
-© 2023 Bloomberg Finance L.P. All rights reserved.
+© 2024 Bloomberg Finance L.P. All rights reserved.
 
 
 
@@ -153,9 +153,9 @@ concept_map BinaryFunction<int (*)(int, int), int, int>
 #+begin_notes
 
 #+end_notes
-** Why Didn't We Get Them
+** Why Didn't We Get Them?
 
-Lets not go there right now.
+Let's not go there right now.
 
 #+begin_notes
 
@@ -242,7 +242,7 @@ https://brevzin.github.io/c++/2020/12/01/tag-invoke/
 #+end_notes
 * Requirements for Solution
     #+ATTR_REVEAL: :frag (appear)
-- Tied to the typesystem
+- Tied to the type system
     #+ATTR_REVEAL: :frag (appear)
 - Automatable
     #+ATTR_REVEAL: :frag (appear)
@@ -263,13 +263,13 @@ Can we do that?
 #+begin_notes
 
 #+end_notes
-* Type based lookup
+* Type-based lookup
 Templates!
 
 #+begin_notes
 
 #+end_notes
-* Additional Requirement
+* Additional Requirements
 Avoid ADL
     #+ATTR_REVEAL: :frag (appear)
 Object Lookup rather than Overload Lookup
@@ -604,7 +604,9 @@ void testP()
     testP<char>();
 
 #+end_src
-** On the StringMonoid
+** On ~std::string~
+This will use the StringMonoid we defined a few moments ago.
+
 #+begin_src C++
     auto d2 = monoid_concept_map<std::string>;
 
@@ -619,6 +621,8 @@ void testP()
     auto k2 = d2.concat(vs);
     assert(k2 == std::string{"1234"});
 #+end_src
+
+Note that the map type is mostly invisible.
 
 ** Results
 *** test int
@@ -679,14 +683,14 @@ It can, and has, been generalized to things that can be traversed.
 ~monoids~ are still critical for Traversables.
 
 ** Summarizing Data in a tree
-If the summary type is monoidal nodes can hold summaries of all the data below them.
+If the summary type is monoidal, nodes can hold summaries of all the data below them.
 
 ** ~fingertrees~
 Much of the flexibility of ~fingertrees~ comes from the monoidal tags.
 
 They are also fairly complicated.
 
-Technique can be applied to other, simpler, trees.
+Technique can be applied to other, simpler trees.
 
 ** fringe-tree
 Simplified tree with data at the edges
@@ -706,7 +710,7 @@ Tell you what I told you
 - Decoupled map use and implementation
 
 
-* Questions
+* Questions?
 Or comments
 
 * Thank You
