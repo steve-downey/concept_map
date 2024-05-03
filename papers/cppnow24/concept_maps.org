@@ -44,8 +44,9 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+REVEAL_VERSION: 4
 
-#+REVEAL_HLEVEL: 3
+#+REVEAL_HLEVEL: 5
 #+REVEAL_EXPORT_NOTES_TO_PDF: separate-page
+#+REVEAL_DEFAULT_FRAG_STYLE: (appear)
 
 * Concept Maps using C++23 Library Tech
 
@@ -154,6 +155,7 @@ concept_map BinaryFunction<int (*)(int, int), int, int>
 
 #+end_notes
 ** Why Didn't We Get Them?
+#+ATTR_REVEAL: :frag (appear)
 
 Let's not go there right now.
 
@@ -256,20 +258,24 @@ https://brevzin.github.io/c++/2020/12/01/tag-invoke/
 
 #+end_notes
 * What does typeclass do?
+#+ATTR_REVEAL: :frag (appear)
 Adds a record to the function that defines the operations for the type.
 
+#+ATTR_REVEAL: :frag (appear)
 Can we do that?
 
 #+begin_notes
 
 #+end_notes
 * Type-based lookup
+#+ATTR_REVEAL: :frag (appear)
 Templates!
 
 #+begin_notes
 
 #+end_notes
 * Additional Requirements
+#+ATTR_REVEAL: :frag (appear)
 Avoid ADL
     #+ATTR_REVEAL: :frag (appear)
 Object Lookup rather than Overload Lookup
@@ -277,8 +283,9 @@ Object Lookup rather than Overload Lookup
 #+begin_notes
 
 #+end_notes
-* Template Variables
-Template variables have become more powerful
+* Variable templates
+#+ATTR_REVEAL: :frag (appear)
+Variable templates have become more powerful
 
     #+ATTR_REVEAL: :frag (appear)
 We can have entirely distinct specializations
@@ -345,6 +352,7 @@ concept has_eq = requires(T const& v) {
 
 #+end_notes
 ** Will do better
+#+ATTR_REVEAL: :frag (appear)
 In a bit
 
 
@@ -368,6 +376,7 @@ A little more than you think.
 
 #+end_notes
 ** Math
+#+ATTR_REVEAL: :frag (appear)
 - $\oplus: M \times M \rightarrow M$
 - $x \oplus (y \oplus z) = (x \oplus y) \oplus z$
 - $1_M \in M$ such that $\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)$
@@ -376,23 +385,28 @@ A little more than you think.
 
 #+end_notes
 ** Function form
+#+ATTR_REVEAL: :frag (appear)
 - $f : M \times M \rightarrow M$
 - $f(x, f(y, z)) = f(f(x, y), z)$
 - $1_M \in M$ such that $\forall m \in M : f(1_M, m) = m = f(m, 1_M)$
 
+#+ATTR_REVEAL: :frag (appear)
 The similarity to left and right fold is *NOT* an accident
 
 #+begin_notes
 
 #+end_notes
 ** Core Functions
+#+ATTR_REVEAL: :frag (appear)
 - $empty : m$ :: $empty = concat \, []$
 - $concat : [m] \rightarrow m$ :: $fold \, append \, empty$
 - $append : m \rightarrow m \rightarrow m$ :: $op$
 
 
+#+ATTR_REVEAL: :frag (appear)
   Note that it's self-referential
 
+#+ATTR_REVEAL: :frag (appear)
   This is common
 
 #+begin_notes
@@ -415,6 +429,7 @@ class Semigroup a => Monoid a where
 
 #+end_notes
 ** Minimum Set
+#+ATTR_REVEAL: :frag (appear)
 $empty \, | \, concat$
 
 #+begin_notes
@@ -435,8 +450,8 @@ concept MonoidRequirements =
 #+begin_notes
 I am ignoring all sorts of const volatile reference issues here.
 
-* Implementing the other side
 #+end_notes
+* Implementing the other side
 ** The Map for a Monoid
 #+begin_src c++
 template <class Impl>
@@ -485,8 +500,10 @@ empty becomes identity
 #+end_src
 
 ** Deducing ~this~ *and* CRTP
+#+ATTR_REVEAL: :frag (appear)
 We'll see in a moment, but it's because we want to constraint the required implementation.
 
+#+ATTR_REVEAL: :frag (appear)
 We want to use the derived version which has all of the operations.
 
 ** ~Plus~
@@ -676,21 +693,31 @@ StringMonoid::op()
 * Monoid in Trees
 
 ** Foldable generalizes
+#+ATTR_REVEAL: :frag (appear)
 Folding is very much tied to Range like things.
 
+#+ATTR_REVEAL: :frag (appear)
 It can, and has, been generalized to things that can be traversed.
 
+#+ATTR_REVEAL: :frag (appear)
 ~monoids~ are still critical for Traversables.
 
 ** Summarizing Data in a tree
+#+ATTR_REVEAL: :frag (appear)
 If the summary type is monoidal, nodes can hold summaries of all the data below them.
 
 ** ~fingertrees~
+#+ATTR_REVEAL: :frag (appear)
 Much of the flexibility of ~fingertrees~ comes from the monoidal tags.
 
+#+ATTR_REVEAL: :frag (appear)
 They are also fairly complicated.
 
+#+ATTR_REVEAL: :frag (appear)
 Technique can be applied to other, simpler trees.
+
+#+ATTR_REVEAL: :frag (appear)
+P3200 (eventually) ((C++29))
 
 ** fringe-tree
 Simplified tree with data at the edges
@@ -703,7 +730,7 @@ Show the monoid-map branch of
 * Summary for Concept Maps
 Tell you what I told you
 
-- Template variables for map lookup
+- Variable templates for map lookup
 - Named operations on the map object
 - Open for extension
 - Concept checkable implementations
