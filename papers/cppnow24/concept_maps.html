@@ -1,296 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
-<meta name="generator" content="Org Mode" />
-<style>
-  #content { max-width: 60em; margin: auto; }
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+<meta charset="utf-8"/>
+<title>Concept Maps using C++23 Library Tech</title>
+<meta name="author" content="Steve Downey"/>
+<meta name="description" content="
 
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { }
+"/>
+<meta name="keywords" content="  "/>
+<style type="text/css">
+.underline { text-decoration: underline; }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./my_theme.css" id="theme"/>
+
+<link rel="stylesheet" href="./operandi-tinted.css"/>
+
+<link rel="stylesheet" href="./footer.css"/>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <link rel="stylesheet" type="text/css" href="./operandi-tinted.css" />
-<script>
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-// @license-end
-</script>
-<script>
-  window.MathJax = {
-    tex: {
-      ams: {
-        multlineWidth: '85%'
-      },
-      tags: 'ams',
-      tagSide: 'right',
-      tagIndent: '.8em'
-    },
-    chtml: {
-      scale: 1.0,
-      displayAlign: 'center',
-      displayIndent: '0em'
-    },
-    svg: {
-      scale: 1.0,
-      displayAlign: 'center',
-      displayIndent: '0em'
-    },
-    output: {
-      font: 'mathjax-modern',
-      displayOverflow: 'overflow'
-    }
-  };
-</script>
-
-<script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+<link rel="stylesheet" type="text/css" href="http://sdowney.org/css/modus-operandi-tinted.css" />
+A
 </head>
 <body>
-<div id="content" class="content">
-<div id="outline-container-org47452c5" class="outline-2">
-<h2 id="org47452c5">Concept Maps using C++23 Library Tech</h2>
-<div class="outline-text-2" id="text-org47452c5">
-<p>
-Steve Downey
-</p>
-
-<p>
-© 2024 Bloomberg Finance L.P. All rights reserved.
-</p>
-</div>
-</div>
-<div id="outline-container-org92ae3ff" class="outline-2">
-<h2 id="org92ae3ff">Abstract</h2>
-<div class="outline-text-2" id="text-org92ae3ff">
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./concept_maps_title.png">
+<h1 class="title">Concept Maps using C++23 Library Tech</h1>
+</section>
+<section>
+<section id="slide-org327cfc3">
+<h2 id="org327cfc3">Abstract</h2>
 <p>
 C++0x Concepts had a feature <code>Concept Maps</code> that allowed a set of functions, types, and template definitions to be associated with a concept and the map to be specialized for types that meet the concept.
 </p>
 
-<p>
+<p class="fragment (appear)">
 This allowed open extension of a concept.
 </p>
 
-<p>
+<p class="fragment (appear)">
 A definition could be provided that allows an algorithm to operate in terms of the API a concept presents and the map would define how those operations are implemented for a particular type.
 </p>
 
-<ul class="org-ul">
-<li>This is similar to how Haskell's <code>typeclass</code> works.</li>
+<ul>
+<li class="fragment appear">This is similar to how Haskell's <code>typeclass</code> works.</li>
+
 </ul>
 
 
-<div class="notes" id="org94752d5">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-<div id="outline-container-org40c8c56" class="outline-3">
-<h3 id="org40c8c56">Lost with <code>Concepts-Lite</code></h3>
-<div class="outline-text-3" id="text-org40c8c56">
-<div class="notes" id="org14661f1">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org7c0bc16">
+<h3 id="org7c0bc16">Lost with <code>Concepts-Lite</code></h3>
+<aside class="notes">
 <p>
 The feature was very general, and lost as part of the <code>Concepts-Lite</code> proposal that was eventually adopted.
 </p>
@@ -307,213 +79,227 @@ The proliferation of <code>transform</code> functions for functorial <code>map</
 It is also a problem when adapting types that are closed for extension or do not permit member functions.
 </p>
 
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgbd7ea53" class="outline-2">
-<h2 id="orgbd7ea53">Why?</h2>
-<div class="outline-text-2" id="text-orgbd7ea53">
-<ul class="org-ul">
-<li><p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org713368c">
+<h2 id="org713368c">Why?</h2>
+<ul>
+<li class="fragment appear"><p>
 Don't know if you should
 </p></li>
-<li>Need to know if you could first</li>
+<li class="fragment appear">Need to know if you could first</li>
+
 </ul>
 
-<div class="notes" id="orgb070dc9">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-<div id="outline-container-org4f97846" class="outline-3">
-<h3 id="org4f97846">Alternatives</h3>
-<div class="outline-text-3" id="text-org4f97846">
-<ul class="org-ul">
-<li><p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org10014b5">
+<h3 id="org10014b5">Alternatives</h3>
+<ul>
+<li class="fragment appear"><p>
 Virtual Interface
 </p></li>
-<li><p>
+<li class="fragment appear"><p>
 Adapters
 </p></li>
-<li>Collection of CPOs</li>
+<li class="fragment appear">Collection of CPOs</li>
+
 </ul>
-<div class="notes" id="orgfca5476">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org5c09d0e" class="outline-3">
-<h3 id="org5c09d0e">Hard to Support</h3>
-<div class="outline-text-3" id="text-org5c09d0e">
-<div class="notes" id="orgaf59e23">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orga36e8a0">
+<h3 id="orga36e8a0">Hard to Support</h3>
+<aside class="notes">
 <p>
 
 </p>
 
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org409da8b">
+<h2 id="org409da8b">Example from C++0x Concepts</h2>
+<div class="outline-text-2" id="text-org409da8b">
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-org7f6941e" class="outline-2">
-<h2 id="org7f6941e">Example from C++0x Concepts</h2>
-<div class="outline-text-2" id="text-org7f6941e">
-</div>
-<div id="outline-container-orgb546184" class="outline-3">
-<h3 id="orgb546184">Student Record</h3>
-<div class="outline-text-3" id="text-orgb546184">
+</section>
+</section>
+<section>
+<section id="slide-orga7701ea">
+<h3 id="orga7701ea">Student Record</h3>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> {
+
+<pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">student</span> <span class="org-type">record</span> <span class="org-rainbow-delimiters-depth-1">{</span>
 <span class="org-keyword">public</span>:
   <span class="org-type">string</span> <span class="org-variable-name">id</span>;
   <span class="org-type">string</span> <span class="org-variable-name">name</span>;
   <span class="org-type">string</span> <span class="org-variable-name">address</span>;
-  <span class="org-type">bool</span>   <span class="org-function-name">id_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;);
-  <span class="org-type">bool</span>   <span class="org-function-name">name_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;);
-  <span class="org-type">bool</span>   <span class="org-function-name">address_equal</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;);
-};
+  <span class="org-type">bool</span>   <span class="org-function-name">id_equal</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;<span class="org-rainbow-delimiters-depth-2">)</span>;
+  <span class="org-type">bool</span>   <span class="org-function-name">name_equal</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;<span class="org-rainbow-delimiters-depth-2">)</span>;
+  <span class="org-type">bool</span>   <span class="org-function-name">address_equal</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp;<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
-<div class="notes" id="org3eb6b11">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgd68b310" class="outline-3">
-<h3 id="orgd68b310">Equality Comparable</h3>
-<div class="outline-text-3" id="text-orgd68b310">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org84bb684">
+<h3 id="org84bb684">Equality Comparable</h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">EqualityComparable</span><span class="org-variable-name">&lt;student record&gt;</span>{
-    <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-variable-name">==</span>(<span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp; a,
-                    <span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-name">record</span>&amp; b){
-        <span class="org-keyword">return</span> a.id_equal(b);
-}
-};
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-variable-use">EqualityComparable</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">student</span> <span class="org-variable-use">record</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+    <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-operator">==</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-use">record</span><span class="org-operator">&amp;</span> <span class="org-variable-name">a</span><span class="org-delimiter">,</span>
+                    <span class="org-keyword">const</span> <span class="org-type">student</span> <span class="org-variable-use">record</span><span class="org-operator">&amp;</span> <span class="org-variable-name">b</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">){</span></span>
+        <span class="org-keyword">return</span> <span class="org-variable-use">a</span><span class="org-operator">.</span><span class="org-function-call">id_equal</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span><span class="org-variable-use">b</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">}</span></span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
 
-<div class="notes" id="orgdc79012">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org629a6d8" class="outline-3">
-<h3 id="org629a6d8">Allow associated types</h3>
-<div class="outline-text-3" id="text-org629a6d8">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgde61207">
+<h3 id="orgde61207">Allow associated types</h3>
 <p>
 Very useful for pointers
 </p>
 
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-type">BinaryFunction</span><span class="org-variable-name">&lt;int (*)(int, int), int, int&gt;</span>
-{
-    <span class="org-keyword">typedef</span> <span class="org-type">int</span> <span class="org-type">result_type</span>;
-};
+
+<pre class="src src-c++"><span class="org-type">concept_map</span> <span class="org-variable-use">BinaryFunction</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">int</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-operator">*</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)(</span></span><span class="org-type">int</span><span class="org-delimiter">,</span> <span class="org-type">int</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">,</span> <span class="org-type">int</span><span class="org-delimiter">,</span> <span class="org-type">int</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+    <span class="org-keyword">typedef</span> <span class="org-type">int</span> <span class="org-type">result_type</span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
 
 
-<div class="notes" id="org1f0a81d">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgdfcf3fc" class="outline-3">
-<h3 id="orgdfcf3fc">Why Didn't We Get Them?</h3>
-<div class="outline-text-3" id="text-orgdfcf3fc">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org8b02b93">
+<h3 id="org8b02b93">Why Didn't We Get Them?</h3>
 <p>
 Let's not go there right now.
 </p>
 
-<div class="notes" id="orgad95145">
+<aside class="notes">
 <p>
 
 </p>
 
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org31c0369">
+<h2 id="org31c0369">State of the Art</h2>
+<div class="outline-text-2" id="text-org31c0369">
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd5e252c" class="outline-2">
-<h2 id="orgd5e252c">State of the Art</h2>
-<div class="outline-text-2" id="text-orgd5e252c">
-</div>
-<div id="outline-container-org588a12d" class="outline-3">
-<h3 id="org588a12d">Rust Traits</h3>
-<div class="outline-text-3" id="text-org588a12d">
+</section>
+</section>
+<section>
+<section id="slide-org94ea95e">
+<h3 id="org94ea95e">Rust Traits</h3>
 <div class="org-src-container">
-<pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> {
-    <span class="org-keyword">fn</span> <span class="org-function-name">eq</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span>;
 
-    <span class="org-keyword">fn</span> <span class="org-function-name">ne</span>(<span class="org-rust-ampersand">&amp;</span><span class="org-keyword">self</span>, <span class="org-variable-name">rhs</span>: <span class="org-rust-ampersand">&amp;</span><span class="org-type">Self</span>) -&gt; <span class="org-type">bool</span> {
-        !<span class="org-keyword">self</span>.eq(rhs)
-    }
-}
+<pre class="src src-rust"><span class="org-keyword">trait</span> <span class="org-type">PartialEq</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+    <span class="org-keyword">fn</span> <span class="org-function-name">eq</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-operator">&amp;</span><span class="org-keyword">self</span><span class="org-delimiter">,</span> <span class="org-variable-name">rhs</span><span class="org-delimiter">:</span> <span class="org-operator">&amp;</span><span class="org-type">Self</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span> <span class="org-operator">-&gt;</span> <span class="org-type">bool</span><span class="org-delimiter">;</span>
+
+    <span class="org-keyword">fn</span> <span class="org-function-name">ne</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-operator">&amp;</span><span class="org-keyword">self</span><span class="org-delimiter">,</span> <span class="org-variable-name">rhs</span><span class="org-delimiter">:</span> <span class="org-operator">&amp;</span><span class="org-type">Self</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span> <span class="org-operator">-&gt;</span> <span class="org-type">bool</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">{</span></span>
+        <span class="org-operator">!</span><span class="org-keyword">self</span><span class="org-delimiter">.</span><span class="org-function-call">eq</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span><span class="org-variable-use">rhs</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span>
+    <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">}</span></span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 </pre>
 </div>
 
-<div class="notes" id="org1af95f5">
+<aside class="notes">
 <p>
 
 </p>
 
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgb1f6dc7">
+<h3 id="orgb1f6dc7">C++ CPOs</h3>
+<div class="outline-text-3" id="text-orgb1f6dc7">
 </div>
-</div>
-</div>
-<div id="outline-container-org70b6c74" class="outline-3">
-<h3 id="org70b6c74">C++ CPOs</h3>
-<div class="outline-text-3" id="text-org70b6c74">
-</div>
-<div id="outline-container-org2c87771" class="outline-4">
-<h4 id="org2c87771">Some Concepts and Types</h4>
-<div class="outline-text-4" id="text-org2c87771">
+</section>
+</section>
+<section>
+<section id="slide-org4fbc7d3">
+<h4 id="org4fbc7d3">Some Concepts and Types</h4>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> {
-<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
-  { eq(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
-};
 
-<span class="org-keyword">struct</span> <span class="org-type">eq_fn</span> {
-  <span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
-  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
-                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
-    <span class="org-keyword">return</span> eq(x, y);
-  }
-};
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span>::<span class="org-constant">hidden</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>
+<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-rainbow-delimiters-depth-3">{</span> eq<span class="org-rainbow-delimiters-depth-4">(</span>v, v<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-3">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">bool</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span>;
 
-<span class="org-keyword">template</span> &lt;<span class="org-type">has_eq</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-function-name">ne</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>, <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) {
-  <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq(x, y);
-}
+<span class="org-keyword">struct</span> <span class="org-type">eq_fn</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">has_eq</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name"><span class="org-rainbow-delimiters-depth-3">()</span></span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-keyword">const</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+    <span class="org-keyword">return</span> eq<span class="org-rainbow-delimiters-depth-4">(</span>x, y<span class="org-rainbow-delimiters-depth-4">)</span>;
+  <span class="org-rainbow-delimiters-depth-3">}</span>
+<span class="org-rainbow-delimiters-depth-2">}</span>;
 
-<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">concept</span> <span class="org-type">has_ne</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
-  { ne(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
-};
+<span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">has_eq</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-function-name">ne</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>, <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-keyword">return</span> <span class="org-keyword">not</span> eq<span class="org-rainbow-delimiters-depth-3">(</span>x, y<span class="org-rainbow-delimiters-depth-3">)</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span>
 
-<span class="org-keyword">struct</span> <span class="org-type">ne_fn</span> {
-  <span class="org-keyword">template</span> &lt;<span class="org-type">has_ne</span> <span class="org-type">T</span>&gt;
-  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name">()</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
-                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span>) <span class="org-keyword">const</span> {
-    <span class="org-keyword">return</span> ne(x, y);
-  }
-};
-} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N::hidden</span>
+<span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>
+<span class="org-keyword">concept</span> <span class="org-type">has_ne</span> = <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-rainbow-delimiters-depth-3">{</span> ne<span class="org-rainbow-delimiters-depth-4">(</span>v, v<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-3">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">bool</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span>;
+
+<span class="org-keyword">struct</span> <span class="org-type">ne_fn</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+  <span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">has_ne</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>
+  <span class="org-keyword">constexpr</span> <span class="org-type">bool</span> <span class="org-keyword">operator</span><span class="org-function-name"><span class="org-rainbow-delimiters-depth-3">()</span></span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">x</span>,
+                            <span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">y</span><span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-keyword">const</span> <span class="org-rainbow-delimiters-depth-3">{</span>
+    <span class="org-keyword">return</span> ne<span class="org-rainbow-delimiters-depth-4">(</span>x, y<span class="org-rainbow-delimiters-depth-4">)</span>;
+  <span class="org-rainbow-delimiters-depth-3">}</span>
+<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span> <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N::hidden</span>
 </pre>
 </div>
 
@@ -521,32 +307,33 @@ Let's not go there right now.
 See <span class="underline">Why tag_invoke is not the solution I want</span> by Barry Revzin
 <a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
 </p>
-<div class="notes" id="org33513e4">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org4722a72" class="outline-4">
-<h4 id="org4722a72">C++ partial_equality</h4>
-<div class="outline-text-4" id="text-org4722a72">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org26a2499">
+<h4 id="org26a2499">C++ partial_equality</h4>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> {
-<span class="org-keyword">inline</span> <span class="org-keyword">namespace</span> <span class="org-constant">function_objects</span> {
-<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">eq_fn</span> <span class="org-variable-name">eq</span>{};
-<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">ne_fn</span> <span class="org-variable-name">ne</span>{};
-} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace function_objects</span>
 
-<span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
+<pre class="src src-C++"><span class="org-keyword">namespace</span> <span class="org-constant">N</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+<span class="org-keyword">inline</span> <span class="org-keyword">namespace</span> <span class="org-constant">function_objects</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">eq_fn</span> <span class="org-variable-name">eq</span><span class="org-rainbow-delimiters-depth-3">{}</span>;
+<span class="org-keyword">inline</span> <span class="org-keyword">constexpr</span> <span class="org-constant">hidden</span>::<span class="org-type">ne_fn</span> <span class="org-variable-name">ne</span><span class="org-rainbow-delimiters-depth-3">{}</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span> <span class="org-comment-delimiter">// </span><span class="org-comment">namespace function_objects</span>
+
+<span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>
 <span class="org-keyword">concept</span> partial_equality
-  <span class="org-keyword">requires</span>(<span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>)
-{
-  eq(t, t);
-  ne(t, t);
-};
-} <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N</span>
+  <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span><span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">T</span><span class="org-rainbow-delimiters-depth-3">&gt;</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-2">{</span>
+  eq<span class="org-rainbow-delimiters-depth-3">(</span>t, t<span class="org-rainbow-delimiters-depth-3">)</span>;
+  ne<span class="org-rainbow-delimiters-depth-3">(</span>t, t<span class="org-rainbow-delimiters-depth-3">)</span>;
+<span class="org-rainbow-delimiters-depth-2">}</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span> <span class="org-comment-delimiter">// </span><span class="org-comment">namespace N</span>
 </pre>
 </div>
 <p>
@@ -554,492 +341,513 @@ See <span class="underline">Why tag_invoke is not the solution I want</span> by 
 <a href="https://brevzin.github.io/c++/2020/12/01/tag-invoke/">https://brevzin.github.io/c++/2020/12/01/tag-invoke/</a>
 </p>
 
-<div class="notes" id="org45b7630">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org3f309aa" class="outline-2">
-<h2 id="org3f309aa">Requirements for Solution</h2>
-<div class="outline-text-2" id="text-org3f309aa">
-<ul class="org-ul">
-<li><p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org245ab84">
+<h2 id="org245ab84">Requirements for Solution</h2>
+<ul>
+<li class="fragment appear"><p>
 Tied to the type system
 </p></li>
-<li><p>
+<li class="fragment appear"><p>
 Automatable
 </p></li>
-<li>"zero" overhead
-<ul class="org-ul">
-<li><p>
+<li class="fragment appear">"zero" overhead
+<ul>
+<li class="fragment appear"><p>
 no virtual calls
 </p></li>
-<li>no type erasure</li>
+<li class="fragment appear">no type erasure</li>
+
 </ul></li>
+
 </ul>
 
-<div class="notes" id="org753d7ca">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org355cfcd" class="outline-2">
-<h2 id="org355cfcd">What does typeclass do?</h2>
-<div class="outline-text-2" id="text-org355cfcd">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org422501c">
+<h2 id="org422501c">What does typeclass do?</h2>
+<p class="fragment (appear)">
 Adds a record to the function that defines the operations for the type.
 </p>
 
-<p>
+<p class="fragment (appear)">
 Can we do that?
 </p>
 
-<div class="notes" id="org6d82402">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org56967a0" class="outline-2">
-<h2 id="org56967a0">Type-based lookup</h2>
-<div class="outline-text-2" id="text-org56967a0">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgac05252">
+<h2 id="orgac05252">Type-based lookup</h2>
+<p class="fragment (appear)">
 Templates!
 </p>
 
-<div class="notes" id="org2a94294">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org15afcd5" class="outline-2">
-<h2 id="org15afcd5">Additional Requirements</h2>
-<div class="outline-text-2" id="text-org15afcd5">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org8607d77">
+<h2 id="org8607d77">Additional Requirements</h2>
+<p class="fragment (appear)">
 Avoid ADL
 </p>
-<p>
+<p class="fragment (appear)">
 Object Lookup rather than Overload Lookup
 </p>
 
-<div class="notes" id="org1bfba93">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org3c121ed" class="outline-2">
-<h2 id="org3c121ed">Variable templates</h2>
-<div class="outline-text-2" id="text-org3c121ed">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orge42e473">
+<h2 id="orge42e473">Variable templates</h2>
+<p class="fragment (appear)">
 Variable templates have become more powerful
 </p>
 
-<p>
+<p class="fragment (appear)">
 We can have entirely distinct specializations
 </p>
 
-<div class="notes" id="org034cb4e">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-<div id="outline-container-org330a03e" class="outline-3">
-<h3 id="org330a03e">A Step Towards Implementation</h3>
-<div class="outline-text-3" id="text-org330a03e">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org9b6887c">
+<h3 id="org9b6887c">A Step Towards Implementation</h3>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">concept</span> <span class="org-type">partial_equality</span> = <span class="org-keyword">requires</span>(
-    <span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span>&lt;<span class="org-type">T</span>&gt; <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span>) {
-  {
-    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.eq(t, t)
-  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
-  {
-    <span class="org-type">partial_eq</span>&lt;<span class="org-type">T</span>&gt;.ne(t, t)
-  } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
-};
+
+<pre class="src src-C++"><span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-keyword">class</span> <span class="org-type">T</span><span class="org-rainbow-delimiters-depth-1">&gt;</span>
+<span class="org-keyword">concept</span> <span class="org-type">partial_equality</span> = <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-1">(</span>
+    <span class="org-constant">std</span>::<span class="org-type">remove_reference_t</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">T</span><span class="org-rainbow-delimiters-depth-2">&gt;</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">t</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+  <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-type">partial_eq</span><span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">T</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>.eq<span class="org-rainbow-delimiters-depth-3">(</span>t, t<span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-2">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">bool</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>;
+  <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-type">partial_eq</span><span class="org-rainbow-delimiters-depth-3">&lt;</span><span class="org-type">T</span><span class="org-rainbow-delimiters-depth-3">&gt;</span>.ne<span class="org-rainbow-delimiters-depth-3">(</span>t, t<span class="org-rainbow-delimiters-depth-3">)</span>
+  <span class="org-rainbow-delimiters-depth-2">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">bool</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
 
-<div class="notes" id="orgedc19cf">
+<aside class="notes">
 <p>
 
 </p>
 
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org8707fff">
+<h3 id="org8707fff"><code>partial_eq&lt;T&gt;</code></h3>
+<div class="outline-text-3" id="text-org8707fff">
 </div>
-</div>
-</div>
-<div id="outline-container-orgbfdae51" class="outline-3">
-<h3 id="orgbfdae51"><code>partial_eq&lt;T&gt;</code></h3>
-<div class="outline-text-3" id="text-orgbfdae51">
-</div>
-<div id="outline-container-org9b9102f" class="outline-4">
-<h4 id="org9b9102f">An inline variable object</h4>
-<div class="outline-text-4" id="text-org9b9102f">
+</section>
+</section>
+<section>
+<section id="slide-org62be497">
+<h4 id="org62be497">An inline variable object</h4>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-name">partial_eq</span> = <span class="org-constant">hidden</span>::partial_eq_default;
+
+<pre class="src src-c++"><span class="org-keyword">template</span><span class="org-operator">&lt;</span><span class="org-keyword">class</span> <span class="org-type">T</span><span class="org-operator">&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-name">partial_eq</span> <span class="org-operator">=</span> <span class="org-constant">hidden</span>::<span class="org-variable-use">partial_eq_default</span><span class="org-delimiter">;</span>
 </pre>
 </div>
 
-<div class="notes" id="org90616f3">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org721aa8a" class="outline-4">
-<h4 id="org721aa8a">A default implementation</h4>
-<div class="outline-text-4" id="text-org721aa8a">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org388d09c">
+<h4 id="org388d09c">A default implementation</h4>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> <span class="org-type">partial_eq_default_t</span> {
+
+<pre class="src src-C++"><span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">struct</span> <span class="org-type">partial_eq_default_t</span> <span class="org-rainbow-delimiters-depth-1">{</span>
   <span class="org-keyword">constexpr</span> <span class="org-type">bool</span>
-  <span class="org-function-name">eq</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
-     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
-    <span class="org-keyword">return</span> (rhs == lhs);
-  }
+  <span class="org-function-name">eq</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-keyword">const</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-3">(</span>rhs == lhs<span class="org-rainbow-delimiters-depth-3">)</span>;
+  <span class="org-rainbow-delimiters-depth-2">}</span>
   <span class="org-keyword">constexpr</span> <span class="org-type">bool</span>
-  <span class="org-function-name">ne</span>(<span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
-     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span>) <span class="org-keyword">const</span> {
-    <span class="org-keyword">return</span> (lhs != rhs);
-  }
-} <span class="org-variable-name">partial_eq_default</span>;
+  <span class="org-function-name">ne</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">rhs</span>,
+     <span class="org-type">has_eq</span> <span class="org-keyword">auto</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">lhs</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-keyword">const</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-keyword">return</span> <span class="org-rainbow-delimiters-depth-3">(</span>lhs != rhs<span class="org-rainbow-delimiters-depth-3">)</span>;
+  <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span> <span class="org-variable-name">partial_eq_default</span>;
 </pre>
 </div>
 
-<div class="notes" id="org96d1694">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgf992626" class="outline-4">
-<h4 id="orgf992626">New <code>has_eq</code></h4>
-<div class="outline-text-4" id="text-orgf992626">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org470c282">
+<h4 id="org470c282">New <code>has_eq</code></h4>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>&gt;
-<span class="org-keyword">concept</span> <span class="org-type">has_eq</span> = <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-keyword">const</span>&amp; <span class="org-variable-name">v</span>) {
-  { <span class="org-keyword">operator</span>==(v, v) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">bool</span>&gt;;
-};
+
+<pre class="src src-c++"><span class="org-keyword">template</span> <span class="org-operator">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">T</span><span class="org-operator">&gt;</span>
+<span class="org-keyword">concept</span> <span class="org-variable-use">has_eq</span> <span class="org-operator">=</span> <span class="org-keyword">requires</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-type">T</span> <span class="org-keyword">const</span><span class="org-operator">&amp;</span> <span class="org-variable-name">v</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+  <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">{</span></span> <span class="org-variable-use">operator</span><span class="org-operator">==</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span><span class="org-variable-use">v</span><span class="org-delimiter">,</span> <span class="org-variable-use">v</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">}</span></span> <span class="org-operator">-&gt;</span> <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&lt;</span></span><span class="org-type">bool</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&gt;</span></span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
-<div class="notes" id="org70fb243">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org31bb6f1" class="outline-3">
-<h3 id="org31bb6f1">Will do better</h3>
-<div class="outline-text-3" id="text-org31bb6f1">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org4361428">
+<h3 id="org4361428">Will do better</h3>
+<p class="fragment (appear)">
 In a bit
 </p>
 
 
-<div class="notes" id="org6af3898">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd3a6bc0" class="outline-2">
-<h2 id="orgd3a6bc0">Monoid</h2>
-<div class="outline-text-2" id="text-orgd3a6bc0">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orge4d9ed9">
+<h2 id="orge4d9ed9">Monoid</h2>
+<p class="fragment (appear)">
 A little more than you think.
 </p>
 
-<ul class="org-ul">
-<li>A type</li>
-<li>With an associative binary operation</li>
-<li>Which is closed</li>
-<li>And has an identity element</li>
+<ul>
+<li class="fragment appear">A type</li>
+<li class="fragment appear">With an associative binary operation</li>
+<li class="fragment appear">Which is closed</li>
+<li class="fragment appear">And has an identity element</li>
+
 </ul>
-</div>
-<div id="outline-container-org3683c5b" class="outline-3">
-<h3 id="org3683c5b">Maybe not a lot more</h3>
-<div class="outline-text-3" id="text-org3683c5b">
-<div class="notes" id="orged7ccfa">
+</section>
+</section>
+<section>
+<section id="slide-org7fb02d2">
+<h3 id="org7fb02d2">Maybe not a lot more</h3>
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org9363453" class="outline-3">
-<h3 id="org9363453">Math</h3>
-<div class="outline-text-3" id="text-org9363453">
-<ul class="org-ul">
-<li>\(\oplus: M \times M \rightarrow M\)</li>
-<li>\(x \oplus (y \oplus z) = (x \oplus y) \oplus z\)</li>
-<li>\(1_M \in M\) such that \(\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)\)</li>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org1719e70">
+<h3 id="org1719e70">Math</h3>
+<ul>
+<li class="fragment appear">\(\oplus: M \times M \rightarrow M\)</li>
+<li class="fragment appear">\(x \oplus (y \oplus z) = (x \oplus y) \oplus z\)</li>
+<li class="fragment appear">\(1_M \in M\) such that \(\forall m \in M : (1_M \oplus m) = m = (m \oplus 1_M)\)</li>
+
 </ul>
 
-<div class="notes" id="orga59a3a5">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org0d9a16b" class="outline-3">
-<h3 id="org0d9a16b">Function form</h3>
-<div class="outline-text-3" id="text-org0d9a16b">
-<ul class="org-ul">
-<li>\(f : M \times M \rightarrow M\)</li>
-<li>\(f(x, f(y, z)) = f(f(x, y), z)\)</li>
-<li>\(1_M \in M\) such that \(\forall m \in M : f(1_M, m) = m = f(m, 1_M)\)</li>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgf5661a1">
+<h3 id="orgf5661a1">Function form</h3>
+<ul>
+<li class="fragment appear">\(f : M \times M \rightarrow M\)</li>
+<li class="fragment appear">\(f(x, f(y, z)) = f(f(x, y), z)\)</li>
+<li class="fragment appear">\(1_M \in M\) such that \(\forall m \in M : f(1_M, m) = m = f(m, 1_M)\)</li>
+
 </ul>
 
-<p>
+<p class="fragment (appear)">
 The similarity to left and right fold is <b>NOT</b> an accident
 </p>
 
-<div class="notes" id="org2c9434e">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-org1aa0041" class="outline-3">
-<h3 id="org1aa0041">Core Functions</h3>
-<div class="outline-text-3" id="text-org1aa0041">
-<dl class="org-dl">
-<dt>\(empty : m\)</dt><dd>\(empty = concat \, []\)</dd>
-<dt>\(concat : [m] \rightarrow m\)</dt><dd>\(fold \, append \, empty\)</dd>
-<dt>\(append : m \rightarrow m \rightarrow m\)</dt><dd>\(op\)</dd>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org6a0dc44">
+<h3 id="org6a0dc44">Core Functions</h3>
+<dl>
+<dt class="fragment appear">\(empty : m\)</dt><dd class="fragment appear">\(empty = concat \, []\)</dd>
+<dt class="fragment appear">\(concat : [m] \rightarrow m\)</dt><dd class="fragment appear">\(fold \, append \, empty\)</dd>
+<dt class="fragment appear">\(append : m \rightarrow m \rightarrow m\)</dt><dd class="fragment appear">\(op\)</dd>
+
 </dl>
 
 
-<p>
+<p class="fragment (appear)">
 Note that it's self-referential
 </p>
 
-<p>
+<p class="fragment (appear)">
 This is common
 </p>
 
-<div class="notes" id="org03804b2">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-<div id="outline-container-orgcdc839b" class="outline-4">
-<h4 id="orgcdc839b">From Haskell Prelude</h4>
-<div class="outline-text-4" id="text-orgcdc839b">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgc211629">
+<h4 id="orgc211629">From Haskell Prelude</h4>
 <div class="org-src-container">
+
 <pre class="src src-haskell"><span class="org-haskell-keyword">class</span> <span class="org-haskell-type">Semigroup</span> a <span class="org-haskell-operator">=&gt;</span> <span class="org-haskell-type">Monoid</span> a <span class="org-haskell-keyword">where</span>
   mempty <span class="org-haskell-operator">::</span> a
-  mempty <span class="org-haskell-operator">=</span> mconcat <span class="org-haskell-constructor">[]</span>
+  mempty <span class="org-haskell-operator">=</span> mconcat <span class="org-haskell-constructor"><span class="org-rainbow-delimiters-depth-1">[]</span></span>
 
   mappend <span class="org-haskell-operator">::</span> a <span class="org-haskell-operator">-&gt;</span> a <span class="org-haskell-operator">-&gt;</span> a
-  mappend <span class="org-haskell-operator">=</span> (<span class="org-haskell-operator">&lt;&gt;</span>)
+  mappend <span class="org-haskell-operator">=</span> <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-haskell-operator">&lt;&gt;</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-  mconcat <span class="org-haskell-operator">::</span> [a] <span class="org-haskell-operator">-&gt;</span> a
+  mconcat <span class="org-haskell-operator">::</span> <span class="org-rainbow-delimiters-depth-1">[</span>a<span class="org-rainbow-delimiters-depth-1">]</span> <span class="org-haskell-operator">-&gt;</span> a
   mconcat <span class="org-haskell-operator">=</span> foldr mappend mempty
 </pre>
 </div>
 
-<div class="notes" id="org56ccaea">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org90c3c72" class="outline-3">
-<h3 id="org90c3c72">Minimum Set</h3>
-<div class="outline-text-3" id="text-org90c3c72">
-<p>
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orge9a9bd9">
+<h3 id="orge9a9bd9">Minimum Set</h3>
+<p class="fragment (appear)">
 \(empty \, | \, concat\)
 </p>
 
-<div class="notes" id="org1409edf">
+<aside class="notes">
 <p>
 
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgbc882c9" class="outline-3">
-<h3 id="orgbc882c9">In C++</h3>
-<div class="outline-text-3" id="text-orgbc882c9">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgec207bd">
+<h3 id="orgec207bd">In C++</h3>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">T</span>, <span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
+
+<pre class="src src-C++"><span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">T</span>, <span class="org-keyword">typename</span> <span class="org-type">M</span><span class="org-rainbow-delimiters-depth-1">&gt;</span>
 <span class="org-keyword">concept</span> <span class="org-type">MonoidRequirements</span> =
-    <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-variable-name">i</span>) {
-      { i.identity() } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">M</span>&gt;;
-    }
+    <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">T</span> <span class="org-variable-name">i</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+      <span class="org-rainbow-delimiters-depth-2">{</span> i.identity<span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-2">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">M</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>;
+    <span class="org-rainbow-delimiters-depth-1">}</span>
     ||
-    <span class="org-keyword">requires</span>(<span class="org-type">T</span> <span class="org-variable-name">i</span>, <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-type">empty_view</span>&lt;<span class="org-type">M</span>&gt; <span class="org-variable-name">r1</span>) {
-      { i.concat(r1) } -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span>&lt;<span class="org-type">M</span>&gt;;
-    };
+    <span class="org-keyword">requires</span><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-type">T</span> <span class="org-variable-name">i</span>, <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-type">empty_view</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">M</span><span class="org-rainbow-delimiters-depth-2">&gt;</span> <span class="org-variable-name">r1</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-rainbow-delimiters-depth-1">{</span>
+      <span class="org-rainbow-delimiters-depth-2">{</span> i.concat<span class="org-rainbow-delimiters-depth-3">(</span>r1<span class="org-rainbow-delimiters-depth-3">)</span> <span class="org-rainbow-delimiters-depth-2">}</span> -&gt; <span class="org-constant">std</span>::<span class="org-type">same_as</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">M</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>;
+    <span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
-<div class="notes" id="org5abfc01">
+<aside class="notes">
 <p>
 I am ignoring all sorts of const volatile reference issues here.
 </p>
 
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org2299333">
+<h2 id="org2299333">Implementing the other side</h2>
+<div class="outline-text-2" id="text-org2299333">
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-org473e795" class="outline-2">
-<h2 id="org473e795">Implementing the other side</h2>
-<div class="outline-text-2" id="text-org473e795">
-</div>
-<div id="outline-container-org959a3d4" class="outline-3">
-<h3 id="org959a3d4">The Map for a Monoid</h3>
-<div class="outline-text-3" id="text-org959a3d4">
+</section>
+</section>
+<section>
+<section id="slide-orgcfa5ef7">
+<h3 id="orgcfa5ef7">The Map for a Monoid</h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">class</span> <span class="org-type">Impl</span>&gt;
-  <span class="org-keyword">requires</span> <span class="org-type">MonoidRequirements</span>&lt;
-      <span class="org-type">Impl</span>,
-      <span class="org-keyword">typename</span> <span class="org-constant">Impl</span>::<span class="org-type">value_type</span>&gt;
-<span class="org-keyword">struct</span> <span class="org-type">Monoid</span> : <span class="org-keyword">protected</span> <span class="org-type">Impl</span> {
-  <span class="org-keyword">auto</span> <span class="org-variable-name">identity</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self);
 
-  <span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">Range</span>&gt;
-  <span class="org-keyword">auto</span> <span class="org-variable-name">concat</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-type">Range</span> <span class="org-variable-name">r</span>);
+<pre class="src src-c++"><span class="org-keyword">template</span> <span class="org-operator">&lt;</span><span class="org-keyword">class</span> <span class="org-type">Impl</span><span class="org-operator">&gt;</span>
+  <span class="org-keyword">requires</span> <span class="org-type">MonoidRequirements</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span>
+      <span class="org-type">Impl</span><span class="org-delimiter">,</span>
+      <span class="org-keyword">typename</span> <span class="org-constant">Impl</span>::<span class="org-type">value_type</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span>
+<span class="org-keyword">struct</span> <span class="org-type">Monoid</span> <span class="org-delimiter">:</span> <span class="org-keyword">protected</span> <span class="org-type">Impl</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+  <span class="org-keyword">auto</span> <span class="org-function-name">identity</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-type">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
 
-  <span class="org-keyword">auto</span> <span class="org-variable-name">op</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-keyword">auto</span> <span class="org-variable-name">a1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">a2</span>);
-};
+  <span class="org-keyword">template</span> <span class="org-operator">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">Range</span><span class="org-operator">&gt;</span>
+  <span class="org-keyword">auto</span> <span class="org-function-name">concat</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-keyword">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-delimiter">,</span> <span class="org-type">Range</span> <span class="org-variable-name">r</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+
+  <span class="org-keyword">auto</span> <span class="org-function-name">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-type">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">a1</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">a2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
-<div class="notes" id="org11725a4">
+<aside class="notes">
 <p>
 empty is a terrible name, concat only a little better.
 empty becomes identity
 </p>
 
-</div>
-</div>
-<div id="outline-container-orgb642e41" class="outline-4">
-<h4 id="orgb642e41"><code>identity</code></h4>
-<div class="outline-text-4" id="text-orgb642e41">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org1181505">
+<h4 id="org1181505"><code>identity</code></h4>
 <div class="org-src-container">
-<pre class="src src-c++">    <span class="org-keyword">auto</span> <span class="org-variable-name">identity</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span> &amp;&amp; self) {
-        <span class="org-constant">std</span>::puts(<span class="org-string">"Monoid::identity()"</span>);
-        <span class="org-keyword">return</span> self.concat(<span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-type">empty_view</span>&lt;<span class="org-keyword">typename</span> <span class="org-constant">Impl</span>::<span class="org-type">value_type</span>&gt;{});
-    }
+
+<pre class="src src-c++">    <span class="org-keyword">auto</span> <span class="org-function-name">identity</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-keyword">this</span> <span class="org-keyword">auto</span> <span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+        <span class="org-constant">std</span>::<span class="org-variable-use">puts</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-string">"Monoid::identity()"</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+        <span class="org-keyword">return</span> <span class="org-variable-use">self</span><span class="org-operator">.</span><span class="org-function-call">concat</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-type">empty_view</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-3">&lt;</span></span><span class="org-keyword">typename</span> <span class="org-constant">Impl</span>::<span class="org-type">value_type</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-3">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">{}</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+    <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-org7daef2e" class="outline-4">
-<h4 id="org7daef2e"><code>concat</code></h4>
-<div class="outline-text-4" id="text-org7daef2e">
+</section>
+</section>
+<section>
+<section id="slide-org588d174">
+<h4 id="org588d174"><code>concat</code></h4>
 <div class="org-src-container">
-<pre class="src src-c++">   <span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">Range</span>&gt;
-   <span class="org-keyword">auto</span> <span class="org-variable-name">concat</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-type">Range</span> <span class="org-variable-name">r</span>) {
-        <span class="org-constant">std</span>::puts(<span class="org-string">"Monoid::concat()"</span>);
-        <span class="org-keyword">return</span> <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::fold_right(r,
-                    self.identity(),
-                    [&amp;](<span class="org-keyword">auto</span> <span class="org-variable-name">m1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">m2</span>){<span class="org-keyword">return</span> self.op(m1, m2);});
-    }
+
+<pre class="src src-c++">   <span class="org-keyword">template</span><span class="org-operator">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">Range</span><span class="org-operator">&gt;</span>
+   <span class="org-keyword">auto</span> <span class="org-function-name">concat</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-keyword">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-delimiter">,</span> <span class="org-type">Range</span> <span class="org-variable-name">r</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+        <span class="org-constant">std</span>::<span class="org-variable-use">puts</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-string">"Monoid::concat()"</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+        <span class="org-keyword">return</span> <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-variable-use">fold_right</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-variable-use">r</span><span class="org-delimiter">,</span>
+                    <span class="org-variable-use">self</span><span class="org-operator">.</span><span class="org-function-call">identity</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">()</span></span><span class="org-delimiter">,</span>
+                    <span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">[</span></span><span class="org-operator">&amp;</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">](</span></span><span class="org-keyword">auto</span> <span class="org-variable-name">m1</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">m2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">){</span></span><span class="org-keyword">return</span> <span class="org-variable-use">self</span><span class="org-operator">.</span><span class="org-function-call">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">(</span></span><span class="org-variable-use">m1</span><span class="org-delimiter">,</span> <span class="org-variable-use">m2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">)</span></span><span class="org-delimiter">;</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">}</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+    <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orgcd4bf9c" class="outline-4">
-<h4 id="orgcd4bf9c"><code>op</code></h4>
-<div class="outline-text-4" id="text-orgcd4bf9c">
+</section>
+</section>
+<section>
+<section id="slide-org439bc30">
+<h4 id="org439bc30"><code>op</code></h4>
 <div class="org-src-container">
-<pre class="src src-c++">   <span class="org-keyword">auto</span> <span class="org-variable-name">op</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-keyword">auto</span> <span class="org-variable-name">a1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">a2</span>) {
-        <span class="org-constant">std</span>::puts(<span class="org-string">"Monoid::op"</span>);
-        <span class="org-keyword">return</span> self.op(a1, a2);
-    }
+
+<pre class="src src-c++">   <span class="org-keyword">auto</span> <span class="org-function-name">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">(</span></span><span class="org-keyword">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">a1</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">a2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+        <span class="org-constant">std</span>::<span class="org-variable-use">puts</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-string">"Monoid::op"</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+        <span class="org-keyword">return</span> <span class="org-variable-use">self</span><span class="org-operator">.</span><span class="org-function-call">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-variable-use">a1</span><span class="org-delimiter">,</span> <span class="org-variable-use">a2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span><span class="org-delimiter">;</span>
+    <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span>
 </pre>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-org35aa2fc" class="outline-3">
-<h3 id="org35aa2fc">Deducing <code>this</code> <b>and</b> CRTP</h3>
-<div class="outline-text-3" id="text-org35aa2fc">
-<p>
+</section>
+</section>
+<section>
+<section id="slide-orge6d290e">
+<h3 id="orge6d290e">Deducing <code>this</code> <b>and</b> CRTP</h3>
+<p class="fragment (appear)">
 We'll see in a moment, but it's because we want to constraint the required implementation.
 </p>
 
-<p>
+<p class="fragment (appear)">
 We want to use the derived version which has all of the operations.
 </p>
-</div>
-</div>
-<div id="outline-container-orgf220651" class="outline-3">
-<h3 id="orgf220651"><code>Plus</code></h3>
-<div class="outline-text-3" id="text-orgf220651">
+</section>
+</section>
+<section>
+<section id="slide-org7500308">
+<h3 id="org7500308"><code>Plus</code></h3>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
-<span class="org-keyword">class</span> <span class="org-type">Plus</span> {
+
+<pre class="src src-C++"><span class="org-keyword">template</span> <span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">M</span><span class="org-rainbow-delimiters-depth-1">&gt;</span>
+<span class="org-keyword">class</span> <span class="org-type">Plus</span> <span class="org-rainbow-delimiters-depth-1">{</span>
 <span class="org-keyword">public</span>:
   <span class="org-keyword">using</span> <span class="org-type">value_type</span> = M;
-  <span class="org-keyword">auto</span> <span class="org-variable-name">identity</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self) -&gt; <span class="org-type">M</span> {
-    <span class="org-constant">std</span>::puts(<span class="org-string">"Plus::identity()"</span>);
-    <span class="org-keyword">return</span> M{0};
-  }
+  <span class="org-keyword">auto</span> <span class="org-variable-name">identity</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self<span class="org-rainbow-delimiters-depth-2">)</span> -&gt; <span class="org-type">M</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-constant">std</span>::puts<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"Plus::identity()"</span><span class="org-rainbow-delimiters-depth-3">)</span>;
+    <span class="org-keyword">return</span> M<span class="org-rainbow-delimiters-depth-3">{</span>0<span class="org-rainbow-delimiters-depth-3">}</span>;
+  <span class="org-rainbow-delimiters-depth-2">}</span>
 
-  <span class="org-keyword">auto</span> <span class="org-variable-name">op</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-keyword">auto</span> <span class="org-variable-name">s1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">s2</span>) -&gt; <span class="org-type">M</span> {
-    <span class="org-constant">std</span>::puts(<span class="org-string">"Plus::op()"</span>);
+  <span class="org-keyword">auto</span> <span class="org-variable-name">op</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-keyword">auto</span> <span class="org-variable-name">s1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">s2</span><span class="org-rainbow-delimiters-depth-2">)</span> -&gt; <span class="org-type">M</span> <span class="org-rainbow-delimiters-depth-2">{</span>
+    <span class="org-constant">std</span>::puts<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"Plus::op()"</span><span class="org-rainbow-delimiters-depth-3">)</span>;
     <span class="org-keyword">return</span> s1 + s2;
-  }
-};
+  <span class="org-rainbow-delimiters-depth-2">}</span>
+<span class="org-rainbow-delimiters-depth-1">}</span>;
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orge936d66" class="outline-3">
-<h3 id="orge936d66"><code>PlusMonoidMap</code></h3>
-<div class="outline-text-3" id="text-orge936d66">
+</section>
+</section>
+<section>
+<section id="slide-org1573cf7">
+<h3 id="org1573cf7"><code>PlusMonoidMap</code></h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">M</span>&gt;
-<span class="org-keyword">struct</span> <span class="org-type">PlusMonoidMap</span> : <span class="org-keyword">public</span> <span class="org-type">Monoid</span>&lt;<span class="org-type">Plus</span>&lt;<span class="org-type">M</span>&gt;&gt; {
-    <span class="org-keyword">using</span> <span class="org-constant">Plus</span>&lt;<span class="org-type">M</span>&gt;::identity;
-    <span class="org-keyword">using</span> <span class="org-constant">Plus</span>&lt;<span class="org-type">M</span>&gt;::op;
-};
+
+<pre class="src src-c++"><span class="org-keyword">template</span><span class="org-operator">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">M</span><span class="org-operator">&gt;</span>
+<span class="org-keyword">struct</span> <span class="org-type">PlusMonoidMap</span> <span class="org-delimiter">:</span> <span class="org-keyword">public</span> <span class="org-type">Monoid</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">Plus</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&lt;</span></span><span class="org-type">M</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&gt;</span></span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+    <span class="org-keyword">using</span> <span class="org-type">Plus</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&lt;</span></span><span class="org-type">M</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&gt;</span></span>::<span class="org-variable-use">identity</span><span class="org-delimiter">;</span>
+    <span class="org-keyword">using</span> <span class="org-type">Plus</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&lt;</span></span><span class="org-type">M</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-2">&gt;</span></span>::<span class="org-variable-use">op</span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
-<div class="notes" id="org1753a91">
+<aside class="notes">
 <p>
 Need to pull the operations from the Monoid instance into the Map, so we get the right ones being used by concat.
 </p>
@@ -1048,157 +856,168 @@ Need to pull the operations from the Monoid instance into the Map, so we get the
 This might be simpler if we didn't allow choice of the basis operations, but that's also overly restrictive.
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgf3c41ff" class="outline-3">
-<h3 id="orgf3c41ff">The map instances</h3>
-<div class="outline-text-3" id="text-orgf3c41ff">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgd85fc7c">
+<h3 id="orgd85fc7c">The map instances</h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">class</span> <span class="org-type">T</span>&gt; <span class="org-keyword">auto</span> <span class="org-variable-name">monoid_concept_map</span> = <span class="org-constant">std</span>::false_type{};
 
-<span class="org-keyword">template</span>&lt;&gt;
-<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-type">monoid_concept_map</span><span class="org-variable-name">&lt;int&gt;</span> = <span class="org-type">PlusMonoidMap</span>&lt;<span class="org-type">int</span>&gt;{};
+<pre class="src src-c++"><span class="org-keyword">template</span><span class="org-operator">&lt;</span><span class="org-keyword">class</span> <span class="org-type">T</span><span class="org-operator">&gt;</span> <span class="org-keyword">auto</span> <span class="org-variable-name">monoid_concept_map</span> <span class="org-operator">=</span> <span class="org-constant">std</span>::<span class="org-type">false_type</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{}</span></span><span class="org-delimiter">;</span>
 
-<span class="org-keyword">template</span>&lt;&gt;
-<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-type">monoid_concept_map</span><span class="org-variable-name">&lt;long&gt;</span> = <span class="org-type">PlusMonoidMap</span>&lt;<span class="org-type">long</span>&gt;{};
+<span class="org-keyword">template</span><span class="org-operator">&lt;&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-use">monoid_concept_map</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">int</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-operator">=</span> <span class="org-type">PlusMonoidMap</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">int</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{}</span></span><span class="org-delimiter">;</span>
 
-<span class="org-keyword">template</span>&lt;&gt;
-<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-type">monoid_concept_map</span><span class="org-variable-name">&lt;char&gt;</span> = <span class="org-type">PlusMonoidMap</span>&lt;<span class="org-type">char</span>&gt;{};
+<span class="org-keyword">template</span><span class="org-operator">&lt;&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-use">monoid_concept_map</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">long</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-operator">=</span> <span class="org-type">PlusMonoidMap</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">long</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{}</span></span><span class="org-delimiter">;</span>
+
+<span class="org-keyword">template</span><span class="org-operator">&lt;&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-use">monoid_concept_map</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">char</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-operator">=</span> <span class="org-type">PlusMonoidMap</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">char</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-org0ac94f9" class="outline-3">
-<h3 id="org0ac94f9">Can we <code>concat</code> instead?</h3>
-<div class="outline-text-3" id="text-org0ac94f9">
+</section>
+</section>
+<section>
+<section id="slide-orgc7ed85d">
+<h3 id="orgc7ed85d">Can we <code>concat</code> instead?</h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">class</span> <span class="org-type">StringMonoid</span> {
-<span class="org-keyword">public</span>:
-  <span class="org-keyword">using</span> <span class="org-type">value_type</span> = <span class="org-constant">std</span>::string;
 
-  <span class="org-keyword">auto</span> <span class="org-variable-name">op</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp;, <span class="org-keyword">auto</span> <span class="org-variable-name">s1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">s2</span>) {
-    <span class="org-constant">std</span>::puts(<span class="org-string">"StringMonoid::op()"</span>);
-    <span class="org-keyword">return</span> s1 + s2;
-  }
+<pre class="src src-c++"><span class="org-keyword">class</span> <span class="org-type">StringMonoid</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+<span class="org-keyword">public</span><span class="org-delimiter">:</span>
+  <span class="org-keyword">using</span> <span class="org-type">value_type</span> <span class="org-operator">=</span> <span class="org-constant">std</span>::<span class="org-type">string</span><span class="org-delimiter">;</span>
 
-  <span class="org-keyword">template</span> &lt;<span class="org-keyword">typename</span> <span class="org-type">Range</span>&gt;
-  <span class="org-keyword">auto</span> <span class="org-variable-name">concat</span>(<span class="org-keyword">this</span> <span class="org-keyword">auto</span>&amp;&amp; self, <span class="org-type">Range</span> <span class="org-variable-name">r</span>) {
-    <span class="org-constant">std</span>::puts(<span class="org-string">"StringMonoid::concat()"</span>);
-    <span class="org-keyword">return</span> <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::fold_right(
-        r, <span class="org-constant">std</span>::string{}, [&amp;](<span class="org-keyword">auto</span> <span class="org-variable-name">m1</span>, <span class="org-keyword">auto</span> <span class="org-variable-name">m2</span>) {
-          <span class="org-keyword">return</span> self.op(m1, m2);
-        });
-  }
-};
+  <span class="org-keyword">auto</span> <span class="org-function-name">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-type">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">s1</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">s2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">{</span></span>
+    <span class="org-constant">std</span>::<span class="org-variable-use">puts</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span><span class="org-string">"StringMonoid::op()"</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-delimiter">;</span>
+    <span class="org-keyword">return</span> <span class="org-variable-use">s1</span> <span class="org-operator">+</span> <span class="org-variable-use">s2</span><span class="org-delimiter">;</span>
+  <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">}</span></span>
+
+  <span class="org-keyword">template</span> <span class="org-operator">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">Range</span><span class="org-operator">&gt;</span>
+  <span class="org-keyword">auto</span> <span class="org-function-name">concat</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">(</span></span><span class="org-keyword">this</span> <span class="org-keyword">auto</span><span class="org-operator">&amp;&amp;</span> <span class="org-variable-name">self</span><span class="org-delimiter">,</span> <span class="org-type">Range</span> <span class="org-variable-name">r</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">{</span></span>
+    <span class="org-constant">std</span>::<span class="org-variable-use">puts</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span><span class="org-string">"StringMonoid::concat()"</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-delimiter">;</span>
+    <span class="org-keyword">return</span> <span class="org-constant">std</span>::<span class="org-constant">ranges</span>::<span class="org-variable-use">fold_right</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">(</span></span>
+        <span class="org-variable-use">r</span><span class="org-delimiter">,</span> <span class="org-constant">std</span>::<span class="org-type">string</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">{}</span></span><span class="org-delimiter">,</span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">[</span></span><span class="org-operator">&amp;</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">](</span></span><span class="org-keyword">auto</span> <span class="org-variable-name">m1</span><span class="org-delimiter">,</span> <span class="org-keyword">auto</span> <span class="org-variable-name">m2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">)</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">{</span></span>
+          <span class="org-keyword">return</span> <span class="org-variable-use">self</span><span class="org-operator">.</span><span class="org-function-call">op</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-5">(</span></span><span class="org-variable-use">m1</span><span class="org-delimiter">,</span> <span class="org-variable-use">m2</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-5">)</span></span><span class="org-delimiter">;</span>
+        <span class="org-bracket"><span class="org-rainbow-delimiters-depth-4">}</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-3">)</span></span><span class="org-delimiter">;</span>
+  <span class="org-bracket"><span class="org-rainbow-delimiters-depth-2">}</span></span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
 </pre>
 </div>
-<div class="notes" id="orgd9f5dde">
+<aside class="notes">
 <p>
 No, I'm not properly constraining Range here.
 No, I'm not actually recommending this as an implementation.
 </p>
 
-</div>
-</div>
-</div>
-<div id="outline-container-orgd9e55da" class="outline-3">
-<h3 id="orgd9e55da">The Map and instance</h3>
-<div class="outline-text-3" id="text-orgd9e55da">
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org78a4578">
+<h3 id="org78a4578">The Map and instance</h3>
 <div class="org-src-container">
-<pre class="src src-c++"><span class="org-keyword">struct</span> <span class="org-type">StringMonoidMap</span> : <span class="org-keyword">public</span> <span class="org-type">Monoid</span>&lt;StringMonoid&gt; {
-    <span class="org-keyword">using</span> <span class="org-constant">StringMonoid</span>::op;
-    <span class="org-keyword">using</span> <span class="org-constant">StringMonoid</span>::concat;
-};
 
-<span class="org-keyword">template</span>&lt;&gt;
-<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-type">monoid_concept_map</span>&lt;<span class="org-constant">std</span>::<span class="org-variable-name">string&gt;</span> = StringMonoidMap{};
+<pre class="src src-c++"><span class="org-keyword">struct</span> <span class="org-type">StringMonoidMap</span> <span class="org-delimiter">:</span> <span class="org-keyword">public</span> <span class="org-type">Monoid</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">StringMonoid</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{</span></span>
+    <span class="org-keyword">using</span> <span class="org-constant">StringMonoid</span>::<span class="org-variable-use">op</span><span class="org-delimiter">;</span>
+    <span class="org-keyword">using</span> <span class="org-constant">StringMonoid</span>::<span class="org-variable-use">concat</span><span class="org-delimiter">;</span>
+<span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">}</span></span><span class="org-delimiter">;</span>
+
+<span class="org-keyword">template</span><span class="org-operator">&lt;&gt;</span>
+<span class="org-keyword">constexpr</span> <span class="org-keyword">inline</span> <span class="org-keyword">auto</span> <span class="org-variable-use">monoid_concept_map</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-constant">std</span>::<span class="org-type">string</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span> <span class="org-operator">=</span> <span class="org-type">StringMonoidMap</span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">{}</span></span><span class="org-delimiter">;</span>
 
 </pre>
 </div>
+</section>
+</section>
+<section>
+<section id="slide-org912876f">
+<h2 id="org912876f">Some simple use</h2>
+<div class="outline-text-2" id="text-org912876f">
 </div>
-</div>
-</div>
-<div id="outline-container-org2062641" class="outline-2">
-<h2 id="org2062641">Some simple use</h2>
-<div class="outline-text-2" id="text-org2062641">
-</div>
-<div id="outline-container-orgfce199f" class="outline-3">
-<h3 id="orgfce199f">Exercise the functions</h3>
-<div class="outline-text-3" id="text-orgfce199f">
+</section>
+</section>
+<section>
+<section id="slide-org9abc3e0">
+<h3 id="org9abc3e0">Exercise the functions</h3>
 <div class="org-src-container">
-<pre class="src src-C++"><span class="org-keyword">template</span>&lt;<span class="org-keyword">typename</span> <span class="org-type">P</span>&gt;
-<span class="org-type">void</span> <span class="org-function-name">testP</span>()
-{
-    <span class="org-keyword">auto</span> <span class="org-variable-name">d1</span> = <span class="org-type">monoid_concept_map</span>&lt;<span class="org-type">P</span>&gt;;
 
-    <span class="org-keyword">auto</span> <span class="org-variable-name">x</span> = d1.identity();
-    assert(P{} == x);
+<pre class="src src-C++"><span class="org-keyword">template</span><span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-keyword">typename</span> <span class="org-type">P</span><span class="org-rainbow-delimiters-depth-1">&gt;</span>
+<span class="org-type">void</span> <span class="org-function-name">testP</span><span class="org-rainbow-delimiters-depth-1">()</span>
+<span class="org-rainbow-delimiters-depth-1">{</span>
+    <span class="org-keyword">auto</span> <span class="org-variable-name">d1</span> = <span class="org-type">monoid_concept_map</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">P</span><span class="org-rainbow-delimiters-depth-2">&gt;</span>;
 
-    <span class="org-keyword">auto</span> <span class="org-variable-name">sum</span> = d1.op(x, P{1});
-    assert(P{1} == sum);
+    <span class="org-keyword">auto</span> <span class="org-variable-name">x</span> = d1.identity<span class="org-rainbow-delimiters-depth-2">()</span>;
+    assert<span class="org-rainbow-delimiters-depth-2">(</span>P<span class="org-rainbow-delimiters-depth-3">{}</span> == x<span class="org-rainbow-delimiters-depth-2">)</span>;
 
-    <span class="org-constant">std</span>::<span class="org-type">vector</span>&lt;<span class="org-type">P</span>&gt; <span class="org-variable-name">v</span> = {1,2,3,4};
-    <span class="org-keyword">auto</span> <span class="org-variable-name">k</span> = d1.concat(v);
-    assert(k == 10);
-}
+    <span class="org-keyword">auto</span> <span class="org-variable-name">sum</span> = d1.op<span class="org-rainbow-delimiters-depth-2">(</span>x, P<span class="org-rainbow-delimiters-depth-3">{</span>1<span class="org-rainbow-delimiters-depth-3">}</span><span class="org-rainbow-delimiters-depth-2">)</span>;
+    assert<span class="org-rainbow-delimiters-depth-2">(</span>P<span class="org-rainbow-delimiters-depth-3">{</span>1<span class="org-rainbow-delimiters-depth-3">}</span> == sum<span class="org-rainbow-delimiters-depth-2">)</span>;
+
+    <span class="org-constant">std</span>::<span class="org-type">vector</span><span class="org-rainbow-delimiters-depth-2">&lt;</span><span class="org-type">P</span><span class="org-rainbow-delimiters-depth-2">&gt;</span> <span class="org-variable-name">v</span> = <span class="org-rainbow-delimiters-depth-2">{</span>1,2,3,4<span class="org-rainbow-delimiters-depth-2">}</span>;
+    <span class="org-keyword">auto</span> <span class="org-variable-name">k</span> = d1.concat<span class="org-rainbow-delimiters-depth-2">(</span>v<span class="org-rainbow-delimiters-depth-2">)</span>;
+    assert<span class="org-rainbow-delimiters-depth-2">(</span>k == 10<span class="org-rainbow-delimiters-depth-2">)</span>;
+<span class="org-rainbow-delimiters-depth-1">}</span>
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-orgefc46f2" class="outline-3">
-<h3 id="orgefc46f2">Some simple cases</h3>
-<div class="outline-text-3" id="text-orgefc46f2">
+</section>
+</section>
+<section>
+<section id="slide-org80cd9dc">
+<h3 id="org80cd9dc">Some simple cases</h3>
 <div class="org-src-container">
-<pre class="src src-c++">    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"\ntest int\n"</span>;
-    testP&lt;<span class="org-type">int</span>&gt;();
 
-    <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"\ntest long\n"</span>;
-    testP&lt;<span class="org-type">long</span>&gt;();
+<pre class="src src-c++">    <span class="org-constant">std</span>::<span class="org-variable-use">cout</span> <span class="org-operator">&lt;&lt;</span> <span class="org-string">"</span><span class="org-escape">\n</span><span class="org-string">test int</span><span class="org-escape">\n</span><span class="org-string">"</span><span class="org-delimiter">;</span>
+    <span class="org-variable-use">testP</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">int</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">()</span></span><span class="org-delimiter">;</span>
 
-   <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"\ntest char\n"</span>;
-    testP&lt;<span class="org-type">char</span>&gt;();
+    <span class="org-constant">std</span>::<span class="org-variable-use">cout</span> <span class="org-operator">&lt;&lt;</span> <span class="org-string">"</span><span class="org-escape">\n</span><span class="org-string">test long</span><span class="org-escape">\n</span><span class="org-string">"</span><span class="org-delimiter">;</span>
+    <span class="org-variable-use">testP</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">long</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">()</span></span><span class="org-delimiter">;</span>
+
+   <span class="org-constant">std</span>::<span class="org-variable-use">cout</span> <span class="org-operator">&lt;&lt;</span> <span class="org-string">"</span><span class="org-escape">\n</span><span class="org-string">test char</span><span class="org-escape">\n</span><span class="org-string">"</span><span class="org-delimiter">;</span>
+    <span class="org-variable-use">testP</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&lt;</span></span><span class="org-type">char</span><span class="org-operator"><span class="org-rainbow-delimiters-depth-1">&gt;</span></span><span class="org-bracket"><span class="org-rainbow-delimiters-depth-1">()</span></span><span class="org-delimiter">;</span>
 
 </pre>
 </div>
-</div>
-</div>
-<div id="outline-container-org1aa1b1b" class="outline-3">
-<h3 id="org1aa1b1b">On <code>std::string</code></h3>
-<div class="outline-text-3" id="text-org1aa1b1b">
+</section>
+</section>
+<section>
+<section id="slide-org7697433">
+<h3 id="org7697433">On <code>std::string</code></h3>
 <p>
 This will use the StringMonoid we defined a few moments ago.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C++">    <span class="org-keyword">auto</span> <span class="org-variable-name">d2</span> = <span class="org-type">monoid_concept_map</span>&lt;<span class="org-constant">std</span>::string&gt;;
+
+<pre class="src src-C++">    <span class="org-keyword">auto</span> <span class="org-variable-name">d2</span> = <span class="org-type">monoid_concept_map</span><span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-constant">std</span>::string<span class="org-rainbow-delimiters-depth-1">&gt;</span>;
 
     <span class="org-constant">std</span>::cout &lt;&lt; <span class="org-string">"\ntest string\n"</span>;
-    <span class="org-keyword">auto</span> <span class="org-variable-name">x2</span> = d2.identity();
-    assert(<span class="org-constant">std</span>::string{} == x2);
+    <span class="org-keyword">auto</span> <span class="org-variable-name">x2</span> = d2.identity<span class="org-rainbow-delimiters-depth-1">()</span>;
+    assert<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">std</span>::string<span class="org-rainbow-delimiters-depth-2">{}</span> == x2<span class="org-rainbow-delimiters-depth-1">)</span>;
 
-    <span class="org-keyword">auto</span> <span class="org-variable-name">sum2</span> = d2.op(x2, <span class="org-string">"1"</span>);
-    assert(<span class="org-constant">std</span>::string{<span class="org-string">"1"</span>} == sum2);
+    <span class="org-keyword">auto</span> <span class="org-variable-name">sum2</span> = d2.op<span class="org-rainbow-delimiters-depth-1">(</span>x2, <span class="org-string">"1"</span><span class="org-rainbow-delimiters-depth-1">)</span>;
+    assert<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-constant">std</span>::string<span class="org-rainbow-delimiters-depth-2">{</span><span class="org-string">"1"</span><span class="org-rainbow-delimiters-depth-2">}</span> == sum2<span class="org-rainbow-delimiters-depth-1">)</span>;
 
-    <span class="org-constant">std</span>::<span class="org-type">vector</span>&lt;<span class="org-constant">std</span>::string&gt; <span class="org-variable-name">vs</span> = {<span class="org-string">"1"</span>,<span class="org-string">"2"</span>,<span class="org-string">"3"</span>,<span class="org-string">"4"</span>};
-    <span class="org-keyword">auto</span> <span class="org-variable-name">k2</span> = d2.concat(vs);
-    assert(k2 == <span class="org-constant">std</span>::string{<span class="org-string">"1234"</span>});
+    <span class="org-constant">std</span>::<span class="org-type">vector</span><span class="org-rainbow-delimiters-depth-1">&lt;</span><span class="org-constant">std</span>::string<span class="org-rainbow-delimiters-depth-1">&gt;</span> <span class="org-variable-name">vs</span> = <span class="org-rainbow-delimiters-depth-1">{</span><span class="org-string">"1"</span>,<span class="org-string">"2"</span>,<span class="org-string">"3"</span>,<span class="org-string">"4"</span><span class="org-rainbow-delimiters-depth-1">}</span>;
+    <span class="org-keyword">auto</span> <span class="org-variable-name">k2</span> = d2.concat<span class="org-rainbow-delimiters-depth-1">(</span>vs<span class="org-rainbow-delimiters-depth-1">)</span>;
+    assert<span class="org-rainbow-delimiters-depth-1">(</span>k2 == <span class="org-constant">std</span>::string<span class="org-rainbow-delimiters-depth-2">{</span><span class="org-string">"1234"</span><span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">)</span>;
 </pre>
 </div>
 
 <p>
 Note that the map type is mostly invisible.
 </p>
+</section>
+</section>
+<section>
+<section id="slide-orgbc12efe">
+<h3 id="orgbc12efe">Results</h3>
+<div class="outline-text-3" id="text-orgbc12efe">
 </div>
-</div>
-<div id="outline-container-org5894480" class="outline-3">
-<h3 id="org5894480">Results</h3>
-<div class="outline-text-3" id="text-org5894480">
-</div>
-<div id="outline-container-org2931fff" class="outline-4">
-<h4 id="org2931fff">test int</h4>
-<div class="outline-text-4" id="text-org2931fff">
-<pre class="example" id="org19e59ae">
+</section>
+</section>
+<section>
+<section id="slide-org78b05ae">
+<h4 id="org78b05ae">test int</h4>
+<pre class="example" id="orgd870a7c">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1208,12 +1027,12 @@ Plus::op()
 Plus::op()
 Plus::op()
 </pre>
-</div>
-</div>
-<div id="outline-container-org39ea6be" class="outline-4">
-<h4 id="org39ea6be">test long</h4>
-<div class="outline-text-4" id="text-org39ea6be">
-<pre class="example" id="org3e9a4fd">
+</section>
+</section>
+<section>
+<section id="slide-orgbdca9af">
+<h4 id="orgbdca9af">test long</h4>
+<pre class="example" id="org68a5c6d">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1223,12 +1042,12 @@ Plus::op()
 Plus::op()
 Plus::op()
 </pre>
-</div>
-</div>
-<div id="outline-container-org903e939" class="outline-4">
-<h4 id="org903e939">test char</h4>
-<div class="outline-text-4" id="text-org903e939">
-<pre class="example" id="org3cd9fac">
+</section>
+</section>
+<section>
+<section id="slide-org69ba825">
+<h4 id="org69ba825">test char</h4>
+<pre class="example" id="org1d99720">
 Plus::identity()
 Plus::op()
 Monoid::concat()
@@ -1238,12 +1057,12 @@ Plus::op()
 Plus::op()
 Plus::op()
 </pre>
-</div>
-</div>
-<div id="outline-container-org2f3ce0a" class="outline-4">
-<h4 id="org2f3ce0a">test string</h4>
-<div class="outline-text-4" id="text-org2f3ce0a">
-<pre class="example" id="orgffbcd23">
+</section>
+</section>
+<section>
+<section id="slide-org81233c3">
+<h4 id="org81233c3">test string</h4>
+<pre class="example" id="org923da7d">
 Monoid::identity()
 StringMonoid::concat()
 StringMonoid::op()
@@ -1253,69 +1072,70 @@ StringMonoid::op()
 StringMonoid::op()
 StringMonoid::op()
 </pre>
+</section>
+</section>
+<section>
+<section id="slide-org49c747b">
+<h2 id="org49c747b">Monoid in Trees</h2>
+<div class="outline-text-2" id="text-org49c747b">
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-org28caedb" class="outline-2">
-<h2 id="org28caedb">Monoid in Trees</h2>
-<div class="outline-text-2" id="text-org28caedb">
-</div>
-<div id="outline-container-orgbf77a74" class="outline-3">
-<h3 id="orgbf77a74">Foldable generalizes</h3>
-<div class="outline-text-3" id="text-orgbf77a74">
-<p>
+</section>
+</section>
+<section>
+<section id="slide-orgcedd382">
+<h3 id="orgcedd382">Foldable generalizes</h3>
+<p class="fragment (appear)">
 Folding is very much tied to Range like things.
 </p>
 
-<p>
+<p class="fragment (appear)">
 It can, and has, been generalized to things that can be traversed.
 </p>
 
-<p>
+<p class="fragment (appear)">
 <code>monoids</code> are still critical for Traversables.
 </p>
-</div>
-</div>
-<div id="outline-container-org2c1d812" class="outline-3">
-<h3 id="org2c1d812">Summarizing Data in a tree</h3>
-<div class="outline-text-3" id="text-org2c1d812">
-<p>
+</section>
+</section>
+<section>
+<section id="slide-orgb81d1e1">
+<h3 id="orgb81d1e1">Summarizing Data in a tree</h3>
+<p class="fragment (appear)">
 If the summary type is monoidal, nodes can hold summaries of all the data below them.
 </p>
-</div>
-</div>
-<div id="outline-container-orgcdc2a8b" class="outline-3">
-<h3 id="orgcdc2a8b"><code>fingertrees</code></h3>
-<div class="outline-text-3" id="text-orgcdc2a8b">
-<p>
+</section>
+</section>
+<section>
+<section id="slide-org684048e">
+<h3 id="org684048e"><code>fingertrees</code></h3>
+<p class="fragment (appear)">
 Much of the flexibility of <code>fingertrees</code> comes from the monoidal tags.
 </p>
 
-<p>
+<p class="fragment (appear)">
 They are also fairly complicated.
 </p>
 
-<p>
+<p class="fragment (appear)">
 Technique can be applied to other, simpler trees.
 </p>
 
-<p>
+<p class="fragment (appear)">
 P3200 (eventually) ((C++29))
 </p>
-</div>
-</div>
-<div id="outline-container-orgc48aea5" class="outline-3">
-<h3 id="orgc48aea5">fringe-tree</h3>
-<div class="outline-text-3" id="text-orgc48aea5">
+</section>
+</section>
+<section>
+<section id="slide-orgedfdd52">
+<h3 id="orgedfdd52">fringe-tree</h3>
 <p>
 Simplified tree with data at the edges
 </p>
-</div>
-</div>
-<div id="outline-container-org0ceef1e" class="outline-3">
-<h3 id="org0ceef1e">Code</h3>
-<div class="outline-text-3" id="text-org0ceef1e">
+</section>
+</section>
+<section>
+<section id="slide-orgc4cf2ec">
+<h3 id="orgc4cf2ec">Code</h3>
 <p>
 Show the monoid-map branch of
 </p>
@@ -1323,44 +1143,83 @@ Show the monoid-map branch of
 <p>
 <a href="https://github.com/steve-downey/fringetree">steve-downey/fringetree.git</a>
 </p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgb3fa479" class="outline-2">
-<h2 id="orgb3fa479">Summary for Concept Maps</h2>
-<div class="outline-text-2" id="text-orgb3fa479">
+</section>
+</section>
+<section>
+<section id="slide-orgc60b5e6">
+<h2 id="orgc60b5e6">Summary for Concept Maps</h2>
 <p>
 Tell you what I told you
 </p>
 
-<ul class="org-ul">
+<ul>
 <li>Variable templates for map lookup</li>
 <li>Named operations on the map object</li>
 <li>Open for extension</li>
 <li>Concept checkable implementations</li>
 <li>Decoupled map use and implementation</li>
+
 </ul>
-</div>
-</div>
-<div id="outline-container-org7e482b9" class="outline-2">
-<h2 id="org7e482b9">Questions?</h2>
-<div class="outline-text-2" id="text-org7e482b9">
+</section>
+</section>
+<section>
+<section id="slide-orgcb85249">
+<h2 id="orgcb85249">Questions?</h2>
 <p>
 Or comments
 </p>
-</div>
-</div>
-<div id="outline-container-org9a8764e" class="outline-2">
-<h2 id="org9a8764e">Thank You</h2>
-<div class="outline-text-2" id="text-org9a8764e">
-<div class="notes" id="org184600b">
+</section>
+</section>
+<section>
+<section id="slide-orge0f2a5e">
+<h2 id="orge0f2a5e">Thank You</h2>
+<aside class="notes">
 <p>
 
 </p>
 
+</aside>
+</section>
+</section>
 </div>
 </div>
-</div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1600,
+height: 900,
+
+transition: 'fade',
+transitionSpeed: 'default',
+showNotes: window.location.search.match( /print-pdf/gi ) ? 'separate-page' : false,
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
 </body>
 </html>
