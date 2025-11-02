@@ -5,13 +5,9 @@
 //@AUTHOR: Steve Downey (sdowney)
 
 #include <type_traits>
-#include <compare>
 #include <concepts>
-#include <utility>
 #include <algorithm>
 #include <ranges>
-#include <cassert>
-#include <vector>
 
 namespace smd {
 namespace monoid {

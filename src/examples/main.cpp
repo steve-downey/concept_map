@@ -1,5 +1,7 @@
 #include <smd/monoid/monoid.h>
 #include <iostream>
+#include <cassert>
+#include <vector>
 
 using namespace smd::monoid;
 
