@@ -1,11 +1,16 @@
 include_guard(GLOBAL)
 
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_C_COMPILER clang-16)
+set(CMAKE_CXX_COMPILER clang++-16)
 
-set(CMAKE_CXX_STANDARD 26)
-
-set(CMAKE_CXX_FLAGS "-Wall -Wextra " CACHE STRING "CXX_FLAGS" FORCE)
+set(CMAKE_CXX_FLAGS
+    "-std=c++20 \
+   -Wall -Wextra \
+   -stdlib=libc++ -fexperimental-library"
+    CACHE STRING
+    "CXX_FLAGS"
+    FORCE
+)
 
 set(CMAKE_CXX_FLAGS_DEBUG
     "-O0 -fno-inline -g3"
@@ -32,7 +37,7 @@ set(CMAKE_CXX_FLAGS_TSAN
     FORCE
 )
 set(CMAKE_CXX_FLAGS_ASAN
-    "-O3 -g -DNDEBUG -fsanitize=address,undefined,leak"
+    "-O3 -g -DNDEBUG -fsanitize=address -fsanitize=undefined -fsanitize=leak"
     CACHE STRING
     "C++ ASAN Flags"
     FORCE

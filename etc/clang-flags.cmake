@@ -1,11 +1,13 @@
 include_guard(GLOBAL)
 
-set(CMAKE_C_COMPILER gcc)
-set(CMAKE_CXX_COMPILER g++)
-
 set(CMAKE_CXX_STANDARD 26)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra " CACHE STRING "CXX_FLAGS" FORCE)
+set(CMAKE_CXX_FLAGS
+    "-stdlib=libstdc++ -Wall -Wextra "
+    CACHE STRING
+    "CXX_FLAGS"
+    FORCE
+)
 
 set(CMAKE_CXX_FLAGS_DEBUG
     "-O0 -fno-inline -g3"
@@ -26,14 +28,21 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
     FORCE
 )
 set(CMAKE_CXX_FLAGS_TSAN
-    "-O3 -g -DNDEBUG -fsanitize=thread"
+    "-O3 -g -fsanitize=thread"
     CACHE STRING
     "C++ TSAN Flags"
     FORCE
 )
 set(CMAKE_CXX_FLAGS_ASAN
-    "-O3 -g -DNDEBUG -fsanitize=address,undefined,leak"
+    "-O3 -g -fsanitize=address,undefined,leak"
     CACHE STRING
     "C++ ASAN Flags"
     FORCE
 )
+set(CMAKE_CXX_FLAGS_GCOV
+    "-O0 -fno-inline -g --coverage"
+    CACHE STRING
+    "C++ GCOV Flags"
+    FORCE
+)
+set(CMAKE_LINKER_FLAGS_GCOV "--coverage" CACHE STRING "Linker GCOV Flags" FORCE)

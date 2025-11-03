@@ -24,8 +24,7 @@ template <class Impl>
 struct Monoid : protected Impl {
     auto identity(this auto&& self) {
         std::puts("Monoid::identity()");
-        return self.concat(
-            std::ranges::empty_view<typename Impl::value_type>{});
+        return self.concat(std::ranges::empty_view<typename Impl::value_type>{});
     }
 
     auto op(this auto&& self, auto a1, auto a2) {
@@ -36,10 +35,7 @@ struct Monoid : protected Impl {
     template <typename Range>
     auto concat(this auto&& self, Range r) {
         std::puts("Monoid::concat()");
-        return std::ranges::fold_right(
-            r, self.identity(), [&](auto m1, auto m2) {
-                return self.op(m1, m2);
-            });
+        return std::ranges::fold_right(r, self.identity(), [&](auto m1, auto m2) { return self.op(m1, m2); });
     }
 };
 
@@ -97,10 +93,7 @@ class StringMonoid {
     template <typename Range>
     auto concat(this auto&& self, Range r) {
         std::puts("StringMonoid::concat()");
-        return std::ranges::fold_right(
-            r, std::string{}, [&](auto m1, auto m2) {
-                return self.op(m1, m2);
-            });
+        return std::ranges::fold_right(r, std::string{}, [&](auto m1, auto m2) { return self.op(m1, m2); });
     }
 };
 
@@ -113,20 +106,20 @@ template <class T>
 auto monoid_concept_map = std::false_type{};
 
 template <>
-constexpr inline auto monoid_concept_map<int> = PlusMonoidMap<int>{};
+inline constexpr auto monoid_concept_map<int> = PlusMonoidMap<int>{};
 
 template <>
-constexpr inline auto monoid_concept_map<long> = PlusMonoidMap<long>{};
+inline constexpr auto monoid_concept_map<long> = PlusMonoidMap<long>{};
 
 template <>
-constexpr inline auto monoid_concept_map<char> = PlusMonoidMap<char>{};
+inline constexpr auto monoid_concept_map<char> = PlusMonoidMap<char>{};
 
 template <typename N>
     requires std::is_arithmetic<N>::value
-constexpr inline auto mult_map = MultiplyMonoidMap<N>{};
+inline constexpr auto mult_map = MultiplyMonoidMap<N>{};
 
 template <>
-constexpr inline auto monoid_concept_map<std::string> = StringMonoidMap{};
+inline constexpr auto monoid_concept_map<std::string> = StringMonoidMap{};
 
 } // namespace monoid
 } // namespace smd

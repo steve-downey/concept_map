@@ -5,7 +5,7 @@
 
 using namespace smd::monoid;
 
-template <typename P, auto const& monoid = monoid_concept_map<P>>
+template <typename P, const auto& monoid = monoid_concept_map<P>>
 void testP() {
     auto x = monoid.identity();
     assert(P{} == x);
@@ -16,7 +16,7 @@ void testP() {
     assert(k == 10);
 }
 
-template <typename P, auto const& monoid = monoid_concept_map<P>>
+template <typename P, const auto& monoid = monoid_concept_map<P>>
 P testP2() {
     auto x  = monoid.identity();
     auto op = monoid.op(x, P{2});
@@ -26,8 +26,7 @@ P testP2() {
     return k;
 }
 
-void test()
-{
+void test() {
     std::cout << "\ntest int\n";
     testP<int>();
     std::cout << "\ntest long\n";
@@ -49,13 +48,9 @@ void test()
     assert(std::string{} == x2);
     auto sum2 = d2.op(x2, "1");
     assert(std::string{"1"} == sum2);
-    std::vector<std::string> vs = {"1","2","3","4"};
-    auto k3 = d2.concat(vs);
+    std::vector<std::string> vs = {"1", "2", "3", "4"};
+    auto                     k3 = d2.concat(vs);
     assert(k3 == std::string{"1234"});
 }
 
-
-int main()
-{
-    test();
-}
+int main() { test(); }
