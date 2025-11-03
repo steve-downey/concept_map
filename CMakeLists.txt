@@ -23,8 +23,8 @@ endif()
 # Create the library target and named header set for beman_optional
 add_library(concept_map INTERFACE)
 target_sources(
-  concept_map
-  PUBLIC FILE_SET concept_map_headers TYPE HEADERS BASE_DIRS src
+    concept_map
+    PUBLIC FILE_SET concept_map_headers TYPE HEADERS BASE_DIRS src
 )
 
 # add_subdirectory(extern)

@@ -1,28 +1,24 @@
 include(GNUInstallDirs)
 
 target_sources(
-  concept_map
-  PUBLIC
-  FILE_SET concept_map_headers
-  TYPE HEADERS
-  FILES
-  monoid.h
+    concept_map
+    PUBLIC FILE_SET concept_map_headers TYPE HEADERS FILES monoid.h
 )
 
 install(
-  TARGETS concept_map
-  FILE_SET concept_map_headers
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-  COMPONENT concept_map_development
+    TARGETS concept_map
+    FILE_SET concept_map_headers
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT concept_map_development
 )
 
 install(
-  TARGETS concept_map
-  EXPORT concept_map_export
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  FILE_SET concept_map_headers
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-  COMPONENT concept_map_development
+    TARGETS concept_map
+    EXPORT concept_map_export
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FILE_SET concept_map_headers
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT concept_map_development
 )
 
 # install(
