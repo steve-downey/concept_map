@@ -4,10 +4,6 @@
 
 using namespace smd::monoid;
 
-TEST(MonoidTest, TestGTest) {
-    ASSERT_EQ(1, 1);
-}
+TEST(MonoidTest, TestGTest) { ASSERT_EQ(1, 1); }
 
-TEST(MonoidTest, Breathing) {
-
-}
+TEST(MonoidTest, Breathing) {}

@@ -29,7 +29,7 @@ The Ninja multi-config generator is used, and several configs are created in the
     - Tsan
     - Asan
 
-The default build is RelWithDebInfo. Other options are selected by the CONFIG paramter.
+The default build is RelWithDebInfo. Other options are selected by the CONFIG parameter.
 
 #+begin_src sh
 make CONFIG=Asan

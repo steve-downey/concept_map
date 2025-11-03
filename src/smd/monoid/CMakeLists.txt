@@ -1,42 +1,41 @@
-add_library(monoid STATIC "")
-
-target_sources(
-  monoid
-  PRIVATE
-  monoid.cpp)
-
 include(GNUInstallDirs)
 
-target_include_directories(monoid PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_LOWER_PROJECT_NAME}>  # <prefix>/include/scratch
-  )
+target_sources(
+    concept_map
+    PUBLIC FILE_SET concept_map_headers TYPE HEADERS FILES monoid.h
+)
 
 install(
-  TARGETS monoid
-  EXPORT ${TARGETS_EXPORT_NAME}
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  )
-
-string(TOLOWER ${CMAKE_PROJECT_NAME} CMAKE_LOWER_PROJECT_NAME)
+    TARGETS concept_map
+    FILE_SET concept_map_headers
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT concept_map_development
+)
 
 install(
-  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CMAKE_LOWER_PROJECT_NAME}
-  FILES_MATCHING PATTERN "*.h"
-  )
+    TARGETS concept_map
+    EXPORT concept_map_export
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    FILE_SET concept_map_headers
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        COMPONENT concept_map_development
+)
 
-target_link_libraries(monoid)
+# install(
+#   EXPORT concept_map_export
+#   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/smd/
+#   NAMESPACE SMD::ConceptMap::
+#   FILE concept_map.cmake
+#   EXPORT_LINK_INTERFACE_LIBRARIES
+#   COMPONENT concept_map_development
+# )
 
 ## Tests
 add_executable(monoid_test "")
 
-target_sources(
-  monoid_test
-  PRIVATE
-  monoid.t.cpp)
+target_sources(monoid_test PRIVATE monoid.t.cpp)
 
-target_link_libraries(monoid_test monoid)
+target_link_libraries(monoid_test concept_map)
 target_link_libraries(monoid_test gtest)
 target_link_libraries(monoid_test gtest_main)
 
