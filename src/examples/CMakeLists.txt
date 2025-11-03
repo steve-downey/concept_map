@@ -4,7 +4,7 @@ add_executable(main "")
 
 target_sources(main PRIVATE main.cpp)
 
-target_link_libraries(main monoid)
+target_link_libraries(main concept_map)
 
 add_executable(map_example "")
 
