@@ -4,3 +4,4 @@ compile_commands.json
 .update-submodules
 .use-docker
 /.build/
+/.cache/
