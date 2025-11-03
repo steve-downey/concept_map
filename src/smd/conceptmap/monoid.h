@@ -10,7 +10,7 @@
 #include <type_traits>
 
 namespace smd {
-namespace monoid {
+namespace conceptmap {
 
 template <typename T, typename M>
 concept MonoidRequirements = requires(T i) {
@@ -122,7 +122,7 @@ inline constexpr auto mult_map = MultiplyMonoidMap<N>{};
 template <>
 inline constexpr auto monoid_concept_map<std::string> = StringMonoidMap{};
 
-} // namespace monoid
+} // namespace conceptmap
 } // namespace smd
 
 #endif

@@ -1,1 +1,1 @@
-add_subdirectory(monoid)
+add_subdirectory(conceptmap)

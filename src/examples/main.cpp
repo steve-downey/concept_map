@@ -1,9 +1,9 @@
 #include <cassert>
 #include <iostream>
-#include <smd/monoid/monoid.h>
+#include <smd/conceptmap/monoid.h>
 #include <vector>
 
-using namespace smd::monoid;
+using namespace smd::conceptmap;
 
 template <typename P, const auto &monoid = monoid_concept_map<P>> void testP() {
   auto x = monoid.identity();

@@ -1,8 +1,8 @@
-#include <smd/monoid/monoid.h>
+#include <smd/conceptmap/monoid.h>
 
 #include <gtest/gtest.h>
 
-using namespace smd::monoid;
+using namespace smd::conceptmap;
 
 TEST(MonoidTest, TestGTest) { ASSERT_EQ(1, 1); }
 
