@@ -5,7 +5,8 @@
 
 using namespace smd::conceptmap;
 
-template <typename P, const auto &monoid = monoid_concept_map<P>> void testP() {
+template <typename P, const auto &monoid = monoid_concept_map<P>>
+void testP() {
   auto x = monoid.identity();
   assert(P{} == x);
   auto sum = monoid.op(x, P{1});
@@ -15,7 +16,8 @@ template <typename P, const auto &monoid = monoid_concept_map<P>> void testP() {
   assert(k == 10);
 }
 
-template <typename P, const auto &monoid = monoid_concept_map<P>> P testP2() {
+template <typename P, const auto &monoid = monoid_concept_map<P>>
+P testP2() {
   auto x = monoid.identity();
   auto op = monoid.op(x, P{2});
   assert(P{2} == op);

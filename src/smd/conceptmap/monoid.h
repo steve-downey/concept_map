@@ -14,13 +14,9 @@ namespace conceptmap {
 
 template <typename T, typename M>
 concept MonoidRequirements = requires(T i) {
-  {
-    i.identity()
-  } -> std::same_as<M>;
+  { i.identity() } -> std::same_as<M>;
 } || requires(T i, std::ranges::empty_view<M> r1) {
-  {
-    i.concat(r1)
-  } -> std::same_as<M>;
+  { i.concat(r1) } -> std::same_as<M>;
 };
 
 template <class Impl>
@@ -36,15 +32,16 @@ struct Monoid : protected Impl {
     return self.op(a1, a2);
   }
 
-  template <typename Range> auto concat(this auto &&self, Range r) {
+  template <typename Range>
+  auto concat(this auto &&self, Range r) {
     std::puts("Monoid::concat()");
-    return std::ranges::fold_right(r, self.identity(), [&](auto m1, auto m2) {
-      return self.op(m1, m2);
-    });
+    return std::ranges::fold_right(
+        r, self.identity(), [&](auto m1, auto m2) { return self.op(m1, m2); });
   }
 };
 
-template <typename M> class Plus {
+template <typename M>
+class Plus {
 public:
   using value_type = M;
   auto identity(this auto && /*self*/) -> M {
@@ -58,12 +55,14 @@ public:
   }
 };
 
-template <typename M> struct PlusMonoidMap : public Monoid<Plus<M>> {
+template <typename M>
+struct PlusMonoidMap : public Monoid<Plus<M>> {
   using Plus<M>::identity;
   using Plus<M>::op;
 };
 
-template <typename M> class Multiply {
+template <typename M>
+class Multiply {
 public:
   using value_type = M;
   auto identity(this auto && /*self*/) -> M {
@@ -77,7 +76,8 @@ public:
   }
 };
 
-template <typename M> struct MultiplyMonoidMap : public Monoid<Multiply<M>> {
+template <typename M>
+struct MultiplyMonoidMap : public Monoid<Multiply<M>> {
   using Multiply<M>::identity;
   using Multiply<M>::op;
 };
@@ -91,11 +91,11 @@ public:
     return s1 + s2;
   }
 
-  template <typename Range> auto concat(this auto &&self, Range r) {
+  template <typename Range>
+  auto concat(this auto &&self, Range r) {
     std::puts("StringMonoid::concat()");
-    return std::ranges::fold_right(r, std::string{}, [&](auto m1, auto m2) {
-      return self.op(m1, m2);
-    });
+    return std::ranges::fold_right(
+        r, std::string{}, [&](auto m1, auto m2) { return self.op(m1, m2); });
   }
 };
 
@@ -104,7 +104,8 @@ struct StringMonoidMap : public Monoid<StringMonoid> {
   using StringMonoid::op;
 };
 
-template <class T> auto monoid_concept_map = std::false_type{};
+template <class T>
+auto monoid_concept_map = std::false_type{};
 
 template <>
 inline constexpr auto monoid_concept_map<int> = PlusMonoidMap<int>{};

@@ -4,9 +4,7 @@
 namespace N::hidden {
 template <typename T>
 concept has_eq = requires(const T &v) {
-  {
-    operator==(v, v)
-  } -> std::same_as<bool>;
+  { operator==(v, v) } -> std::same_as<bool>;
 };
 
 inline constexpr struct partial_eq_default_t {
@@ -27,12 +25,8 @@ inline constexpr auto partial_eq = hidden::partial_eq_default;
 
 template <class T>
 concept partial_equality = requires(const std::remove_reference_t<T> &t) {
-  {
-    partial_eq<T>.eq(t, t)
-  } -> std::same_as<bool>;
-  {
-    partial_eq<T>.ne(t, t)
-  } -> std::same_as<bool>;
+  { partial_eq<T>.eq(t, t) } -> std::same_as<bool>;
+  { partial_eq<T>.ne(t, t) } -> std::same_as<bool>;
 };
 } // namespace N
 

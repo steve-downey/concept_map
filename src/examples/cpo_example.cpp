@@ -4,30 +4,29 @@
 namespace N::hidden {
 template <typename T>
 concept has_eq = requires(const T &v) {
-  {
-    eq(v, v)
-  } -> std::same_as<bool>;
+  { eq(v, v) } -> std::same_as<bool>;
 };
 
 struct eq_fn {
-  template <has_eq T> constexpr bool operator()(const T &x, const T &y) const {
+  template <has_eq T>
+  constexpr bool operator()(const T &x, const T &y) const {
     return eq(x, y);
   }
 };
 
-template <has_eq T> constexpr bool ne(const T &x, const T &y) {
+template <has_eq T>
+constexpr bool ne(const T &x, const T &y) {
   return not eq(x, y);
 }
 
 template <typename T>
 concept has_ne = requires(const T &v) {
-  {
-    ne(v, v)
-  } -> std::same_as<bool>;
+  { ne(v, v) } -> std::same_as<bool>;
 };
 
 struct ne_fn {
-  template <has_ne T> constexpr bool operator()(const T &x, const T &y) const {
+  template <has_ne T>
+  constexpr bool operator()(const T &x, const T &y) const {
     return ne(x, y);
   }
 };
