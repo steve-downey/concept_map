@@ -2,7 +2,7 @@ include(GNUInstallDirs)
 
 target_sources(
     concept_map
-    PUBLIC FILE_SET concept_map_headers TYPE HEADERS FILES monoid.h
+    PUBLIC FILE_SET concept_map_headers TYPE HEADERS FILES monoid.h functor.h
 )
 
 install(
@@ -33,7 +33,7 @@ install(
 ## Tests
 add_executable(monoid_test "")
 
-target_sources(monoid_test PRIVATE monoid.t.cpp)
+target_sources(monoid_test PRIVATE monoid.t.cpp functor.t.cpp)
 
 target_link_libraries(monoid_test concept_map)
 target_link_libraries(monoid_test gtest)
