@@ -11,41 +11,42 @@
 namespace smd {
 namespace conceptmap {
 
-template <template <typename> typename C, typename T, typename G>
-concept FunctorRequirements = requires(C<T> c, G g, T t) {
-  std::is_invocable_v<G, T>;
-  { c.map(g) } -> std::same_as<C<std::invoke_result<G, T>>>;
+template <typename Impl, template <typename> typename C, typename T, typename G>
+concept FunctorRequirements = requires(Impl i, C<T> c, G g, T t) {
+    std::is_invocable_v<G, T>;
+    { i.map(c, g) } -> std::same_as<C<std::invoke_result<G, T>>>;
 };
 
-template <template <typename> typename Impl, typename T, typename G>
-  requires FunctorRequirements<Impl, typename Impl<T>::value_type, G>
-struct Functor : protected Impl<T> {
-
-  auto map(this auto &&self, auto c, auto g) {
-    std::puts("Functor::map");
-    return self.map(c, g);
-  }
-
-  auto replace(this auto &&self, auto c, auto u) {
-    std::puts("Functor::replace");
-    return self.map(c, [u]() { return u; });
-  }
+template <template <typename> typename Impl, typename C>
+// requires FunctorRequirements<Impl, typename Impl<C>::value_type, G>
+struct Functor : protected Impl<C> {
+    auto replace(this Functor &self, C c, auto u) {
+        std::puts("Functor::replace");
+        return self.map(c, [u]() { return u; });
+    }
 };
 
-template <typename T>
+template <typename C>
 class Transform {
-public:
-  using value_type = T;
-  auto map(this auto &&/*self*/, auto c, auto g) {
-    std::puts("Maybe::map()");
-      return c.transform(g);
-  }
+  public:
+    using value_type = C::value_type;
+    auto map(this auto && /*self*/, C c, auto g) {
+        std::puts("Transform::map()");
+        return c.transform(g);
+    }
 };
 
 template <typename T>
-struct TransformFunctorMap : public Functor<Transform<T>> {
+struct TransformFunctorMap : public Functor<Transform, T> {
     using Transform<T>::map;
 };
+
+template <typename C>
+auto functor_concept_map = std::false_type{};
+
+template <typename T>
+inline constexpr auto functor_concept_map<std::optional<T>> =
+    TransformFunctorMap<std::optional<T>>{};
 
 } // namespace conceptmap
 } // namespace smd

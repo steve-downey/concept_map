@@ -1,5 +1,6 @@
 #include <smd/conceptmap/monoid.h>
-#include <smd/conceptmap/monoid.h>
+
+#include <functional>
 
 #include <gtest/gtest.h>
 
