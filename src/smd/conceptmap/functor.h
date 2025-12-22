@@ -11,20 +11,20 @@
 namespace smd {
 namespace conceptmap {
 
-// template <typename Impl, template <typename> typename C, typename T, typename G>
-// concept FunctorRequirements = requires(Impl i, C<T> c, T t, G g) {
+// template <typename Impl, template <typename> typename C, typename T, typename
+// G> concept FunctorRequirements = requires(Impl i, C<T> c, T t, G g) {
 //     std::is_invocable_v<G, T>;
 //     { i.map(c, g) } -> std::same_as<C<std::invoke_result<G, T>>>;
 // };
 
 template <template <typename> typename Impl, typename C>
-//requires FunctorRequirements<Impl, C, typename Impl<C>::value_type, G>
+// requires FunctorRequirements<Impl, C, typename Impl<C>::value_type, G>
 struct Functor : protected Impl<C> {
-    auto map(this auto &&self, C const& c, auto g) {
+    auto map(this auto &&self, C const &c, auto g) {
         std::puts("Functor::map");
         return self.map(c, g);
     }
-    auto replace(this auto &&self, C const& c, auto u) {
+    auto replace(this auto &&self, C const &c, auto u) {
         std::puts("Functor::replace");
         return self.map(c, [u]() { return u; });
     }
@@ -34,7 +34,7 @@ template <typename C>
 class Transform {
   public:
     using value_type = C::value_type;
-    auto map(this auto && /*self*/, C const & c, auto g) {
+    auto map(this auto && /*self*/, C const &c, auto g) {
         std::puts("Transform::map()");
         return c.transform(g);
     }
@@ -56,7 +56,7 @@ template <typename C>
 class RangeTransform {
   public:
     using value_type = C::value_type;
-    auto map(this auto && /*self*/, C const& c, auto g) {
+    auto map(this auto && /*self*/, C const &c, auto g) {
         std::puts("RangeTransform::map()");
         return std::views::transform(c, g);
     }

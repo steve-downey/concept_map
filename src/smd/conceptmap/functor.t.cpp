@@ -36,7 +36,7 @@ TEST(FunctorTest, TransformTest) {
 }
 
 template <typename P, const auto &functor = functor_concept_map<P>>
-auto testP2(P const& p) {
+auto testP2(P const &p) {
     auto x = functor.map(p, [](auto k) { return static_cast<double>(k); });
     return x;
 }
@@ -51,10 +51,10 @@ TEST(FunctorTest, TypeTest) {
 }
 
 TEST(FunctorTest, TransformVectorTest) {
-  std::vector<int> v{1,2,3,4,5};
-  RangeTransform<std::vector<int>> tr;
-  auto r = tr.map(v, my_identity);
-  ASSERT_TRUE(std::ranges::equal(v, r));
+    std::vector<int> v{1, 2, 3, 4, 5};
+    RangeTransform<std::vector<int>> tr;
+    auto r = tr.map(v, my_identity);
+    ASSERT_TRUE(std::ranges::equal(v, r));
 }
 
 TEST(FunctorTest, RangeTypeTest) {
