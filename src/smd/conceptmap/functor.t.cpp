@@ -36,8 +36,8 @@ TEST(FunctorTest, TransformTest) {
 }
 
 template <typename P, const auto &functor = functor_concept_map<P>>
-auto testP2(P p) {
-    auto x = functor.map(p, [](auto k) { return double{k}; });
+auto testP2(P const& p) {
+    auto x = functor.map(p, [](auto k) { return static_cast<double>(k); });
     return x;
 }
 
@@ -48,4 +48,21 @@ TEST(FunctorTest, TypeTest) {
     static_assert(std::same_as<decltype(o4), std::optional<double>>);
     std::optional<double> od1{5};
     ASSERT_EQ(o4, od1);
+}
+
+TEST(FunctorTest, TransformVectorTest) {
+  std::vector<int> v{1,2,3,4,5};
+  RangeTransform<std::vector<int>> tr;
+  auto r = tr.map(v, my_identity);
+  ASSERT_TRUE(std::ranges::equal(v, r));
+}
+
+TEST(FunctorTest, RangeTypeTest) {
+    std::vector<int> v{1, 2, 3, 4, 5};
+
+    auto v2 = testP2(v);
+    auto r2 = v | std::views::transform(
+                      [](auto k) { return static_cast<double>(k); });
+    //    static_assert(std::same_as<decltype(v2), decltype(r2)>);
+    ASSERT_TRUE(std::ranges::equal(v2, r2));
 }
