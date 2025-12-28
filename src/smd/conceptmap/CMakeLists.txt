@@ -36,8 +36,8 @@ add_executable(monoid_test "")
 target_sources(monoid_test PRIVATE monoid.t.cpp functor.t.cpp)
 
 target_link_libraries(monoid_test concept_map)
-target_link_libraries(monoid_test gtest)
-target_link_libraries(monoid_test gtest_main)
+target_link_libraries(monoid_test GTest::gtest)
+target_link_libraries(monoid_test GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(monoid_test)

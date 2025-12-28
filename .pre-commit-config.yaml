@@ -4,38 +4,38 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-    -   id: trailing-whitespace
-    -   id: end-of-file-fixer
-    -   id: check-yaml
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
         args: [--allow-multiple-documents]
-    -   id: check-added-large-files
+      - id: check-added-large-files
 
-    # Clang-format for C++
-    # This brings in a portable version of clang-format.
-    # See also: https://github.com/ssciwr/clang-format-wheel
+  # Clang-format for C++
+  # This brings in a portable version of clang-format.
+  # See also: https://github.com/ssciwr/clang-format-wheel
   - repo: https://github.com/pre-commit/mirrors-clang-format
     rev: v21.1.2
     hooks:
-    - id: clang-format
-      types_or: [c++, c]
+      - id: clang-format
+        types_or: [c++, c]
 
-    # CMake linting and formatting
+  # CMake linting and formatting
   - repo: https://github.com/BlankSpruce/gersemi
-    rev: 0.22.3
+    rev: 0.24.0
     hooks:
-    - id: gersemi
-      name: CMake linting
+      - id: gersemi
+        name: CMake linting
 
-    # Markdown linting
-    # Config file: .markdownlint.yaml
+  # Markdown linting
+  # Config file: .markdownlint.yaml
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.43.0
     hooks:
-    - id: markdownlint
-      args: ['--disable', 'MD013', ' --']
-      exclude: ^papers/
+      - id: markdownlint
+        args: ['--disable', 'MD013', ' --']
+        exclude: ^papers/
 
-    # Config file: .codespell_ignore
+  # Config file: .codespell_ignore
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
@@ -45,3 +45,9 @@ repos:
           (?x)^(
             (papers|latex)/.*
           )$
+  - repo: https://github.com/checkmake/checkmake.git
+    # Or another commit hash or version
+    rev: 0.2.2
+    hooks:
+      # Use this hook to let pre-commit build checkmake in its sandbox
+      - id: checkmake
