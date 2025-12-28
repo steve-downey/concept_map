@@ -33,6 +33,13 @@ if(OPTIONAL_ENABLE_TESTING)
     find_package(GTest CONFIG QUIET)
 endif()
 
+find_package(
+    beman.optional
+    REQUIRED
+    PATHS ${OPTIONAL_INSTALL_DIR}
+    NO_DEFAULT_PATH
+)
+
 # Create the library target and named header set for beman_optional
 add_library(concept_map INTERFACE)
 target_sources(

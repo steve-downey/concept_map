@@ -66,3 +66,20 @@ TEST(FunctorTest, RangeTypeTest) {
     //    static_assert(std::same_as<decltype(v2), decltype(r2)>);
     ASSERT_TRUE(std::ranges::equal(v2, r2));
 }
+
+TEST(FunctorTest, BemanOptionalTransformTest) {
+    beman::optional::optional<int> oi1{5};
+    Transform<beman::optional::optional<int>> tr;
+    beman::optional::optional<int> r = tr.map(oi1, my_identity);
+    ASSERT_EQ(oi1, r);
+}
+
+TEST(FunctorTest, BemanOptionalTypeTest) {
+    beman::optional::optional<int> oi1{5};
+
+    auto o4 = testP2(oi1);
+    static_assert(
+        std::same_as<decltype(o4), beman::optional::optional<double>>);
+    beman::optional::optional<double> od1{5};
+    ASSERT_EQ(o4, od1);
+}
