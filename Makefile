@@ -63,7 +63,7 @@ define run_cmake =
 	-DCMAKE_C_COMPILER_LAUNCHER=ccache \
 	-DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
 	-DCMAKE_TOOLCHAIN_FILE=$(_toolchain) \
-	-DOPTIONAL_INSTALL_DIR=~/.local/lib/cmake/beman.optional \
+	-DOPTIONAL_INSTALL_DIR=~/.local/lib/cmake/ \
     $(_args) \
 	$(_cmake_args) \
 	$(CURDIR)
@@ -150,15 +150,11 @@ all: compile
 PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
 PYTHON ?= $(notdir $(PYEXECPATH))
 VENV := .venv
-ACTIVATE := . $(VENV)/bin/activate &&
-PYEXEC := $(ACTIVATE) $(PYTHON)
+ACTIVATE := uv run
+PYEXEC := uv run python
 MARKER=.initialized.venv.stamp
 
-PIP := $(PYEXEC) -m pip
-PIP_SYNC := $(PYEXEC) -m piptools sync
-PIPTOOLS_COMPILE := $(PYEXEC) -m piptools compile --no-header --strip-extras
-
-PRE_COMMIT := $(ACTIVATE) pre-commit
+PRE_COMMIT := uv run pre-commit
 
 .PHONY: venv
 venv: ## Create python virtual env
@@ -175,23 +171,16 @@ realclean: clean-venv
 show-venv: venv
 show-venv: ## Debugging target - show venv details
 	$(PYEXEC) -c "import sys; print('Python ' + sys.version.replace('\n',''))"
-	$(PIP) --version
 	@echo venv: $(VENV)
 
-requirements.txt: requirements.in
-	$(PIPTOOLS_COMPILE) --output-file=$@ $<
-
-requirements-dev.txt: requirements-dev.in
-	$(PIPTOOLS_COMPILE) --output-file=$@ $<
+uv.lock: pyproject.toml
+	uv lock
 
 $(VENV):
-	$(PYEXECPATH) -m venv $(VENV)
-	$(PIP) install pip setuptools wheel
-	$(PIP) install pip-tools
+	uv venv --python $(PYTHON)
 
-$(VENV)/$(MARKER): requirements.txt requirements-dev.txt | $(VENV)
-	$(PIP_SYNC) requirements.txt
-	$(PIP_SYNC) requirements-dev.txt
+$(VENV)/$(MARKER): uv.lock | $(VENV)
+	uv sync
 	touch $(VENV)/$(MARKER)
 
 .PHONY: dev-shell
@@ -202,7 +191,7 @@ dev-shell: ## Shell with the venv activated
 .PHONY: bash zsh
 bash zsh: venv
 bash zsh: ## Run bash or zsh with the venv activated
-	$(ACTIVATE) exec $@
+	$(ACTIVATE) $@
 
 .PHONY: lint
 lint: venv
