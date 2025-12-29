@@ -7,6 +7,15 @@ BUILD_DIR?=.build
 DEST?=$(INSTALL_PREFIX)
 CMAKE_FLAGS?=
 
+PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
+PYTHON ?= $(notdir $(PYEXECPATH))
+VENV := .venv
+ACTIVATE := uv run
+PYEXEC := uv run python
+MARKER=.initialized.venv.stamp
+
+PRE_COMMIT := uv run pre-commit
+
 TARGETS := test clean all ctest
 
 export
@@ -52,8 +61,11 @@ else
 	# for debugging add 	-DVCPKG_INSTALL_OPTIONS="--debug"
 endif
 
+CMAKE ?= uv run cmake
+CTEST ?= uv run ctest
+
 define run_cmake =
-	cmake \
+	$(CMAKE) \
 	-G "Ninja Multi-Config" \
 	-DCMAKE_CONFIGURATION_TYPES=$(_configuration_types) \
 	-DCMAKE_INSTALL_PREFIX=$(abspath $(INSTALL_PREFIX)) \
@@ -75,13 +87,14 @@ default: test
 $(_build_path):
 	mkdir -p $(_build_path)
 
-$(_build_path)/CMakeCache.txt: | $(_build_path) .gitmodules
+$(_build_path)/CMakeCache.txt: | $(_build_path) .gitmodules $(VENV)
 	cd $(_build_path) && $(run_cmake)
 
 $(_build_path)/compile_commands.json : $(_build_path)/CMakeCache.txt
 
 .PHONY: compile_commands.json
-compile_commands.json:
+compile_commands.json: $(_build_path)/compile_commands.json
+compile_commands.json: ## symlink the current compile commands db
 	if [ "$(shell readlink compile_commands.json)" != "$(_build_path)/compile_commands.json" ] ; then \
 		ln -sf $(_build_path)/compile_commands.json ; \
 	fi
@@ -93,15 +106,15 @@ TARGET:=all
 compile: $(_build_path)/CMakeCache.txt
 compile: compile_commands.json
 compile:  ## Compile the project
-	cmake --build $(_build_path)  --config $(CONFIG) --target all -- -k 0
+	$(CMAKE) --build $(_build_path)  --config $(CONFIG) --target all -- -k 0
 
 .PHONY: compile-headers
 compile-headers: $(_build_path)/CMakeCache.txt ## Compile the headers
-	 cmake --build $(_build_path)  --config $(CONFIG) --target all_verify_interface_header_sets -- -k 0
+	 $(CMAKE) --build $(_build_path)  --config $(CONFIG) --target all_verify_interface_header_sets -- -k 0
 
 .PHONY: install
 install: $(_build_path)/CMakeCache.txt compile ## Install the project
-	cmake --install $(_build_path) --config $(CONFIG) --component beman.optional --verbose
+	$(CMAKE) --install $(_build_path) --config $(CONFIG) --component beman.optional --verbose
 
 .PHONY: clean-install
 clean-install:
@@ -112,11 +125,11 @@ realclean: clean-install
 
 .PHONY: ctest
 ctest: $(_build_path)/CMakeCache.txt ## Run CTest on current build
-	cd $(_build_path) && ctest --output-on-failure -C $(CONFIG)
+	$(CTEST) --test-dir $(_build_path) --output-on-failure -C $(CONFIG)
 
 .PHONY: ctest_
 ctest_ : compile
-	cd $(_build_path) && ctest --output-on-failure -C $(CONFIG)
+	$(CTEST) --test-dir $(_build_path) --output-on-failure -C $(CONFIG)
 
 .PHONY: test
 test: ctest_ ## Rebuild and run tests
@@ -127,7 +140,7 @@ cmake: |  $(_build_path)
 
 .PHONY: clean
 clean: $(_build_path)/CMakeCache.txt ## Clean the build artifacts
-	cmake --build $(_build_path)  --config $(CONFIG) --target clean
+	$(CMAKE) --build $(_build_path)  --config $(CONFIG) --target clean
 
 .PHONY: realclean
 realclean: ## Delete the build directory
@@ -142,19 +155,11 @@ papers:
 	$(MAKE) -C papers/P2988 papers
 
 .DEFAULT: $(_build_path)/CMakeCache.txt ## Other targets passed through to cmake
-	cmake --build $(_build_path)  --config $(CONFIG) --target $@ -- -k 0
+	$(CMAKE) --build $(_build_path)  --config $(CONFIG) --target $@ -- -k 0
 
 .PHONY: all
 all: compile
 
-PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
-PYTHON ?= $(notdir $(PYEXECPATH))
-VENV := .venv
-ACTIVATE := uv run
-PYEXEC := uv run python
-MARKER=.initialized.venv.stamp
-
-PRE_COMMIT := uv run pre-commit
 
 .PHONY: venv
 venv: ## Create python virtual env
@@ -206,9 +211,9 @@ lint-manual: ## Run all manual tools in pre-commit
 .PHONY: coverage
 coverage: ## Build and run the tests with the GCOV profile and process the results
 coverage: venv $(_build_path)/CMakeCache.txt
-	$(ACTIVATE) cmake --build $(_build_path) --config Gcov
+	$(CMAKE) --build $(_build_path) --config Gcov
 	$(ACTIVATE) ctest --build-config Gcov --output-on-failure --test-dir $(_build_path)
-	$(ACTIVATE) cmake --build $(_build_path) --config Gcov --target process_coverage
+	$(CMAKE) --build $(_build_path) --config Gcov --target process_coverage
 
 .PHONY: view-coverage
 view-coverage: ## View the coverage report
@@ -227,8 +232,8 @@ mrdocs: ## Build the docs with Doxygen
 .PHONY: testinstall
 testinstall: install
 testinstall: ## Test the installed package
-	cmake -S installtest -B installtest/.build
-	cmake --build  installtest/.build --target test
+	$(CMAKE) -S installtest -B installtest/.build
+	$(CMAKE) --build  installtest/.build --target test
 
 .PHONY: clean-testinstall
 clean-testinstall:

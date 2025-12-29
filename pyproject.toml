@@ -8,6 +8,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+    "cmake==4.2.1",
     "clang-format==18.1.8",
     "gcovr>=7.2",
     "pre-commit>=3.7.1",
