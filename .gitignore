@@ -5,3 +5,4 @@ compile_commands.json
 .use-docker
 /.build/
 /.cache/
+uv.lock

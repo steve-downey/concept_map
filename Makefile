@@ -7,14 +7,16 @@ BUILD_DIR?=.build
 DEST?=$(INSTALL_PREFIX)
 CMAKE_FLAGS?=
 
+
 PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
 PYTHON ?= $(notdir $(PYEXECPATH))
 VENV := .venv
-ACTIVATE := uv run
-PYEXEC := uv run python
+UV := $(shell command -v uv 2> /dev/null)
+ACTIVATE := $(UV) run
+PYEXEC := $(UV) run python
 MARKER=.initialized.venv.stamp
 
-PRE_COMMIT := uv run pre-commit
+PRE_COMMIT := $(UV) run pre-commit
 
 TARGETS := test clean all ctest
 
@@ -61,8 +63,8 @@ else
 	# for debugging add 	-DVCPKG_INSTALL_OPTIONS="--debug"
 endif
 
-CMAKE ?= uv run cmake
-CTEST ?= uv run ctest
+CMAKE ?= $(UV) run cmake
+CTEST ?= $(UV) run ctest
 
 define run_cmake =
 	$(CMAKE) \
@@ -179,13 +181,13 @@ show-venv: ## Debugging target - show venv details
 	@echo venv: $(VENV)
 
 uv.lock: pyproject.toml
-	uv lock
+	$(UV) lock
 
 $(VENV):
-	uv venv --python $(PYTHON)
+	$(UV) venv --python $(PYTHON)
 
 $(VENV)/$(MARKER): uv.lock | $(VENV)
-	uv sync
+	$(UV) sync
 	touch $(VENV)/$(MARKER)
 
 .PHONY: dev-shell
@@ -240,6 +242,25 @@ clean-testinstall:
 	-rm -rf installtest/.build
 
 realclean: clean-testinstall
+
+ifeq ($(UV),)
+define install_uv_cmd
+pipx install uv
+endef
+
+define uv_error_message
+
+'uv' command not found.
+Please install uv or set the UV variable to the path of the uv binary.
+The makefile target "install-uv" will run ``$(install_uv_cmd)''
+endef
+
+$(error "$(uv_error_message)")
+endif
+
+.PHONY: install-uv
+install-uv: ## install uv via `pipx install uv`
+	$(install_uv_cmd)
 
 # Help target
 .PHONY: help
