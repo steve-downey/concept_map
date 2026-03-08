@@ -6,10 +6,10 @@ export
 MAKEFLAGS += --no-builtin-rules
 .SUFFIXES:
 
-INSTALL_PREFIX?=.install/
-BUILD_DIR?=.build
-DEST?=$(INSTALL_PREFIX)
-CMAKE_FLAGS?=
+INSTALL_PREFIX ?= .install/
+BUILD_DIR ?= .build
+DEST ?= $(INSTALL_PREFIX)
+CMAKE_FLAGS ?=
 
 PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
 PYTHON ?= $(notdir $(PYEXECPATH))
@@ -17,7 +17,7 @@ VENV := .venv
 UV := $(shell command -v uv 2> /dev/null)
 ACTIVATE := $(UV) run
 PYEXEC := $(UV) run python
-MARKER=.initialized.venv.stamp
+MARKER = .initialized.venv.stamp
 
 PRE_COMMIT := $(UV) run pre-commit
 
@@ -27,7 +27,7 @@ PRE_COMMIT := $(UV) run pre-commit
 
 .gitmodules: .update-submodules
 
-CONFIG?=Asan
+CONFIG ?= Asan
 
 export
 
@@ -41,11 +41,11 @@ else
 	_local_toolchain?=$(CURDIR)/etc/$(TOOLCHAIN)-toolchain.cmake
 endif
 
-_configuration_types?="RelWithDebInfo;Debug;Tsan;Asan;Gcov"
+_configuration_types ?= "RelWithDebInfo;Debug;Tsan;Asan;Gcov"
 
-_build_path?=$(_build_dir)/$(_build_name)
-_build_path:=$(subst //,/,$(_build_path))
-_build_path:=$(patsubst %/,%,$(_build_path))
+_build_path ?= $(_build_dir)/$(_build_name)
+_build_path := $(subst //,/,$(_build_path))
+_build_path := $(patsubst %/,%,$(_build_path))
 
 VCPKG ?= $(shell command -v vcpkg 2> /dev/null)
 
@@ -77,7 +77,7 @@ define run_cmake =
 	-DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
 	-DCMAKE_TOOLCHAIN_FILE=$(_toolchain) \
 	-DOPTIONAL_INSTALL_DIR=~/.local/lib/cmake/ \
-    $(_args) \
+	$(_args) \
 	$(_cmake_args) \
 	$(CURDIR)
 endef
@@ -91,7 +91,7 @@ $(_build_path):
 $(_build_path)/CMakeCache.txt: | $(_build_path) .gitmodules $(VENV)
 	cd $(_build_path) && $(run_cmake)
 
-$(_build_path)/compile_commands.json : $(_build_path)/CMakeCache.txt
+$(_build_path)/compile_commands.json: $(_build_path)/CMakeCache.txt
 
 .PHONY: compile_commands.json
 compile_commands.json: $(_build_path)/compile_commands.json
@@ -101,9 +101,8 @@ compile_commands.json: ## symlink the current compile commands db
 	fi
 
 .PHONY: compile
-compile: $(_build_path)/CMakeCache.txt
-compile: compile_commands.json
-compile:  ## Compile the project
+compile: $(_build_path)/CMakeCache.txt compile_commands.json
+compile: ## Compile the project
 	$(CMAKE) --build $(_build_path)  --config $(CONFIG) --target all -- -k 0
 
 .PHONY: compile-headers
@@ -126,7 +125,7 @@ ctest: $(_build_path)/CMakeCache.txt ## Run CTest on current build
 	$(CTEST) --test-dir $(_build_path) --output-on-failure -C $(CONFIG)
 
 .PHONY: ctest_
-ctest_ : compile
+ctest_: compile
 	$(CTEST) --test-dir $(_build_path) --output-on-failure -C $(CONFIG)
 
 .PHONY: test
@@ -157,7 +156,6 @@ papers:
 
 .PHONY: all
 all: compile
-
 
 .PHONY: venv
 venv: ## Create python virtual env
