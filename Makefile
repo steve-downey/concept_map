@@ -2,11 +2,14 @@
 # Makefile                                                       -*-makefile-*-
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 
+export
+MAKEFLAGS += --no-builtin-rules
+.SUFFIXES:
+
 INSTALL_PREFIX?=.install/
 BUILD_DIR?=.build
 DEST?=$(INSTALL_PREFIX)
 CMAKE_FLAGS?=
-
 
 PYEXECPATH ?= $(shell which python3.13 || which python3.12 || which python3.11 || which python3.10 || which python3.9 || which python3.8 || which python3)
 PYTHON ?= $(notdir $(PYEXECPATH))
@@ -17,10 +20,6 @@ PYEXEC := $(UV) run python
 MARKER=.initialized.venv.stamp
 
 PRE_COMMIT := $(UV) run pre-commit
-
-TARGETS := test clean all ctest
-
-export
 
 .update-submodules:
 	git submodule update --init --recursive
@@ -101,9 +100,6 @@ compile_commands.json: ## symlink the current compile commands db
 		ln -sf $(_build_path)/compile_commands.json ; \
 	fi
 
-TARGET:=all
-.PHONY: TARGET
-
 .PHONY: compile
 compile: $(_build_path)/CMakeCache.txt
 compile: compile_commands.json
@@ -168,7 +164,6 @@ venv: ## Create python virtual env
 venv: $(VENV)/$(MARKER)
 
 .PHONY: clean-venv
-clean-venv:
 clean-venv: ## Delete python virtual env
 	-rm -rf $(VENV)
 

@@ -45,9 +45,18 @@ repos:
           (?x)^(
             (papers|latex)/.*
           )$
+
   - repo: https://github.com/checkmake/checkmake.git
     # Or another commit hash or version
     rev: 0.2.2
     hooks:
       # Use this hook to let pre-commit build checkmake in its sandbox
       - id: checkmake
+
+  #  MBake Makefile formatting
+  - repo: https://github.com/EbodShojaei/bake
+    rev: v1.4.5
+    hooks:
+      # - id: mbake-format
+      #   args: ["--config=.github/bake.toml"]
+      - id: mbake-validate
